@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-api/ruoyi-api.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-api/ruoyi-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-api/ruoyi-api-system/ruoyi-api-system.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-api/ruoyi-api-system/ruoyi-api-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-auth/ruoyi-auth.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-auth/ruoyi-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-core/ruoyi-common-core.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-core/ruoyi-common-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-datascope/ruoyi-common-datascope.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-datascope/ruoyi-common-datascope.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-datasource/ruoyi-common-datasource.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-datasource/ruoyi-common-datasource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-log/ruoyi-common-log.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-log/ruoyi-common-log.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-redis/ruoyi-common-redis.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-redis/ruoyi-common-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-security/ruoyi-common-security.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-security/ruoyi-common-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-swagger/ruoyi-common-swagger.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-swagger/ruoyi-common-swagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-gateway/ruoyi-gateway.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-gateway/ruoyi-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-modules.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-file/ruoyi-modules-file.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-file/ruoyi-modules-file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-gen/ruoyi-modules-gen.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-gen/ruoyi-modules-gen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-job/ruoyi-modules-job.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-job/ruoyi-modules-job.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-system/ruoyi-modules-system.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-system/ruoyi-modules-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-pilotsmanager/ruoyi-pilotsmanager.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-pilotsmanager/ruoyi-pilotsmanager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-visual.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-visual.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-monitor/ruoyi-visual-monitor.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-monitor/ruoyi-visual-monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/uav_manage_system.iml" filepath="$PROJECT_DIR$/.idea/uav_manage_system.iml" />
+    </modules>
+  </component>
+</project>

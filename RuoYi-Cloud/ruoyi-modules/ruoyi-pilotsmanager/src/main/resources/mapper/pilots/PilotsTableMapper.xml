@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.pilots.mapper.PilotsTableMapper">
+    
+    <resultMap type="PilotsTable" id="PilotsTableResult">
+        <result property="id"    column="id"    />
+        <result property="driverName"    column="driver_name"    />
+        <result property="driverDepartment"    column="driver_department"    />
+        <result property="driverIdcard"    column="driver_idcard"    />
+        <result property="driverPhone"    column="driver_phone"    />
+        <result property="driverAircraftSoft"    column="driver_aircraft_soft"    />
+        <result property="driverState"    column="driver_state"    />
+        <result property="driverPhoto"    column="driver_photo"    />
+        <result property="driverExtral"    column="driver_extral"    />
+        <result property="trainingTime"    column="training_time"    />
+        <result property="flyingTime"    column="flying_time"    />
+        <result property="sumTime"    column="sum_time"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="deleteFlag"    column="delete_flag"    />
+    </resultMap>
+
+    <sql id="selectPilotsTableVo">
+        select id, driver_name, driver_department, driver_idcard, driver_phone, driver_aircraft_soft, driver_state, driver_photo, driver_extral, training_time, flying_time, sum_time, create_time, delete_flag from pilots_table
+    </sql>
+
+    <select id="selectPilotsTableList" parameterType="PilotsTable" resultMap="PilotsTableResult">
+        <include refid="selectPilotsTableVo"/>
+        <where>  
+            <if test="driverName != null  and driverName != ''"> and driver_name like concat('%', #{driverName}, '%')</if>
+            <if test="driverDepartment != null  and driverDepartment != ''"> and driver_department = #{driverDepartment}</if>
+            <if test="driverIdcard != null  and driverIdcard != ''"> and driver_idcard = #{driverIdcard}</if>
+            <if test="driverPhone != null  and driverPhone != ''"> and driver_phone = #{driverPhone}</if>
+            <if test="driverAircraftSoft != null  and driverAircraftSoft != ''"> and driver_aircraft_soft = #{driverAircraftSoft}</if>
+            <if test="driverState != null "> and driver_state = #{driverState}</if>
+            <if test="driverPhoto != null  and driverPhoto != ''"> and driver_photo = #{driverPhoto}</if>
+            <if test="driverExtral != null  and driverExtral != ''"> and driver_extral = #{driverExtral}</if>
+            <if test="trainingTime != null "> and training_time = #{trainingTime}</if>
+            <if test="flyingTime != null "> and flying_time = #{flyingTime}</if>
+            <if test="sumTime != null "> and sum_time = #{sumTime}</if>
+            <if test="deleteFlag != null "> and delete_flag = #{deleteFlag}</if>
+        </where>
+    </select>
+    
+    <select id="selectPilotsTableById" parameterType="Long" resultMap="PilotsTableResult">
+        <include refid="selectPilotsTableVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertPilotsTable" parameterType="PilotsTable" useGeneratedKeys="true" keyProperty="id">
+        insert into pilots_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="driverName != null and driverName != ''">driver_name,</if>
+            <if test="driverDepartment != null and driverDepartment != ''">driver_department,</if>
+            <if test="driverIdcard != null">driver_idcard,</if>
+            <if test="driverPhone != null and driverPhone != ''">driver_phone,</if>
+            <if test="driverAircraftSoft != null">driver_aircraft_soft,</if>
+            <if test="driverState != null">driver_state,</if>
+            <if test="driverPhoto != null">driver_photo,</if>
+            <if test="driverExtral != null">driver_extral,</if>
+            <if test="trainingTime != null">training_time,</if>
+            <if test="flyingTime != null">flying_time,</if>
+            <if test="sumTime != null">sum_time,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="deleteFlag != null">delete_flag,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="driverName != null and driverName != ''">#{driverName},</if>
+            <if test="driverDepartment != null and driverDepartment != ''">#{driverDepartment},</if>
+            <if test="driverIdcard != null">#{driverIdcard},</if>
+            <if test="driverPhone != null and driverPhone != ''">#{driverPhone},</if>
+            <if test="driverAircraftSoft != null">#{driverAircraftSoft},</if>
+            <if test="driverState != null">#{driverState},</if>
+            <if test="driverPhoto != null">#{driverPhoto},</if>
+            <if test="driverExtral != null">#{driverExtral},</if>
+            <if test="trainingTime != null">#{trainingTime},</if>
+            <if test="flyingTime != null">#{flyingTime},</if>
+            <if test="sumTime != null">#{sumTime},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="deleteFlag != null">#{deleteFlag},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePilotsTable" parameterType="PilotsTable">
+        update pilots_table
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="driverName != null and driverName != ''">driver_name = #{driverName},</if>
+            <if test="driverDepartment != null and driverDepartment != ''">driver_department = #{driverDepartment},</if>
+            <if test="driverIdcard != null">driver_idcard = #{driverIdcard},</if>
+            <if test="driverPhone != null and driverPhone != ''">driver_phone = #{driverPhone},</if>
+            <if test="driverAircraftSoft != null">driver_aircraft_soft = #{driverAircraftSoft},</if>
+            <if test="driverState != null">driver_state = #{driverState},</if>
+            <if test="driverPhoto != null">driver_photo = #{driverPhoto},</if>
+            <if test="driverExtral != null">driver_extral = #{driverExtral},</if>
+            <if test="trainingTime != null">training_time = #{trainingTime},</if>
+            <if test="flyingTime != null">flying_time = #{flyingTime},</if>
+            <if test="sumTime != null">sum_time = #{sumTime},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="deleteFlag != null">delete_flag = #{deleteFlag},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deletePilotsTableById" parameterType="Long">
+        delete from pilots_table where id = #{id}
+    </delete>
+
+    <delete id="deletePilotsTableByIds" parameterType="String">
+        delete from pilots_table where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
