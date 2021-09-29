@@ -1,9 +1,7 @@
 <template>
-
   <div class="app-container">
-    <h1 style="color:red; text-align:center; line-height:200px " >驾驶员管理</h1>
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="姓名" prop="driverName">
+      <el-form-item label="驾驶员姓名" prop="driverName">
         <el-input
           v-model="queryParams.driverName"
           placeholder="请输入驾驶员姓名"
@@ -12,7 +10,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="单位" prop="driverDepartment">
+      <el-form-item label="驾驶员单位" prop="driverDepartment">
         <el-select v-model="queryParams.driverDepartment" placeholder="请选择驾驶员单位" clearable size="small">
           <el-option
             v-for="dict in dict.type.sys_pilots_department"
@@ -22,7 +20,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="身份证号" prop="driverIdcard">
+      <el-form-item label="驾驶员身份证号" prop="driverIdcard">
         <el-input
           v-model="queryParams.driverIdcard"
           placeholder="请输入驾驶员身份证号"
@@ -31,7 +29,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="手机号码" prop="driverPhone">
+      <el-form-item label="驾驶员手机号码" prop="driverPhone">
         <el-input
           v-model="queryParams.driverPhone"
           placeholder="请输入驾驶员手机号码"
@@ -40,17 +38,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="准驾机型" prop="driverAircraftSoft">
-        <el-select v-model="queryParams.driverAircraftSoft" multiple placeholder="请选择驾驶员准驾机型" clearable size="small">
-          <el-option
-            v-for="dict in dict.type.sys_pilots_craft_sort"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="状态" prop="driverState">
+      <el-form-item label="驾驶员状态" prop="driverState">
         <el-select v-model="queryParams.driverState" placeholder="请选择驾驶员状态" clearable size="small">
           <el-option
             v-for="dict in dict.type.sys_pilots_state"
@@ -60,57 +48,57 @@
           />
         </el-select>
       </el-form-item>
-<!--      <el-form-item label="驾驶员照片" prop="driverPhoto">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.driverPhoto"-->
-<!--          placeholder="请输入驾驶员照片"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="驾驶员附件" prop="driverExtral">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.driverExtral"-->
-<!--          placeholder="请输入驾驶员附件"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="驾驶员训练时间" prop="trainingTime">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.trainingTime"-->
-<!--          placeholder="请输入驾驶员训练时间"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="驾驶员飞行时间" prop="flyingTime">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.flyingTime"-->
-<!--          placeholder="请输入驾驶员飞行时间"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="驾驶员总时间" prop="sumTime">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.sumTime"-->
-<!--          placeholder="请输入驾驶员总时间"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="删除码" prop="deleteFlag">-->
-<!--        <el-select v-model="queryParams.deleteFlag" placeholder="请选择删除码" clearable size="small">-->
-<!--          <el-option label="请选择字典生成" value="" />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
-      <el-form-item label="性别" prop="driverGender">
+      <el-form-item label="驾驶员照片" prop="driverPhoto">
+        <el-input
+          v-model="queryParams.driverPhoto"
+          placeholder="请输入驾驶员照片"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="驾驶员附件" prop="driverExtral">
+        <el-input
+          v-model="queryParams.driverExtral"
+          placeholder="请输入驾驶员附件"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="驾驶员训练时间" prop="trainingTime">
+        <el-input
+          v-model="queryParams.trainingTime"
+          placeholder="请输入驾驶员训练时间"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="驾驶员飞行时间" prop="flyingTime">
+        <el-input
+          v-model="queryParams.flyingTime"
+          placeholder="请输入驾驶员飞行时间"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="驾驶员总时间" prop="sumTime">
+        <el-input
+          v-model="queryParams.sumTime"
+          placeholder="请输入驾驶员总时间"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="删除码" prop="deleteFlag">
+        <el-select v-model="queryParams.deleteFlag" placeholder="请选择删除码" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="驾驶员性别" prop="driverGender">
         <el-select v-model="queryParams.driverGender" placeholder="请选择驾驶员性别" clearable size="small">
           <el-option
             v-for="dict in dict.type.sys_pilots_gender"
@@ -120,6 +108,24 @@
           />
         </el-select>
       </el-form-item>
+      <el-form-item label="驾驶员准驾机型" prop="driverAircraftSoft">
+        <el-select v-model="queryParams.driverAircraftSoft" multiple placeholder="请选择驾驶员准驾机型" clearable size="small">
+          <el-option
+            v-for="dict in dict.type.sys_pilots_craft_sort"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
+
+<!--      <el-form-item label="多选框组" prop="driverAircraftSoft">-->
+<!--        <el-checkbox-group v-model="formData.field104" size="medium">-->
+<!--          <el-checkbox v-for="(item, index) in field104Options" :key="index" :label="item.value"-->
+<!--                       :disabled="item.disabled">{{item.label}}</el-checkbox>-->
+<!--        </el-checkbox-group>-->
+<!--      </el-form-item>-->
+
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -174,38 +180,36 @@
 
     <el-table v-loading="loading" :data="pilotsList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-<!--      <el-table-column label="自增主键" align="center" prop="id" />-->
-      <el-table-column label="姓名" align="center" prop="driverName" />
-      <el-table-column label="单位" align="center" prop="driverDepartment">
+      <el-table-column label="自增主键" align="center" prop="id" />
+      <el-table-column label="驾驶员姓名" align="center" prop="driverName" />
+      <el-table-column label="驾驶员单位" align="center" prop="driverDepartment">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_pilots_department" :value="scope.row.driverDepartment"/>
         </template>
       </el-table-column>
-      <el-table-column label="性别" align="center" prop="driverGender">
-        <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_pilots_gender" :value="scope.row.driverGender"/>
-        </template>
-      </el-table-column>
-
-      <el-table-column label="身份证号" align="center" prop="driverIdcard" />
-      <el-table-column label="手机号码" align="center" prop="driverPhone" />
-      <el-table-column label="准驾机型" align="center" prop="driverAircraftSoft">
+      <el-table-column label="驾驶员身份证号" align="center" prop="driverIdcard" />
+      <el-table-column label="驾驶员手机号码" align="center" prop="driverPhone" />
+      <el-table-column label="驾驶员准驾机型" align="center" prop="driverAircraftSoft">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_pilots_craft_sort" :value="scope.row.driverAircraftSoft"/>
         </template>
       </el-table-column>
-      <el-table-column label="状态" align="center" prop="driverState">
+      <el-table-column label="驾驶员状态" align="center" prop="driverState">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_pilots_state" :value="scope.row.driverState"/>
         </template>
       </el-table-column>
-
-      <el-table-column label="训练时间" align="center" prop="trainingTime" />
-      <el-table-column label="飞行时间" align="center" prop="flyingTime" />
-      <el-table-column label="总时间" align="center" prop="sumTime" />
+      <el-table-column label="驾驶员照片" align="center" prop="driverPhoto" />
+      <el-table-column label="驾驶员附件" align="center" prop="driverExtral" />
+      <el-table-column label="驾驶员训练时间" align="center" prop="trainingTime" />
+      <el-table-column label="驾驶员飞行时间" align="center" prop="flyingTime" />
+      <el-table-column label="驾驶员总时间" align="center" prop="sumTime" />
       <el-table-column label="删除码" align="center" prop="deleteFlag" />
-      <el-table-column label="照片" align="center" prop="driverPhoto" />
-      <el-table-column label="附件" align="center" prop="driverExtral" />
+      <el-table-column label="驾驶员性别" align="center" prop="driverGender">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.sys_pilots_gender" :value="scope.row.driverGender"/>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -237,20 +241,10 @@
     <!-- 添加或修改驾驶员管理对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="姓名" prop="driverName">
+        <el-form-item label="驾驶员姓名" prop="driverName">
           <el-input v-model="form.driverName" placeholder="请输入驾驶员姓名" />
         </el-form-item>
-        <el-form-item label="性别" prop="driverGender">
-          <el-select v-model="form.driverGender" placeholder="请选择驾驶员性别">
-            <el-option
-              v-for="dict in dict.type.sys_pilots_gender"
-              :key="dict.value"
-              :label="dict.label"
-              :value="parseInt(dict.value)"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="单位" prop="driverDepartment">
+        <el-form-item label="驾驶员单位" prop="driverDepartment">
           <el-select v-model="form.driverDepartment" placeholder="请选择驾驶员单位">
             <el-option
               v-for="dict in dict.type.sys_pilots_department"
@@ -260,13 +254,13 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="身份证号" prop="driverIdcard">
+        <el-form-item label="驾驶员身份证号" prop="driverIdcard">
           <el-input v-model="form.driverIdcard" placeholder="请输入驾驶员身份证号" />
         </el-form-item>
-        <el-form-item label="手机号码" prop="driverPhone">
+        <el-form-item label="驾驶员手机号码" prop="driverPhone">
           <el-input v-model="form.driverPhone" placeholder="请输入驾驶员手机号码" />
         </el-form-item>
-        <el-form-item label="准驾机型">
+        <el-form-item label="驾驶员准驾机型">
           <el-checkbox-group v-model="form.driverAircraftSoft">
             <el-checkbox
               v-for="dict in dict.type.sys_pilots_craft_sort"
@@ -276,7 +270,7 @@
             </el-checkbox>
           </el-checkbox-group>
         </el-form-item>
-        <el-form-item label="状态" prop="driverState">
+        <el-form-item label="驾驶员状态" prop="driverState">
           <el-select v-model="form.driverState" placeholder="请选择驾驶员状态">
             <el-option
               v-for="dict in dict.type.sys_pilots_state"
@@ -286,27 +280,36 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="照片" prop="driverPhoto">
+        <el-form-item label="驾驶员照片" prop="driverPhoto">
           <el-input v-model="form.driverPhoto" placeholder="请输入驾驶员照片" />
         </el-form-item>
-        <el-form-item label="附件" prop="driverExtral">
+        <el-form-item label="驾驶员附件" prop="driverExtral">
           <el-input v-model="form.driverExtral" placeholder="请输入驾驶员附件" />
         </el-form-item>
-<!--        <el-form-item label="驾驶员训练时间" prop="trainingTime">-->
-<!--          <el-input v-model="form.trainingTime" placeholder="请输入驾驶员训练时间" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="驾驶员飞行时间" prop="flyingTime">-->
-<!--          <el-input v-model="form.flyingTime" placeholder="请输入驾驶员飞行时间" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="驾驶员总时间" prop="sumTime">-->
-<!--          <el-input v-model="form.sumTime" placeholder="请输入驾驶员总时间" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="删除码" prop="deleteFlag">-->
-<!--          <el-select v-model="form.deleteFlag" placeholder="请选择删除码">-->
-<!--            <el-option label="请选择字典生成" value="" />-->
-<!--          </el-select>-->
-<!--        </el-form-item>-->
-
+        <el-form-item label="驾驶员训练时间" prop="trainingTime">
+          <el-input v-model="form.trainingTime" placeholder="请输入驾驶员训练时间" />
+        </el-form-item>
+        <el-form-item label="驾驶员飞行时间" prop="flyingTime">
+          <el-input v-model="form.flyingTime" placeholder="请输入驾驶员飞行时间" />
+        </el-form-item>
+        <el-form-item label="驾驶员总时间" prop="sumTime">
+          <el-input v-model="form.sumTime" placeholder="请输入驾驶员总时间" />
+        </el-form-item>
+        <el-form-item label="删除码" prop="deleteFlag">
+          <el-select v-model="form.deleteFlag" placeholder="请选择删除码">
+            <el-option label="请选择字典生成" value="" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="驾驶员性别" prop="driverGender">
+          <el-select v-model="form.driverGender" placeholder="请选择驾驶员性别">
+            <el-option
+              v-for="dict in dict.type.sys_pilots_gender"
+              :key="dict.value"
+              :label="dict.label"
+              :value="parseInt(dict.value)"
+            ></el-option>
+          </el-select>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm">确 定</el-button>
@@ -321,7 +324,7 @@ import { listPilots, getPilots, delPilots, addPilots, updatePilots } from "@/api
 
 export default {
   name: "Pilots",
-  dicts: ['sys_pilots_department', 'sys_pilots_craft_sort', 'sys_pilots_state', 'sys_pilots_gender'],
+  dicts: ['sys_pilots_department', 'sys_pilots_state', 'sys_pilots_gender', 'sys_pilots_craft_sort'],
   data() {
     return {
       // 遮罩层
@@ -372,6 +375,9 @@ export default {
         ],
         driverPhone: [
           { required: true, message: "驾驶员手机号码不能为空", trigger: "blur" }
+        ],
+        driverAircraftSoft: [
+          { required: true, message: "驾驶员准驾机型不能为空", trigger: "blur" }
         ],
         sumTime: [
           { required: true, message: "驾驶员总时间不能为空", trigger: "blur" }
@@ -452,6 +458,7 @@ export default {
       const id = row.id || this.ids
       getPilots(id).then(response => {
         this.form = response.data;
+        this.form.driverAircraftSoft = this.form.driverAircraftSoft.split(",");
         this.open = true;
         this.title = "修改驾驶员管理";
       });
@@ -496,7 +503,3 @@ export default {
   }
 };
 </script>
-<style type="text/css">
-.red{color:red;}
-.blue{color:blue; font-size:100px;}
-</style>

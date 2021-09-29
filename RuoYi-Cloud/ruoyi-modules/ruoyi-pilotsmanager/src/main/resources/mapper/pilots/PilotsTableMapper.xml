@@ -19,10 +19,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="sumTime"    column="sum_time"    />
         <result property="createTime"    column="create_time"    />
         <result property="deleteFlag"    column="delete_flag"    />
+        <result property="driverGender"    column="driver_gender"    />
     </resultMap>
 
     <sql id="selectPilotsTableVo">
-        select id, driver_name, driver_department, driver_idcard, driver_phone, driver_aircraft_soft, driver_state, driver_photo, driver_extral, training_time, flying_time, sum_time, create_time, delete_flag from pilots_table
+        select id, driver_name, driver_department, driver_idcard, driver_phone, driver_aircraft_soft, driver_state, driver_photo, driver_extral, training_time, flying_time, sum_time, create_time, delete_flag, driver_gender from pilots_table
     </sql>
 
     <select id="selectPilotsTableList" parameterType="PilotsTable" resultMap="PilotsTableResult">
@@ -40,6 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="flyingTime != null "> and flying_time = #{flyingTime}</if>
             <if test="sumTime != null "> and sum_time = #{sumTime}</if>
             <if test="deleteFlag != null "> and delete_flag = #{deleteFlag}</if>
+            <if test="driverGender != null "> and driver_gender = #{driverGender}</if>
         </where>
     </select>
     
@@ -64,6 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sumTime != null">sum_time,</if>
             <if test="createTime != null">create_time,</if>
             <if test="deleteFlag != null">delete_flag,</if>
+            <if test="driverGender != null">driver_gender,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="driverName != null and driverName != ''">#{driverName},</if>
@@ -79,6 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sumTime != null">#{sumTime},</if>
             <if test="createTime != null">#{createTime},</if>
             <if test="deleteFlag != null">#{deleteFlag},</if>
+            <if test="driverGender != null">#{driverGender},</if>
          </trim>
     </insert>
 
@@ -98,6 +102,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sumTime != null">sum_time = #{sumTime},</if>
             <if test="createTime != null">create_time = #{createTime},</if>
             <if test="deleteFlag != null">delete_flag = #{deleteFlag},</if>
+            <if test="driverGender != null">driver_gender = #{driverGender},</if>
         </trim>
         where id = #{id}
     </update>

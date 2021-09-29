@@ -9,7 +9,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * 驾驶员管理对象 pilots_table
  * 
  * @author ruoyi
- * @date 2021-09-27
+ * @date 2021-09-28
  */
 public class PilotsTable extends BaseEntity
 {
@@ -65,6 +65,10 @@ public class PilotsTable extends BaseEntity
     /** 删除码 */
     @Excel(name = "删除码")
     private Long deleteFlag;
+
+    /** 驾驶员性别 */
+    @Excel(name = "驾驶员性别")
+    private Long driverGender;
 
     public void setId(Long id) 
     {
@@ -183,6 +187,15 @@ public class PilotsTable extends BaseEntity
     {
         return deleteFlag;
     }
+    public void setDriverGender(Long driverGender) 
+    {
+        this.driverGender = driverGender;
+    }
+
+    public Long getDriverGender() 
+    {
+        return driverGender;
+    }
 
     @Override
     public String toString() {
@@ -201,6 +214,7 @@ public class PilotsTable extends BaseEntity
             .append("sumTime", getSumTime())
             .append("createTime", getCreateTime())
             .append("deleteFlag", getDeleteFlag())
+            .append("driverGender", getDriverGender())
             .toString();
     }
 }

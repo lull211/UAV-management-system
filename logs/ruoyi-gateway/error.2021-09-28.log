@@ -1,0 +1,4 @@
+15:38:33.884 [boundedElastic-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-gen"
+17:23:29.702 [boundedElastic-4] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-gen"
+17:43:37.430 [reactor-http-nio-13] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/preview/11,异常信息:Connection prematurely closed BEFORE response
+18:10:06.427 [reactor-http-nio-10] ERROR c.r.g.f.AuthFilter - [unauthorizedResponse,106] - [鉴权异常处理]请求路径:/system/user/getInfo
