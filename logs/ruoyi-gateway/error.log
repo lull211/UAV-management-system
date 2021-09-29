@@ -1,1 +1,19 @@
 09:33:38.688 [reactor-http-nio-2] ERROR c.r.g.f.AuthFilter - [unauthorizedResponse,106] - [鉴权异常处理]请求路径:/system/user/getInfo
+09:47:29.967 [boundedElastic-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+10:11:15.438 [boundedElastic-3] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+10:20:11.720 [reactor-http-nio-11] ERROR c.r.g.f.AuthFilter - [unauthorizedResponse,106] - [鉴权异常处理]请求路径:/system/user/getInfo
+13:49:16.467 [boundedElastic-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-gen"
+13:49:30.948 [boundedElastic-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-gen"
+13:56:10.196 [reactor-http-nio-12] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:Connection refused: no further information: /192.168.0.173:9209
+14:27:45.880 [reactor-http-nio-7] ERROR c.r.g.f.AuthFilter - [unauthorizedResponse,106] - [鉴权异常处理]请求路径:/pilots/pilots/list
+15:16:54.894 [boundedElastic-6] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+15:52:34.149 [boundedElastic-7] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+15:54:11.767 [reactor-http-nio-7] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:远程主机强迫关闭了一个现有的连接。
+15:54:51.357 [boundedElastic-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+16:04:44.315 [boundedElastic-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+16:38:34.797 [boundedElastic-2] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+17:48:38.569 [boundedElastic-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+18:03:07.748 [boundedElastic-10] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+18:03:11.825 [boundedElastic-10] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+18:03:12.364 [boundedElastic-10] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+20:03:45.256 [boundedElastic-4] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-gen"

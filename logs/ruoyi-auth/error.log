@@ -58,3 +58,4 @@ com.ruoyi.common.core.exception.ServiceException: 获取用户失败:connect tim
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+10:20:19.498 [http-nio-9200-exec-3] ERROR c.r.s.a.f.RemoteLogFallbackFactory - [create,25] - 日志服务调用失败:Read timed out executing POST http://ruoyi-system/logininfor

@@ -40,8 +40,9 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+
       <el-form-item label="准驾机型" prop="driverAircraftSoft">
-        <el-select v-model="queryParams.driverAircraftSoft" multiple placeholder="请选择驾驶员准驾机型" clearable size="small">
+        <el-select v-model="queryParams.driverAircraftSoftHelp" multiple placeholder="请选择驾驶员准驾机型" clearable size="small">
           <el-option
             v-for="dict in dict.type.sys_pilots_craft_sort"
             :key="dict.value"
@@ -191,7 +192,9 @@
       <el-table-column label="手机号码" align="center" prop="driverPhone" />
       <el-table-column label="准驾机型" align="center" prop="driverAircraftSoft">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_pilots_craft_sort" :value="scope.row.driverAircraftSoft"/>
+            <p v-for="craft in scope.row.driverAircraftSoft">
+              <dict-tag :options="dict.type.sys_pilots_craft_sort" :value="craft"/>
+            </p>
         </template>
       </el-table-column>
       <el-table-column label="状态" align="center" prop="driverState">
@@ -263,19 +266,22 @@
         <el-form-item label="身份证号" prop="driverIdcard">
           <el-input v-model="form.driverIdcard" placeholder="请输入驾驶员身份证号" />
         </el-form-item>
+
         <el-form-item label="手机号码" prop="driverPhone">
           <el-input v-model="form.driverPhone" placeholder="请输入驾驶员手机号码" />
         </el-form-item>
-        <el-form-item label="准驾机型">
-          <el-checkbox-group v-model="form.driverAircraftSoft">
-            <el-checkbox
+
+        <el-form-item label="准驾机型" prop="driverAircraftSoft">
+          <el-select v-model="form.driverAircraftSoftHelp" multiple placeholder="请选择驾驶员准驾机型" clearable size="small">
+            <el-option
               v-for="dict in dict.type.sys_pilots_craft_sort"
               :key="dict.value"
-              :label="dict.value">
-              {{dict.label}}
-            </el-checkbox>
-          </el-checkbox-group>
+              :label="dict.label"
+              :value="dict.value"
+            />
+          </el-select>
         </el-form-item>
+
         <el-form-item label="状态" prop="driverState">
           <el-select v-model="form.driverState" placeholder="请选择驾驶员状态">
             <el-option
@@ -314,6 +320,7 @@
       </div>
     </el-dialog>
   </div>
+
 </template>
 
 <script>
@@ -350,7 +357,8 @@ export default {
         driverDepartment: null,
         driverIdcard: null,
         driverPhone: null,
-        driverAircraftSoft: null,
+        driverAircraftSoft: [],
+        driverAircraftSoftHelp: null,
         driverState: null,
         driverPhoto: null,
         driverExtral: null,
@@ -358,7 +366,7 @@ export default {
         flyingTime: null,
         sumTime: null,
         deleteFlag: null,
-        driverGender: null
+        driverGender: null,
       },
       // 表单参数
       form: {},
@@ -385,6 +393,8 @@ export default {
       }
     };
   },
+
+
   created() {
     this.getList();
   },
@@ -392,11 +402,24 @@ export default {
     /** 查询驾驶员管理列表 */
     getList() {
       this.loading = true;
+
+      //加帮助变量处理多参数
+      if(this.queryParams["driverAircraftSoftHelp"]===null || this.queryParams["driverAircraftSoftHelp"].length == 0)
+      {
+        this.queryParams["driverAircraftSoft"]=null
+      }
+
+      else{
+        console.log(this.queryParams["driverAircraftSoftHelp"])
+        this.queryParams["driverAircraftSoft"] = this.queryParams["driverAircraftSoftHelp"].sort().join().toString();
+      }
+
       listPilots(this.queryParams).then(response => {
         this.pilotsList = response.rows;
         this.total = response.total;
         this.loading = false;
       });
+
     },
     // 取消按钮
     cancel() {
@@ -412,6 +435,7 @@ export default {
         driverIdcard: null,
         driverPhone: null,
         driverAircraftSoft: [],
+        driverAircraftSoftHelp: null,
         driverState: null,
         driverPhoto: null,
         driverExtral: null,
@@ -420,7 +444,7 @@ export default {
         sumTime: null,
         createTime: null,
         deleteFlag: null,
-        driverGender: null
+        driverGender: null,
       };
       this.resetForm("form");
     },
@@ -457,10 +481,21 @@ export default {
       });
     },
     /** 提交按钮 */
+    /** 这里更改了之前生成的代码 和查找模块的功能代码类似**/
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
-          this.form.driverAircraftSoft = this.form.driverAircraftSoft.join(",");
+          //加帮助变量处理多参数
+          if(this.form["driverAircraftSoftHelp"]===null || this.form["driverAircraftSoftHelp"].length == 0)
+          {
+            this.form["driverAircraftSoft"]=null
+          }
+
+          else{
+            console.log(this.form["driverAircraftSoftHelp"])
+            this.form["driverAircraftSoft"] = this.form["driverAircraftSoftHelp"].sort().join().toString();
+          }
+          //this.form.driverAircraftSoft = this.form.driverAircraftSoft.join(",");
           if (this.form.id != null) {
             updatePilots(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");

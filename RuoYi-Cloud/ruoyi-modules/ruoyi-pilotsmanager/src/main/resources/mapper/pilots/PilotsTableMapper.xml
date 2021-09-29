@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.ruoyi.pilots.mapper.PilotsTableMapper">
-    
     <resultMap type="PilotsTable" id="PilotsTableResult">
         <result property="id"    column="id"    />
         <result property="driverName"    column="driver_name"    />
@@ -33,7 +33,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="driverDepartment != null  and driverDepartment != ''"> and driver_department = #{driverDepartment}</if>
             <if test="driverIdcard != null  and driverIdcard != ''"> and driver_idcard = #{driverIdcard}</if>
             <if test="driverPhone != null  and driverPhone != ''"> and driver_phone = #{driverPhone}</if>
-            <if test="driverAircraftSoft != null  and driverAircraftSoft != ''"> and driver_aircraft_soft = #{driverAircraftSoft}</if>
+<!--            <if test="driverAircraftSoft != null  and driverAircraftSoft != ''"> and driver_aircraft_soft = #{driverAircraftSoft}</if>-->
+            <if test="driverAircraftSoft != null  and driverAircraftSoft != ''">and driver_aircraft_soft like concat('%', #{driverAircraftSoft}, '%')</if>
             <if test="driverState != null "> and driver_state = #{driverState}</if>
             <if test="driverPhoto != null  and driverPhoto != ''"> and driver_photo = #{driverPhoto}</if>
             <if test="driverExtral != null  and driverExtral != ''"> and driver_extral = #{driverExtral}</if>

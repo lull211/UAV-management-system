@@ -78,6 +78,7 @@ public class PilotsTableController extends BaseController
     @PostMapping
     public AjaxResult add(@RequestBody PilotsTable pilotsTable)
     {
+        System.out.println(pilotsTable);
         return toAjax(pilotsTableService.insertPilotsTable(pilotsTable));
     }
 
