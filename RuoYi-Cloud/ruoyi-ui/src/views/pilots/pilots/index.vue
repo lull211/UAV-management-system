@@ -1,7 +1,7 @@
 <template>
 
   <div class="app-container">
-    <h1 style="color:red; text-align:center; line-height:200px " >驾驶员管理</h1>
+    <h1 class="title">驾驶员管理</h1>
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="姓名" prop="driverName">
         <el-input
@@ -531,7 +531,16 @@ export default {
   }
 };
 </script>
-<style type="text/css">
-.red{color:red;}
-.blue{color:blue; font-size:100px;}
+
+<style rel="stylesheet/scss" lang="scss">
+.title {
+  font-size: 50px;  //文本字体大小
+  background: #DCDFE6; //背景颜色
+  width: auto; //背景宽
+  height: 100px; //背景高
+  margin: 0px auto 20px auto; //背景框离外部距离 上右下左
+  text-align: center;  //文本位置居中
+  padding: 20px 0px;  //文本离开背景框距离 上下 左右
+  color:black;
+}
 </style>
