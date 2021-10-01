@@ -142,6 +142,7 @@ public class SysProfileController extends BaseController
                 AjaxResult ajax = AjaxResult.success();
                 ajax.put("imgUrl", url);
                 // 更新缓存用户头像
+
                 loginUser.getSysUser().setAvatar(url);
                 tokenService.setLoginUser(loginUser);
                 return ajax;
