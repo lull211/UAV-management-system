@@ -41,8 +41,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="trainingTime != null "> and training_time = #{trainingTime}</if>
             <if test="flyingTime != null "> and flying_time = #{flyingTime}</if>
             <if test="sumTime != null "> and sum_time = #{sumTime}</if>
-            <if test="deleteFlag != null "> and delete_flag = #{deleteFlag}</if>
+            <if test="deleteFlag != null "> and delete_flag = 0</if>
             <if test="driverGender != null "> and driver_gender = #{driverGender}</if>
+             and delete_flag = 0
         </where>
     </select>
     
@@ -113,7 +114,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deletePilotsTableByIds" parameterType="String">
-        delete from pilots_table where id in 
+        update pilots_table set delete_flag=1 where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

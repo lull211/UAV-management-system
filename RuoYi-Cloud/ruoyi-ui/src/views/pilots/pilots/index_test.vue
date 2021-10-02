@@ -209,7 +209,7 @@
       <el-table-column label="总时间" align="center" prop="sumTime" />
 <!--      <el-table-column label="删除码" align="center" prop="deleteFlag" />-->
 
-      <!-- 超链接连接图片url   -->
+      <!-- 预览图片  -->
       <el-table-column label="照片" align="center" prop="driverPhoto">
         <template slot-scope="scope">
           <el-image
@@ -219,7 +219,14 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="附件" align="center" prop="driverExtral" />
+      <el-table-column label="附件" align="center" prop="driverExtral">
+        <template slot-scope="scope">
+          <el-image
+            :src="scope.row.driverExtral"
+          >
+          </el-image>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -308,12 +315,12 @@
         <el-form-item label="照片" prop="driverPhoto">
             <!-- 调用上传照片组件 limit设置允许传的图片数量为1  -->
             <UploadImage v-model="form.driverPhoto" :limit="1"></UploadImage>
-
         </el-form-item>
 
 
         <el-form-item label="附件" prop="driverExtral">
-          <el-input v-model="form.driverExtral" placeholder="请输入驾驶员附件" />
+<!--          <el-input v-model="form.driverExtral" placeholder="请输入驾驶员附件" />-->
+          <UploadImage v-model="form.driverExtral" :limit="1"></UploadImage>
         </el-form-item>
 <!--        <el-form-item label="驾驶员训练时间" prop="trainingTime">-->
 <!--          <el-input v-model="form.trainingTime" placeholder="请输入驾驶员训练时间" />-->
@@ -345,18 +352,21 @@ import { listPilots, getPilots, delPilots, addPilots, updatePilots } from "@/api
 
 //ADD
 import UploadImage from "@/components/ImageUpload/index.vue";
+import FileUpload from "@/components/FileUpload/index.vue";
 
 export default {
   name: "Pilots",
 
   // ADD
   components:{
-    UploadImage
+    UploadImage,
+    FileUpload
   },
 
   dicts: ['sys_pilots_department', 'sys_pilots_craft_sort', 'sys_pilots_state', 'sys_pilots_gender'],
   data() {
     return {
+
       // 遮罩层
       loading: true,
       // 选中数组

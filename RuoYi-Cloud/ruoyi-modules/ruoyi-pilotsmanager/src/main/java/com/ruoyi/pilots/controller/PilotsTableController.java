@@ -4,6 +4,7 @@ import java.util.List;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -32,6 +33,7 @@ import com.ruoyi.common.core.web.page.TableDataInfo;
 @RequestMapping("/pilots")
 public class PilotsTableController extends BaseController
 {
+
     @Autowired
     private IPilotsTableService pilotsTableService;
 
@@ -42,8 +44,11 @@ public class PilotsTableController extends BaseController
     @GetMapping("/list")
     public TableDataInfo list(PilotsTable pilotsTable)
     {
+
         startPage();
+
         List<PilotsTable> list = pilotsTableService.selectPilotsTableList(pilotsTable);
+
         return getDataTable(list);
     }
 
