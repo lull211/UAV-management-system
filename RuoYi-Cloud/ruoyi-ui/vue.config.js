@@ -26,6 +26,9 @@ module.exports = {
   // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
   productionSourceMap: false,
   // webpack-dev-server 相关配置
+
+    //调试JS
+
   devServer: {
     host: '0.0.0.0',
     port: port,
@@ -42,13 +45,15 @@ module.exports = {
     },
     disableHostCheck: true
   },
-  configureWebpack: {
-    name: name,
-    resolve: {
+  configureWebpack:{
+
+    name:name,
+    resolve:{
       alias: {
         '@': resolve('src')
       }
-    }
+    },
+    devtool: 'inline-cheap-source-map',
   },
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test

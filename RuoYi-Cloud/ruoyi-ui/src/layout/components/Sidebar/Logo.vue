@@ -26,16 +26,21 @@ export default {
     }
   },
   computed: {
+
     variables() {
       return variables;
     },
 	sideTheme() {
       return this.$store.state.settings.sideTheme
-    }
+    },
+    title(){
+      console.log(this.$store.state.settings)
+      return this.$store.state.settings.title
+    },
   },
   data() {
     return {
-      title: '若依管理系统',
+      // title: '若依管理系统',
       logo: logoImg
     }
   }

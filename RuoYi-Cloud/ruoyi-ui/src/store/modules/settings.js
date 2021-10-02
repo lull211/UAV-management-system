@@ -29,6 +29,7 @@ const actions = {
   },
   // 设置网页标题
   setTitle({ commit }, title) {
+    console.log(title)
     state.title = title
   }
 }

@@ -41,7 +41,7 @@
       <el-divider/>
 
       <h3 class="drawer-title">系统布局配置</h3>
-      
+
       <div class="drawer-item">
         <span>开启 TopNav</span>
         <el-switch v-model="topNav" class="drawer-switch" />
@@ -57,31 +57,84 @@
         <el-switch v-model="fixedHeader" class="drawer-switch" />
       </div>
 
-      <div class="drawer-item">
-        <span>显示 Logo</span>
-        <el-switch v-model="sidebarLogo" class="drawer-switch" />
-      </div>
+
 
       <div class="drawer-item">
         <span>动态标题</span>
         <el-switch v-model="dynamicTitle" class="drawer-switch" />
       </div>
 
+      <div class="drawer-item">
+        <span>显示 Logo</span>
+        <el-switch v-model="sidebarLogo" class="drawer-switch" />
+      </div>
+
+      <!--      ljt-->
+      <div class="drawer-item">
+<!--        <el-button size="small"  plain icon="el-icon-plus" @click="userAvatar">上传logo</el-button>-->
+          <userAvatar />
+      </div>
+
+      <div class="drawer-item">
+        <el-button size="small"  plain icon="el-icon-edit" @click="systenameChange">更改系统名</el-button>
+      </div>
+
+      <!--      ljt-->
+
       <el-divider/>
 
       <el-button size="small" type="primary" plain icon="el-icon-document-add" @click="saveSetting">保存配置</el-button>
       <el-button size="small" plain icon="el-icon-refresh" @click="resetSetting">重置配置</el-button>
     </div>
+
+<!--    ljt-->
+    <!-- 修改系统名 -->
+    <el-dialog :title="title" :visible.sync="open" width="680px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="100px">
+        <el-row>
+          <el-col :span="12">
+             <el-input v-model="form.perms" placeholder="请输入新的系统名" maxlength="100" />
+              <span slot="label">
+
+              </span>
+          </el-col>
+        </el-row>
+      </el-form>
+
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="submitTitle">确 定</el-button>
+        <el-button @click="cancel">取 消</el-button>
+      </div>
+    </el-dialog>
+<!--    ljt-->
   </div>
 </template>
 
 <script>
 import ThemePicker from '@/components/ThemePicker'
+import request from '@/utils/request'
+// import userAvatar from "@/views/system/user/profile/userAvatar";
+import userAvatar from "./userAvatar";
+
+// import Logo form "@components/Sidebar/Logo";
 
 export default {
-  components: { ThemePicker },
+
+  components: { ThemePicker,   userAvatar },
   data() {
     return {
+      //ljt
+      title: this.$store.state.settings.title,
+      // 是否显示弹出层
+      open: false,
+      // 是否展开，默认全部折叠
+
+      form: {},
+      // 表单参数
+      user: {},
+      // ljt
+
+
       theme: this.$store.state.settings.theme,
       sideTheme: this.$store.state.settings.sideTheme
     };
@@ -147,6 +200,35 @@ export default {
     },
   },
   methods: {
+
+    // systemC(){
+    //
+    // },
+    //ljt
+    /** 修改系统名操作 */
+    systenameChange(){
+
+        this.open = true;
+        this.title = "修改系统名";
+
+    },
+    // 取消按钮
+    cancel() {
+      this.open = false;
+    },
+
+    //系统名更改提交按钮
+    submitTitle(value) {
+      console.log("?????");
+      console.log(this.form.perms,"zheli");
+
+      this.$store.dispatch("settings/setTitle",this.form.perms);
+      this.$message.success("修改成功！")
+      this.open= false;
+
+    },
+    //ljt
+
     themeChange(val) {
       this.$store.dispatch('settings/changeSetting', {
         key: 'theme',
@@ -184,6 +266,9 @@ export default {
     }
   }
 }
+
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -253,4 +338,6 @@ export default {
       float: right
     }
   }
+
+
 </style>
