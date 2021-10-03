@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.airline.mapper.AirlineTableMapper">
+
+    <resultMap type="AirlineTable" id="AirlineTableResult">
+        <result property="id"    column="id"    />
+        <result property="airlineName"    column="airline_name"    />
+        <result property="airlineDistance"    column="airline_distance"    />
+        <result property="airlineExplain"    column="airline_explain"    />
+        <result property="airlinePoints"    column="airline_points"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectAirlineTableVo">
+        select id, airline_name, airline_distance, airline_explain, airline_points, create_time from airline_table
+    </sql>
+
+    <select id="selectAirlineTableList" parameterType="AirlineTable" resultMap="AirlineTableResult">
+        <include refid="selectAirlineTableVo"/>
+        <where>
+            <if test="airlineName != null  and airlineName != ''"> and airline_name like concat('%', #{airlineName}, '%')</if>
+            <if test="airlineDistance != null "> and airline_distance = #{airlineDistance}</if>
+            <if test="airlineExplain != null  and airlineExplain != ''"> and airline_explain = #{airlineExplain}</if>
+            <if test="airlinePoints != null  and airlinePoints != ''"> and airline_points = #{airlinePoints}</if>
+            <if test="createTime != null "> and create_time = #{createTime}</if>
+        </where>
+    </select>
+
+    <select id="selectAirlineTableById" parameterType="Long" resultMap="AirlineTableResult">
+        <include refid="selectAirlineTableVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertAirlineTable" parameterType="AirlineTable" useGeneratedKeys="true" keyProperty="id">
+        insert into airline_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="airlineName != null and airlineName != ''">airline_name,</if>
+            <if test="airlineDistance != null">airline_distance,</if>
+            <if test="airlineExplain != null and airlineExplain != ''">airline_explain,</if>
+            <if test="airlinePoints != null and airlinePoints != ''">airline_points,</if>
+            <if test="createTime != null">create_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="airlineName != null and airlineName != ''">#{airlineName},</if>
+            <if test="airlineDistance != null">#{airlineDistance},</if>
+            <if test="airlineExplain != null and airlineExplain != ''">#{airlineExplain},</if>
+            <if test="airlinePoints != null and airlinePoints != ''">#{airlinePoints},</if>
+            <if test="createTime != null">#{createTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateAirlineTable" parameterType="AirlineTable">
+        update airline_table
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="airlineName != null and airlineName != ''">airline_name = #{airlineName},</if>
+            <if test="airlineDistance != null">airline_distance = #{airlineDistance},</if>
+            <if test="airlineExplain != null and airlineExplain != ''">airline_explain = #{airlineExplain},</if>
+            <if test="airlinePoints != null and airlinePoints != ''">airline_points = #{airlinePoints},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAirlineTableById" parameterType="Long">
+        delete from airline_table where id = #{id}
+    </delete>
+
+    <delete id="deleteAirlineTableByIds" parameterType="String">
+        delete from airline_table where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

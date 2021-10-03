@@ -20,6 +20,8 @@
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-swagger/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-airline/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-airline/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-file/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-file/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-gen/src/main/java" charset="UTF-8" />
@@ -30,6 +32,8 @@
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-pilotsmanager/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-system/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-system/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavmanager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavmanager/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-monitor/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-monitor/src/main/resources" charset="UTF-8" />
   </component>

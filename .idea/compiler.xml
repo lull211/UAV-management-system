@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ruoyi-uavmanager" />
         <module name="ruoyi-common-datascope" />
         <module name="ruoyi-modules-job" />
         <module name="ruoyi-modules-system" />
@@ -22,10 +23,12 @@
         <module name="ruoyi-auth" />
         <module name="ruoyi-common-log" />
         <module name="ruoyi-modules-file" />
+        <module name="ruoyi-airline" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ruoyi" target="1.8" />
+      <module name="ruoyi-airline" target="1.8" />
       <module name="ruoyi-api" target="1.8" />
       <module name="ruoyi-api-system" target="1.8" />
       <module name="ruoyi-auth" target="1.8" />
@@ -44,6 +47,7 @@
       <module name="ruoyi-modules-job" target="1.8" />
       <module name="ruoyi-modules-system" target="1.8" />
       <module name="ruoyi-pilotsmanager" target="1.8" />
+      <module name="ruoyi-uavmanager" target="1.8" />
       <module name="ruoyi-visual" target="1.8" />
       <module name="ruoyi-visual-monitor" target="1.8" />
     </bytecodeTargetLevel>
