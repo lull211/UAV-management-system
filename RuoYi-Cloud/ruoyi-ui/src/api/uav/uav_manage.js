@@ -41,4 +41,5 @@ export function delUav_manage(id) {
     url: '/uav/uav_manage/' + id,
     method: 'delete'
   })
+
 }

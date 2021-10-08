@@ -364,7 +364,14 @@
           </el-date-picker>
         </el-form-item>
         <el-form-item label="无人机保管员id" prop="uavKeeperId">
-          <el-input v-model="form.uavKeeperId" placeholder="请输入无人机保管员id" />
+          <el-button
+            type="primary"
+            plain
+            icon="el-icon-plus"
+            size="mini"
+            @click="openSelectUser"
+            v-hasPermi="['system:role:add']"
+          >修改管理员</el-button>
         </el-form-item>
         <el-form-item label="无人机入库时间" prop="uavPut">
           <el-date-picker clearable size="small"
@@ -587,6 +594,8 @@ export default {
         ...this.queryParams
       }, `uav_uav_manage.xlsx`)
     }
-  }
+
+  },
+
 };
 </script>
