@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="归口部门" prop="uavUnit">
-        <el-select v-model="queryParams.uavUnit" placeholder="请选择归口部门" clearable size="small">
+      <el-form-item label="无人机归口部门" prop="uavUnit">
+        <el-select v-model="queryParams.uavUnit" placeholder="请选择无人机归口部门" clearable size="small">
           <el-option
             v-for="dict in dict.type.sys_uav_department"
             :key="dict.value"
@@ -11,17 +11,17 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="命名" prop="uavName">
+      <el-form-item label="无人机命名" prop="uavName">
         <el-input
           v-model="queryParams.uavName"
-          placeholder="请输入命名"
+          placeholder="请输入无人机命名"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="类型" prop="uavType">
-        <el-select v-model="queryParams.uavType" placeholder="请选择类型" clearable size="small">
+      <el-form-item label="无人机类型" prop="uavType">
+        <el-select v-model="queryParams.uavType" placeholder="请选择无人机类型" clearable size="small">
           <el-option
             v-for="dict in dict.type.sys_pilots_craft_sort"
             :key="dict.value"
@@ -30,44 +30,44 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="产品型号" prop="uavNumber">
+      <el-form-item label="无人机产品型号" prop="uavNumber">
         <el-input
           v-model="queryParams.uavNumber"
-          placeholder="请输入产品型号"
+          placeholder="请输入无人机产品型号"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-<!--      <el-form-item label="图片" prop="uavImages">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.uavImages"-->
-<!--          placeholder="请输入图片"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="序列号" prop="uavSn">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.uavSn"-->
-<!--          placeholder="请输入序列号"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="飞控编号" prop="uavFlightNumber">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.uavFlightNumber"-->
-<!--          placeholder="请输入飞控编号"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-      <el-form-item label="备勤等级" prop="uavBeiqinLevel">
-        <el-select v-model="queryParams.uavBeiqinLevel" placeholder="请选择备勤等级" clearable size="small">
+      <el-form-item label="无人机图片" prop="uavImages">
+        <el-input
+          v-model="queryParams.uavImages"
+          placeholder="请输入无人机图片"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="无人机序列号" prop="uavSn">
+        <el-input
+          v-model="queryParams.uavSn"
+          placeholder="请输入无人机序列号"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="无人机飞控编号" prop="uavFlightNumber">
+        <el-input
+          v-model="queryParams.uavFlightNumber"
+          placeholder="请输入无人机飞控编号"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="无人机备勤等级" prop="uavBeiqinLevel">
+        <el-select v-model="queryParams.uavBeiqinLevel" placeholder="请选择无人机备勤等级" clearable size="small">
           <el-option
             v-for="dict in dict.type.sys_uav_readylevel"
             :key="dict.value"
@@ -76,8 +76,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="启用状态" prop="uavEnabled">
-        <el-select v-model="queryParams.uavEnabled" placeholder="请选择启用状态" clearable size="small">
+      <el-form-item label="无人机启用状态" prop="uavEnabled">
+        <el-select v-model="queryParams.uavEnabled" placeholder="请选择无人机启用状态" clearable size="small">
           <el-option
             v-for="dict in dict.type.sys_uav_state"
             :key="dict.value"
@@ -86,85 +86,74 @@
           />
         </el-select>
       </el-form-item>
-<!--      <el-form-item label="保险到期时间" prop="uavInsurance">-->
-<!--        <el-date-picker clearable size="small"-->
-<!--          v-model="queryParams.uavInsurance"-->
-<!--          type="date"-->
-<!--          value-format="yyyy-MM-dd"-->
-<!--          placeholder="选择保险到期时间">-->
-<!--        </el-date-picker>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="质保到期时间" prop="uavAssurance">-->
-<!--        <el-date-picker clearable size="small"-->
-<!--          v-model="queryParams.uavAssurance"-->
-<!--          type="date"-->
-<!--          value-format="yyyy-MM-dd"-->
-<!--          placeholder="选择质保到期时间">-->
-<!--        </el-date-picker>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="保养到期时间" prop="uavMaintenance">-->
-<!--        <el-date-picker clearable size="small"-->
-<!--          v-model="queryParams.uavMaintenance"-->
-<!--          type="date"-->
-<!--          value-format="yyyy-MM-dd"-->
-<!--          placeholder="选择保养到期时间">-->
-<!--        </el-date-picker>-->
-<!--      </el-form-item>-->
-      <el-form-item label="保管员" prop="uavKeeper">
-        <el-select v-model="queryParams.uavKeeper" placeholder="请选择保管员" clearable size="small">
-          <el-option
-            v-for="dict in dict.type.sys_uav_keeper"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
+      <el-form-item label="无人机保险到期时间" prop="uavInsurance">
+        <el-date-picker clearable size="small"
+          v-model="queryParams.uavInsurance"
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择无人机保险到期时间">
+        </el-date-picker>
       </el-form-item>
-      <el-form-item label="保管员电话" prop="keeperPhone">
+      <el-form-item label="无人机质保到期时间" prop="uavAssurance">
+        <el-date-picker clearable size="small"
+          v-model="queryParams.uavAssurance"
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择无人机质保到期时间">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="无人机保养到期时间" prop="uavMaintenance">
+        <el-date-picker clearable size="small"
+          v-model="queryParams.uavMaintenance"
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择无人机保养到期时间">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="无人机保管员id" prop="uavKeeperId">
         <el-input
-          v-model="queryParams.keeperPhone"
-          placeholder="请输入保管员电话"
+          v-model="queryParams.uavKeeperId"
+          placeholder="请输入无人机保管员id"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="入库时间" prop="uavPut">
+      <el-form-item label="无人机入库时间" prop="uavPut">
         <el-date-picker clearable size="small"
           v-model="queryParams.uavPut"
           type="date"
           value-format="yyyy-MM-dd"
-          placeholder="选择入库时间">
+          placeholder="选择无人机入库时间">
         </el-date-picker>
       </el-form-item>
-<!--      <el-form-item label="录入人" prop="uavUsers">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.uavUsers"-->
-<!--          placeholder="请输入录入人"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="相关附件" prop="uavAttachment">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.uavAttachment"-->
-<!--          placeholder="请输入相关附件"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="删除码" prop="deleteFlag">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.deleteFlag"-->
-<!--          placeholder="请输入删除码"-->
-<!--          clearable-->
-<!--          size="small"-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-
+      <el-form-item label="无人机录入人" prop="uavUsers">
+        <el-input
+          v-model="queryParams.uavUsers"
+          placeholder="请输入无人机录入人"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="无人机相关附件" prop="uavAttachment">
+        <el-input
+          v-model="queryParams.uavAttachment"
+          placeholder="请输入无人机相关附件"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="删除码" prop="deleteFlag">
+        <el-input
+          v-model="queryParams.deleteFlag"
+          placeholder="请输入删除码"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -220,56 +209,50 @@
     <el-table v-loading="loading" :data="uav_manageList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="自增主键" align="center" prop="id" />
-      <el-table-column label="归口部门" align="center" prop="uavUnit">
+      <el-table-column label="无人机归口部门" align="center" prop="uavUnit">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_uav_department" :value="scope.row.uavUnit"/>
         </template>
       </el-table-column>
-      <el-table-column label="命名" align="center" prop="uavName" />
-      <el-table-column label="类型" align="center" prop="uavType">
+      <el-table-column label="无人机命名" align="center" prop="uavName" />
+      <el-table-column label="无人机类型" align="center" prop="uavType">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_pilots_craft_sort" :value="scope.row.uavType"/>
         </template>
       </el-table-column>
-      <el-table-column label="产品型号" align="center" prop="uavNumber" />
-      <el-table-column label="图片" align="center" prop="uavImages" />
-      <el-table-column label="序列号" align="center" prop="uavSn" />
-      <el-table-column label="飞控编号" align="center" prop="uavFlightNumber" />
-      <el-table-column label="备勤等级" align="center" prop="uavBeiqinLevel">
+      <el-table-column label="无人机产品型号" align="center" prop="uavNumber" />
+      <el-table-column label="无人机图片" align="center" prop="uavImages" />
+      <el-table-column label="无人机序列号" align="center" prop="uavSn" />
+      <el-table-column label="无人机飞控编号" align="center" prop="uavFlightNumber" />
+      <el-table-column label="无人机备勤等级" align="center" prop="uavBeiqinLevel">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_uav_readylevel" :value="scope.row.uavBeiqinLevel"/>
         </template>
       </el-table-column>
-      <el-table-column label="启用状态" align="center" prop="uavEnabled">
+      <el-table-column label="无人机启用状态" align="center" prop="uavEnabled">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_uav_state" :value="scope.row.uavEnabled"/>
         </template>
       </el-table-column>
-      <el-table-column label="保险到期时间" align="center" prop="uavInsurance" width="180">
+      <el-table-column label="无人机保险到期时间" align="center" prop="uavInsurance" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.uavInsurance, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="质保到期时间" align="center" prop="uavAssurance" width="180">
+      <el-table-column label="无人机质保到期时间" align="center" prop="uavAssurance" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.uavAssurance, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="保养到期时间" align="center" prop="uavMaintenance" width="180">
+      <el-table-column label="无人机保养到期时间" align="center" prop="uavMaintenance" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.uavMaintenance, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="保管员" align="center" prop="uavInsurance" width="180">
-        <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_uav_keeper" :value="scope.row.uavEnabled"/>
-        </template>
-      </el-table-column>
-<!--      <el-table-column label="保管员" align="center" prop="uavKeeper" />-->
-      <el-table-column label="录入人" align="center" prop="uavUsers" />
-      <el-table-column label="相关附件" align="center" prop="uavAttachment" />
+      <el-table-column label="无人机保管员id" align="center" prop="uavKeeperId" />
+      <el-table-column label="无人机录入人" align="center" prop="uavUsers" />
+      <el-table-column label="无人机相关附件" align="center" prop="uavAttachment" />
       <el-table-column label="删除码" align="center" prop="deleteFlag" />
-      <el-table-column label="保管员电话" align="center" prop="keeperPhone" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -298,11 +281,11 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改信息管理对话框 -->
+    <!-- 添加或修改无人机信息管理对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="归口部门" prop="uavUnit">
-          <el-select v-model="form.uavUnit" placeholder="请选择归口部门">
+        <el-form-item label="无人机归口部门" prop="uavUnit">
+          <el-select v-model="form.uavUnit" placeholder="请选择无人机归口部门">
             <el-option
               v-for="dict in dict.type.sys_uav_department"
               :key="dict.value"
@@ -311,11 +294,11 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="命名" prop="uavName">
-          <el-input v-model="form.uavName" placeholder="请输入命名" />
+        <el-form-item label="无人机命名" prop="uavName">
+          <el-input v-model="form.uavName" placeholder="请输入无人机命名" />
         </el-form-item>
-        <el-form-item label="类型" prop="uavType">
-          <el-select v-model="form.uavType" placeholder="请选择类型">
+        <el-form-item label="无人机类型" prop="uavType">
+          <el-select v-model="form.uavType" placeholder="请选择无人机类型">
             <el-option
               v-for="dict in dict.type.sys_pilots_craft_sort"
               :key="dict.value"
@@ -324,20 +307,20 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="产品型号" prop="uavNumber">
-          <el-input v-model="form.uavNumber" placeholder="请输入产品型号" />
+        <el-form-item label="无人机产品型号" prop="uavNumber">
+          <el-input v-model="form.uavNumber" placeholder="请输入无人机产品型号" />
         </el-form-item>
-        <el-form-item label="图片" prop="uavImages">
-          <el-input v-model="form.uavImages" placeholder="请输入图片" />
+        <el-form-item label="无人机图片" prop="uavImages">
+          <el-input v-model="form.uavImages" placeholder="请输入无人机图片" />
         </el-form-item>
-        <el-form-item label="序列号" prop="uavSn">
-          <el-input v-model="form.uavSn" placeholder="请输入序列号" />
+        <el-form-item label="无人机序列号" prop="uavSn">
+          <el-input v-model="form.uavSn" placeholder="请输入无人机序列号" />
         </el-form-item>
-        <el-form-item label="飞控编号" prop="uavFlightNumber">
-          <el-input v-model="form.uavFlightNumber" placeholder="请输入飞控编号" />
+        <el-form-item label="无人机飞控编号" prop="uavFlightNumber">
+          <el-input v-model="form.uavFlightNumber" placeholder="请输入无人机飞控编号" />
         </el-form-item>
-        <el-form-item label="备勤等级" prop="uavBeiqinLevel">
-          <el-select v-model="form.uavBeiqinLevel" placeholder="请选择备勤等级">
+        <el-form-item label="无人机备勤等级" prop="uavBeiqinLevel">
+          <el-select v-model="form.uavBeiqinLevel" placeholder="请选择无人机备勤等级">
             <el-option
               v-for="dict in dict.type.sys_uav_readylevel"
               :key="dict.value"
@@ -346,8 +329,8 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="启用状态" prop="uavEnabled">
-          <el-select v-model="form.uavEnabled" placeholder="请选择启用状态">
+        <el-form-item label="无人机启用状态" prop="uavEnabled">
+          <el-select v-model="form.uavEnabled" placeholder="请选择无人机启用状态">
             <el-option
               v-for="dict in dict.type.sys_uav_state"
               :key="dict.value"
@@ -356,60 +339,49 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="保险到期时间" prop="uavInsurance">
+        <el-form-item label="无人机保险到期时间" prop="uavInsurance">
           <el-date-picker clearable size="small"
             v-model="form.uavInsurance"
             type="date"
             value-format="yyyy-MM-dd"
-            placeholder="选择保险到期时间">
+            placeholder="选择无人机保险到期时间">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="质保到期时间" prop="uavAssurance">
+        <el-form-item label="无人机质保到期时间" prop="uavAssurance">
           <el-date-picker clearable size="small"
             v-model="form.uavAssurance"
             type="date"
             value-format="yyyy-MM-dd"
-            placeholder="选择质保到期时间">
+            placeholder="选择无人机质保到期时间">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="保养到期时间" prop="uavMaintenance">
+        <el-form-item label="无人机保养到期时间" prop="uavMaintenance">
           <el-date-picker clearable size="small"
             v-model="form.uavMaintenance"
             type="date"
             value-format="yyyy-MM-dd"
-            placeholder="选择保养到期时间">
+            placeholder="选择无人机保养到期时间">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="保管员" prop="uavKeeper">
-<!--          <el-input v-model="form.uavKeeper" placeholder="请输入保管员" />-->
-          <el-select v-model="form.uavKeeper" placeholder="请选择保管员">
-          <el-option
-            v-for="dict in dict.type.sys_uav_keeper"
-            :key="dict.value"
-            :label="dict.label"
-            :value="parseInt(dict.value)"
-          ></el-option>
-          </el-select>
+        <el-form-item label="无人机保管员id" prop="uavKeeperId">
+          <el-input v-model="form.uavKeeperId" placeholder="请输入无人机保管员id" />
         </el-form-item>
-        <el-form-item label="入库时间" prop="uavPut">
+        <el-form-item label="无人机入库时间" prop="uavPut">
           <el-date-picker clearable size="small"
             v-model="form.uavPut"
             type="date"
             value-format="yyyy-MM-dd"
-            placeholder="选择入库时间">
+            placeholder="选择无人机入库时间">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="录入人" prop="uavUsers">
-          <el-input v-model="form.uavUsers" placeholder="请输入录入人" />
+        <el-form-item label="无人机录入人" prop="uavUsers">
+          <el-input v-model="form.uavUsers" placeholder="请输入无人机录入人" />
         </el-form-item>
-        <el-form-item label="相关附件" prop="uavAttachment">
-          <el-input v-model="form.uavAttachment" placeholder="请输入相关附件" />
+        <el-form-item label="无人机相关附件" prop="uavAttachment">
+          <el-input v-model="form.uavAttachment" placeholder="请输入无人机相关附件" />
         </el-form-item>
         <el-form-item label="删除码" prop="deleteFlag">
           <el-input v-model="form.deleteFlag" placeholder="请输入删除码" />
-        </el-form-item>
-        <el-form-item label="保管员电话" prop="keeperPhone">
-          <el-input v-model="form.keeperPhone" placeholder="请输入保管员电话" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -425,7 +397,7 @@ import { listUav_manage, getUav_manage, delUav_manage, addUav_manage, updateUav_
 
 export default {
   name: "Uav_manage",
-  dicts: ['sys_uav_department', 'sys_pilots_craft_sort', 'sys_uav_readylevel', 'sys_uav_state','sys_uav_keeper'],
+  dicts: ['sys_uav_department', 'sys_pilots_craft_sort', 'sys_uav_readylevel', 'sys_uav_state'],
   data() {
     return {
       // 遮罩层
@@ -440,7 +412,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 信息管理表格数据
+      // 无人机信息管理表格数据
       uav_manageList: [],
       // 弹出层标题
       title: "",
@@ -462,47 +434,46 @@ export default {
         uavInsurance: null,
         uavAssurance: null,
         uavMaintenance: null,
-        uavKeeper: null,
+        uavKeeperId: null,
         uavPut: null,
         uavUsers: null,
         uavAttachment: null,
-        deleteFlag: null,
-        keeperPhone: null
+        deleteFlag: null
       },
       // 表单参数
       form: {},
       // 表单校验
       rules: {
         uavUnit: [
-          { required: true, message: "归口部门不能为空", trigger: "change" }
+          { required: true, message: "无人机归口部门不能为空", trigger: "change" }
         ],
         uavName: [
-          { required: true, message: "命名不能为空", trigger: "blur" }
+          { required: true, message: "无人机命名不能为空", trigger: "blur" }
         ],
         uavType: [
-          { required: true, message: "类型不能为空", trigger: "change" }
+          { required: true, message: "无人机类型不能为空", trigger: "change" }
         ],
         uavNumber: [
-          { required: true, message: "产品型号不能为空", trigger: "blur" }
+          { required: true, message: "无人机产品型号不能为空", trigger: "blur" }
         ],
         uavImages: [
-          { required: true, message: "图片不能为空", trigger: "blur" }
+          { required: true, message: "无人机图片不能为空", trigger: "blur" }
         ],
         uavSn: [
-          { required: true, message: "序列号不能为空", trigger: "blur" }
+          { required: true, message: "无人机序列号不能为空", trigger: "blur" }
         ],
         uavFlightNumber: [
-          { required: true, message: "飞控编号不能为空", trigger: "blur" }
+          { required: true, message: "无人机飞控编号不能为空", trigger: "blur" }
         ],
         uavEnabled: [
-          { required: true, message: "启用状态不能为空", trigger: "change" }
+          { required: true, message: "无人机启用状态不能为空", trigger: "change" }
         ],
         uavUsers: [
-          { required: true, message: "录入人不能为空", trigger: "blur" }
+          { required: true, message: "无人机录入人不能为空", trigger: "blur" }
         ],
         deleteFlag: [
           { required: true, message: "删除码不能为空", trigger: "blur" }
-        ],
+        ]
       }
     };
   },
@@ -510,12 +481,11 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询信息管理列表 */
+    /** 查询无人机信息管理列表 */
     getList() {
       this.loading = true;
       listUav_manage(this.queryParams).then(response => {
         this.uav_manageList = response.rows;
-        console.log(this.uav_manageList)
         this.total = response.total;
         this.loading = false;
       });
@@ -541,12 +511,11 @@ export default {
         uavInsurance: null,
         uavAssurance: null,
         uavMaintenance: null,
-        uavKeeper: null,
+        uavKeeperId: null,
         uavPut: null,
         uavUsers: null,
         uavAttachment: null,
-        deleteFlag: null,
-        keeperPhone: null
+        deleteFlag: null
       };
       this.resetForm("form");
     },
@@ -570,7 +539,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加信息管理";
+      this.title = "添加无人机信息管理";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -579,7 +548,7 @@ export default {
       getUav_manage(id).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改信息管理";
+        this.title = "修改无人机信息管理";
       });
     },
     /** 提交按钮 */
@@ -605,7 +574,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除信息管理编号为"' + ids + '"的数据项？').then(function() {
+      this.$modal.confirm('是否确认删除无人机信息管理编号为"' + ids + '"的数据项？').then(function() {
         return delUav_manage(ids);
       }).then(() => {
         this.getList();
