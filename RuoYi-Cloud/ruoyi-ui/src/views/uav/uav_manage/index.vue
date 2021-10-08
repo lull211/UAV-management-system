@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+<!--    //信息表单-->
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="无人机归口部门" prop="uavUnit">
         <el-select v-model="queryParams.uavUnit" placeholder="请选择无人机归口部门" clearable size="small">
@@ -160,6 +161,7 @@
       </el-form-item>
     </el-form>
 
+<!--    //新增，修改，删除的按钮-->
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button
@@ -206,6 +208,7 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
+<!--    //下面的菜单-->
     <el-table v-loading="loading" :data="uav_manageList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="自增主键" align="center" prop="id" />
@@ -249,7 +252,8 @@
           <span>{{ parseTime(scope.row.uavMaintenance, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="无人机保管员id" align="center" prop="uavKeeperId" />
+      <el-table-column label="保管员姓名" align="center" prop="uavKeeperName" />
+      <el-table-column label="保管员手机号" align="center" prop="uavKeeperPhone" />
       <el-table-column label="无人机录入人" align="center" prop="uavUsers" />
       <el-table-column label="无人机相关附件" align="center" prop="uavAttachment" />
       <el-table-column label="删除码" align="center" prop="deleteFlag" />
@@ -273,6 +277,9 @@
       </el-table-column>
     </el-table>
 
+
+
+<!--    //弹出框修改信息-->
     <pagination
       v-show="total>0"
       :total="total"
@@ -282,8 +289,8 @@
     />
 
     <!-- 添加或修改无人机信息管理对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+    <el-dialog :title="title" :visible.sync="open" width="60%" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="150px" label-position="left">
         <el-form-item label="无人机归口部门" prop="uavUnit">
           <el-select v-model="form.uavUnit" placeholder="请选择无人机归口部门">
             <el-option
@@ -363,15 +370,14 @@
             placeholder="选择无人机保养到期时间">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="无人机保管员id" prop="uavKeeperId">
-          <el-button
-            type="primary"
-            plain
-            icon="el-icon-plus"
-            size="mini"
-            @click="openSelectUser"
-            v-hasPermi="['system:role:add']"
-          >修改管理员</el-button>
+        <el-form-item label="保管员" prop="uavKeeperId">
+
+<!--我写的-->
+          <el-select v-model="form.uavKeeperId" placeholder="请选择保管员">
+            <el-option v-for="item in keeperList" :key="item.id"  :label="item.name+'  '+  item.phone" :value="item.id" @click="handleChange">
+            </el-option>
+          </el-select>
+
         </el-form-item>
         <el-form-item label="无人机入库时间" prop="uavPut">
           <el-date-picker clearable size="small"
@@ -401,6 +407,7 @@
 
 <script>
 import { listUav_manage, getUav_manage, delUav_manage, addUav_manage, updateUav_manage } from "@/api/uav/uav_manage";
+import {listKeeper,getKeeper} from "@/api/keeper/keeper";
 
 export default {
   name: "Uav_manage",
@@ -447,6 +454,15 @@ export default {
         uavAttachment: null,
         deleteFlag: null
       },
+      //查询保管员的参数
+      UserqueryParams: {
+        pageNum: 1,
+        pageSize: 10,
+        name: null,
+        phone: null
+      },
+      //储存保管员参shu
+      keeperList:[],
       // 表单参数
       form: {},
       // 表单校验
@@ -481,7 +497,8 @@ export default {
         deleteFlag: [
           { required: true, message: "删除码不能为空", trigger: "blur" }
         ]
-      }
+      },
+
     };
   },
   created() {
@@ -492,15 +509,43 @@ export default {
     getList() {
       this.loading = true;
       listUav_manage(this.queryParams).then(response => {
+        console.log(response)
         this.uav_manageList = response.rows;
         this.total = response.total;
         this.loading = false;
+        //查询某个保管员信息
+        for (let i = 0; i < this.uav_manageList.length; i++) {
+          if (this.uav_manageList[i].uavKeeperId){
+            getKeeper(this.uav_manageList[i].uavKeeperId).then(resp=>{
+           this.$set(this.uav_manageList[i],'uavKeeperName',resp.data.name);
+              this.$set(this.uav_manageList[i],'uavKeeperPhone',resp.data.phone);
+              // this.uav_manageList[i].uavKeeperName=resp.data.name;
+              // this.uav_manageList[i].uavKeeperPhone=resp.data.phone;
+            })
+          }else{//ID 为0时
+            this.uav_manageList[i].uavKeeperName="无";
+            this.uav_manageList[i].uavKeeperPhone="无";
+          }
+        }
+
       });
+      /** 获取保管员管理列表 */
+        listKeeper(this.UserqueryParams).then(response => {
+          // console.log(response)
+          this.keeperList = response.rows;
+          console.log(this.keeperList)
+          this.loading = false;
+        });
     },
     // 取消按钮
     cancel() {
       this.open = false;
       this.reset();
+    },
+
+    //保管员表单操作
+    handleChange(value){
+      console.log(value)
     },
     // 表单重置
     reset() {
