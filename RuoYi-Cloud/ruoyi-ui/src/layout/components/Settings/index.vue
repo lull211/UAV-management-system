@@ -123,8 +123,10 @@ export default {
   components: { ThemePicker,   userAvatar },
   data() {
     return {
+      systemC:'',
+      rules:'',
       //ljt
-      title: this.$store.state.settings.title,
+
       // 是否显示弹出层
       open: false,
       // 是否展开，默认全部折叠
@@ -200,6 +202,7 @@ export default {
     },
   },
   methods: {
+    rules(){},
 
     // systemC(){
     //
