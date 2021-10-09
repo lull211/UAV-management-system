@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/RuoYi-Cloud/pom.xml" />
+        <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-airline/pom.xml" />
       </list>
     </option>
   </component>

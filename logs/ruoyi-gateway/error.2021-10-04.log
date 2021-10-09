@@ -1,0 +1,5 @@
+00:42:03.247 [boundedElastic-7] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/uav/uav_manage/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-uavs"
+00:45:04.881 [boundedElastic-4] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+00:45:06.202 [boundedElastic-4] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/uav/uav_manage/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-uavs"
+02:01:52.360 [boundedElastic-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/uav/uav_manage/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-uavs"
+06:31:04.759 [boundedElastic-6] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/uav/uav_manage/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-uavs"
