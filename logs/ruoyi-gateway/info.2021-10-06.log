@@ -1,0 +1,31 @@
+17:23:39.460 [nacos-grpc-client-executor-19265] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [5c682610-2419-4aec-be01-efd53f4ee417_config-0]receive server push request,request=ClientDetectionRequest,requestId=25
+17:23:39.466 [nacos-grpc-client-executor-19242] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [032c0444-cf1e-457a-b47a-07aa760e3cce_config-0]receive server push request,request=ClientDetectionRequest,requestId=24
+17:23:39.465 [nacos-grpc-client-executor-27164] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [469172fe-db76-4ad2-b2ca-87cba5eea887]receive server push request,request=ClientDetectionRequest,requestId=28
+17:23:39.467 [nacos-grpc-client-executor-19242] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [032c0444-cf1e-457a-b47a-07aa760e3cce_config-0]ack server push request,request=ClientDetectionRequest,requestId=24
+17:23:39.467 [nacos-grpc-client-executor-19265] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [5c682610-2419-4aec-be01-efd53f4ee417_config-0]ack server push request,request=ClientDetectionRequest,requestId=25
+17:23:39.467 [nacos-grpc-client-executor-27164] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [469172fe-db76-4ad2-b2ca-87cba5eea887]ack server push request,request=ClientDetectionRequest,requestId=28
+20:46:25.393 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,90] - De-registering from Nacos Server now...
+20:46:25.394 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [deregisterService,136] - [DEREGISTER-SERVICE] public deregistering service ruoyi-gateway with instance: Instance{instanceId='null', ip='192.168.0.102', port=8080, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={}}
+20:46:25.397 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,110] - De-registration finished.
+20:46:25.398 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,256] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown begin
+20:46:25.399 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,140] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown begin
+20:46:25.399 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,142] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown stop
+20:46:25.399 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,258] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown stop
+20:46:25.399 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,176] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown begin
+20:46:25.399 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,130] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown begin
+20:46:25.703 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,132] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown stop
+20:46:25.703 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,188] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown begin
+20:46:25.704 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,193] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown stop
+20:46:25.704 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,519] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown begin
+20:46:25.704 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,162] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown begin
+20:46:25.704 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,164] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown stop
+20:46:25.705 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialWatcher - [stop,105] - [null] CredentialWatcher is stopped
+20:46:25.705 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialService - [free,99] - [null] CredentialService is freed
+20:46:25.705 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,523] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown stop
+20:46:25.705 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,461] - Shutdown rpc client ,set status to shutdown
+20:46:25.705 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,463] - Shutdown  client event executor java.util.concurrent.ScheduledThreadPoolExecutor@5890beb4[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
+20:46:25.706 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,465] - Close current connection 1633372039452_127.0.0.1_63231
+20:46:25.707 [nacos-grpc-client-executor-30894] INFO  c.a.n.c.r.c.g.GrpcClient - [printIfInfoEnabled,60] - [1633372039452_127.0.0.1_63231]Ignore complete event,isRunning:false,isAbandon=false
+20:46:25.713 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.c.g.GrpcClient - [shutdown,83] - Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@4f72eeb8[Running, pool size = 5, active threads = 0, queued tasks = 0, completed tasks = 30895]
+20:46:25.713 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,251] - Shutdown grpc redo service executor java.util.concurrent.ScheduledThreadPoolExecutor@60c69ee1[Running, pool size = 1, active threads = 0, queued tasks = 1, completed tasks = 36050]
+20:46:25.714 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,182] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown stop
