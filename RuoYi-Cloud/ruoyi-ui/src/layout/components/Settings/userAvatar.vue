@@ -1,7 +1,13 @@
 <template>
   <div>
 <!--    <div class="user-info-head" @click="editCropper()"><img v-bind:src="options.img" title="点击上传logo" class="img-circle img-lg" /></div>-->
-    <el-button size="small"  plain icon="el-icon-plus" @click="editCropper">上传logo</el-button>
+
+    <el-button size="small"  plain  @click="editCropper">
+
+      <img style="width:100%;height: 100% "  src="http://127.0.0.1:9300/statics/2021/10/09/9ac0c21c-ba7b-4388-b1f0-3a30be54d98b.jpeg" class="avatar">
+
+    </el-button>
+
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body @opened="modalOpened"  @close="closeDialog()">
       <el-row>
         <el-col :xs="24" :md="12" :style="{height: '350px'}">
