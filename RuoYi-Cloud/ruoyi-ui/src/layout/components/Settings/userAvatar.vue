@@ -84,7 +84,7 @@ export default {
     };
   },
   methods: {
-    // 编辑头像
+    // 编辑logo
     editCropper() {
       this.open = true;
     },
