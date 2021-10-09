@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+<!--    //信息表单-->
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="无人机归口部门" prop="uavUnit">
         <el-select v-model="queryParams.uavUnit" placeholder="请选择无人机归口部门" clearable size="small">
@@ -160,6 +161,7 @@
       </el-form-item>
     </el-form>
 
+<!--    //新增，修改，删除的按钮-->
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button
@@ -206,6 +208,7 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
+<!--    //下面的菜单-->
     <el-table v-loading="loading" :data="uav_manageList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="自增主键" align="center" prop="id" />
@@ -215,20 +218,13 @@
         </template>
       </el-table-column>
       <el-table-column label="无人机命名" align="center" prop="uavName" />
-      <el-table-column label="无人机类型" align="center" prop="uavType">
-        <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_pilots_craft_sort" :value="scope.row.uavType"/>
-        </template>
-      </el-table-column>
+      <el-table-column label="无人机类型" align="center" prop="uavType"/>
       <el-table-column label="无人机产品型号" align="center" prop="uavNumber" />
       <el-table-column label="无人机图片" align="center" prop="uavImages" />
       <el-table-column label="无人机序列号" align="center" prop="uavSn" />
       <el-table-column label="无人机飞控编号" align="center" prop="uavFlightNumber" />
-      <el-table-column label="无人机备勤等级" align="center" prop="uavBeiqinLevel">
-        <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_uav_readylevel" :value="scope.row.uavBeiqinLevel"/>
-        </template>
-      </el-table-column>
+      <el-table-column label="无人机备勤等级" align="center" prop="uavBeiqinLevel" />
+
       <el-table-column label="无人机启用状态" align="center" prop="uavEnabled">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_uav_state" :value="scope.row.uavEnabled"/>
@@ -249,7 +245,8 @@
           <span>{{ parseTime(scope.row.uavMaintenance, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="无人机保管员id" align="center" prop="uavKeeperId" />
+      <el-table-column label="保管员姓名" align="center" prop="uavKeeperName" />
+      <el-table-column label="保管员手机号" align="center" prop="uavKeeperPhone" />
       <el-table-column label="无人机录入人" align="center" prop="uavUsers" />
       <el-table-column label="无人机相关附件" align="center" prop="uavAttachment" />
       <el-table-column label="删除码" align="center" prop="deleteFlag" />
@@ -273,6 +270,9 @@
       </el-table-column>
     </el-table>
 
+
+
+<!--    //弹出框修改信息-->
     <pagination
       v-show="total>0"
       :total="total"
@@ -282,8 +282,8 @@
     />
 
     <!-- 添加或修改无人机信息管理对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+    <el-dialog :title="title" :visible.sync="open" width="60%" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="150px" label-position="left">
         <el-form-item label="无人机归口部门" prop="uavUnit">
           <el-select v-model="form.uavUnit" placeholder="请选择无人机归口部门">
             <el-option
@@ -299,12 +299,8 @@
         </el-form-item>
         <el-form-item label="无人机类型" prop="uavType">
           <el-select v-model="form.uavType" placeholder="请选择无人机类型">
-            <el-option
-              v-for="dict in dict.type.sys_pilots_craft_sort"
-              :key="dict.value"
-              :label="dict.label"
-              :value="dict.value"
-            ></el-option>
+            <el-option v-for="item in uavTypeList" :key="item.id"  :label="item.uavType+'  '+  item.typeExplain" :value="item.uavType">
+            </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="无人机产品型号" prop="uavNumber">
@@ -321,12 +317,8 @@
         </el-form-item>
         <el-form-item label="无人机备勤等级" prop="uavBeiqinLevel">
           <el-select v-model="form.uavBeiqinLevel" placeholder="请选择无人机备勤等级">
-            <el-option
-              v-for="dict in dict.type.sys_uav_readylevel"
-              :key="dict.value"
-              :label="dict.label"
-              :value="dict.value"
-            ></el-option>
+            <el-option v-for="item in missionLevelList" :key="item.id"  :label="item.level+ '  等级描述:'+  item.explain1" :value="item.level">
+            </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="无人机启用状态" prop="uavEnabled">
@@ -363,15 +355,14 @@
             placeholder="选择无人机保养到期时间">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="无人机保管员id" prop="uavKeeperId">
-          <el-button
-            type="primary"
-            plain
-            icon="el-icon-plus"
-            size="mini"
-            @click="openSelectUser"
-            v-hasPermi="['system:role:add']"
-          >修改管理员</el-button>
+        <el-form-item label="保管员" prop="uavKeeperId">
+
+          <!--下拉框保管员选择-->
+          <el-select v-model="form.uavKeeperId" placeholder="请选择保管员">
+            <el-option v-for="item in keeperList" :key="item.id"  :label="item.name+'  '+  item.phone" :value="item.id">
+            </el-option>
+          </el-select>
+
         </el-form-item>
         <el-form-item label="无人机入库时间" prop="uavPut">
           <el-date-picker clearable size="small"
@@ -401,6 +392,9 @@
 
 <script>
 import { listUav_manage, getUav_manage, delUav_manage, addUav_manage, updateUav_manage } from "@/api/uav/uav_manage";
+import {listKeeper,getKeeper} from "@/api/keeper/keeper";
+import {listMissionlevel} from "@/api/missionlevel/missionlevel";
+import {listUavtype} from "@/api/uavtype/uavtype";
 
 export default {
   name: "Uav_manage",
@@ -447,6 +441,20 @@ export default {
         uavAttachment: null,
         deleteFlag: null
       },
+      //查询保管员的参数
+      UserqueryParams: {
+        pageNum: 1,
+        pageSize: 10,
+        name: null,
+        phone: null
+      },
+      //储存保管员参数
+      keeperList:[],
+      //储存备勤等级参数
+      missionLevelList:[],
+      //储存无人机类型
+      uavTypeList:[],
+
       // 表单参数
       form: {},
       // 表单校验
@@ -481,7 +489,8 @@ export default {
         deleteFlag: [
           { required: true, message: "删除码不能为空", trigger: "blur" }
         ]
-      }
+      },
+
     };
   },
   created() {
@@ -495,13 +504,48 @@ export default {
         this.uav_manageList = response.rows;
         this.total = response.total;
         this.loading = false;
+        //查询某个保管员信息
+        for (let i = 0; i < this.uav_manageList.length; i++) {
+          if (this.uav_manageList[i].uavKeeperId){
+            getKeeper(this.uav_manageList[i].uavKeeperId).then(resp=>{
+              this.$set(this.uav_manageList[i],'uavKeeperName',resp.data.name);
+              this.$set(this.uav_manageList[i],'uavKeeperPhone',resp.data.phone);
+            })
+          }else{//ID 为0时
+            this.uav_manageList[i].uavKeeperName="无";
+            this.uav_manageList[i].uavKeeperPhone="无";
+          }
+        }
+
+      });
+
+      /** 获取保管员管理列表 */
+      listKeeper(this.UserqueryParams).then(response => {
+        // console.log(response)
+        this.keeperList = response.rows;
+        this.loading = false;
+      });
+
+      /** 获取任务备勤等级 */
+      listMissionlevel(this.UserqueryParams).then(response =>{
+        this.missionLevelList = response.rows;
+        this.loading = false;
+      });
+
+      /** 获取无人机类型 **/
+      listUavtype(this.UserqueryParams).then(response =>{
+        this.uavTypeList = response.rows;
+        console.log(response)
+        this.loading = false;
       });
     },
+
     // 取消按钮
     cancel() {
       this.open = false;
       this.reset();
     },
+
     // 表单重置
     reset() {
       this.form = {

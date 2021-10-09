@@ -16,14 +16,17 @@
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-security/ruoyi-common-security.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-security/ruoyi-common-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-swagger/ruoyi-common-swagger.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-swagger/ruoyi-common-swagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-gateway/ruoyi-gateway.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-gateway/ruoyi-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-missionlevel/ruoyi-missionlevel.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-missionlevel/ruoyi-missionlevel.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-modules.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-modules.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-file/ruoyi-modules-file.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-file/ruoyi-modules-file.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-gen/ruoyi-modules-gen.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-gen/ruoyi-modules-gen.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-job/ruoyi-modules-job.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-job/ruoyi-modules-job.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-system/ruoyi-modules-system.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-system/ruoyi-modules-system.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-pilotsmanager/ruoyi-pilotsmanager.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-pilotsmanager/ruoyi-pilotsmanager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavdepartment/ruoyi-uavdepartment.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavdepartment/ruoyi-uavdepartment.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavkeeper/ruoyi-uavkeeper.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavkeeper/ruoyi-uavkeeper.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavmanager/ruoyi-uavmanager.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavmanager/ruoyi-uavmanager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavtype/ruoyi-uavtype.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavtype/ruoyi-uavtype.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-visual.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-visual.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-monitor/ruoyi-visual-monitor.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-monitor/ruoyi-visual-monitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/uav_manage_system.iml" filepath="$PROJECT_DIR$/.idea/uav_manage_system.iml" />
