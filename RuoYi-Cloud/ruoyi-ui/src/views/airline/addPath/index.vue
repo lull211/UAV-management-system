@@ -1,62 +1,29 @@
 <template>
   <div>
     <div v-show="true">
-      <baidu-map class="map" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true" :double-click-zoom="false">
+      <baidu-map class="map" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true" :double-click-zoom="false" @tilesloaded="mapInit">
         <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
         <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP','BMAP_HYBRID_MAP']" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
         <bm-geolocation :showAddressBar="true" :autoLocation="true" anchor="BMAP_ANCHOR_BOTTOM_RIGHT"></bm-geolocation>
-        <bm-polyline :path="polylinePath" stroke-color="red" :stroke-opacity="1" :stroke-weight="5" :editing="true" @lineupdate="updatePolylinePath" @click="click"></bm-polyline>
 
-        <bm-marker :position="startPoint" :dragging="true" animation="BMAP_ANIMATION_BOUNCE"></bm-marker>
-        <bm-marker :position="endPoint" :dragging="true" animation="BMAP_ANIMATION_BOUNCE"></bm-marker>
+        <bm-polyline :path="airLinePath" stroke-color="red" :stroke-opacity="1" :stroke-weight="5" :editing="true" @lineupdate="updatePolylinePath"></bm-polyline>
+
+        <div v-for="item in airLinePath">
+          <bm-marker :position="item" :dragging="true" @dragstart="dragstartCB" @dragend="dragendCB" >
+            <bm-context-menu>
+              <bm-context-menu-item :callback="delete_a_point" text="删除该点"></bm-context-menu-item>
+            </bm-context-menu>
+          </bm-marker>
+        </div>
 
         <bm-context-menu>
           <bm-context-menu-item :callback="set_start_point" text="放置起始点"></bm-context-menu-item>
           <bm-context-menu-item :callback="set_end_point" text="放置目标点"></bm-context-menu-item>
-          <bm-context-menu-item :callback="build_airLine" text="生成航线"></bm-context-menu-item>
         </bm-context-menu>
 
       </baidu-map>
 
     </div>
-
-    <el-row :gutter="20">
-      <el-col :span="3">起始点</el-col>
-      <el-col :span="6">
-        <el-input
-          placeholder="经度"
-          v-model="startPoint.lng"
-          clearable>
-        </el-input>
-      </el-col>
-      <el-col :span="6">
-        <el-input
-          placeholder="纬度"
-          v-model="startPoint.lat"
-          clearable>
-        </el-input>
-      </el-col>
-
-    </el-row>
-
-    <el-row :gutter="20">
-      <el-col :span="3">目标点</el-col>
-      <el-col :span="6">
-        <el-input
-          placeholder="经度"
-          v-model="endPoint.lng"
-          clearable>
-        </el-input>
-      </el-col>
-      <el-col :span="6">
-        <el-input
-          placeholder="纬度"
-          v-model="endPoint.lat"
-          clearable>
-        </el-input>
-      </el-col>
-
-    </el-row>
 
 
     <el-form ref="form" :model="form" :rules="rules" label-width="80px">
@@ -71,7 +38,6 @@
         <el-input v-model="form.airlineDistance" :disabled="true" placeholder="航线距离" />
       </el-form-item>
       <el-form-item label="航线节点" prop="airlinePoints" >
-<!--        <el-input v-model="polylinePath" :disabled="true" placeholder="请输入航线节点" />-->
         <el-input v-model="form.airlinePoints" :disabled="true" placeholder="航线节点数据" />
       </el-form-item>
     </el-form>
@@ -98,6 +64,7 @@ Vue.use(BaiduMap, {
 
 export default {
   name: "addPath",
+  props:["form"],
   data () {
     return {
       center: {lng: 0, lat: 0}, // 经纬度
@@ -106,20 +73,19 @@ export default {
       endPoint:{lng: 0, lat: 0},
 
       polylinePath: [],
-      airlineDistance:0,
       airLinePath:[],
+      dragPoint: {},
+      dragPointIndex:null,
 
+      deletePoint:{},
+
+      // airlineDistance:0,
+
+      pointList:[],
       isSetStartPoint: false,
       isSetEndPoint: false,
       // 表单参数
-      form: {
-        id: null,
-        airlineName: null,
-        airlineDistance: 0,
-        airlineExplain: null,
-        airlinePoints: null,
-        createTime: null
-      },
+
       // 表单校验
       rules: {
         airlineName: [
@@ -140,67 +106,100 @@ export default {
       },
     }
   }, //end of data
-
+computed:{
+  airLinePath(){
+    return [];
+  }
+},
+ 
+  beforeUpdate() {
+    this.mapInit();
+  },
   methods: {
+    mapInit(){
+      // let map = new BMap.Map('Bmap');
+      console.log(this.airLinePath);
+
+     let arr=JSON.parse(this.form.airlinePoints);
+      for (let index=0;index<arr.length;index++){
+       let lats=arr[index].lat;
+        let  lngs=arr[index].lng;
+        this.$set(this.airLinePath,index,{lat:lats,lng:lngs})
+        console.log(this.airLinePath)
+      }
+
+      console.log(this.airLinePath);
+    },
     handler ({BMap, map}) {
-      console.log(BMap, map)
       this.center.lng = 113.280
       this.center.lat = 23.125
       this.zoom = 15
     },
+    updatePolylinePath (e) {
+      this.airLinePath = e.target.getPath();
+      this.form.airlineDistance=this.get_airline_distance(this.airLinePath);
+      this.form.airlinePoints=JSON.stringify(this.airLinePath);
+      console.log(this.form)
+    },
     click(point){
       console.log(point)
     },
-    updatePolylinePath (e) {
-      this.polylinePath = e.target.getPath()
-      this.form.airlinePoints=JSON.stringify(this.polylinePath);
-      this.form.airlineDistance=this.get_airline_distance(this.polylinePath);
+
+    delete_a_point(e){
+      this.deletePoint.lat=e.target.point.lat;
+      this.deletePoint.lng=e.target.point.lng;
+
+      console.log(this.airLinePath.findIndex(this.findIndexF1));
+      var deletePointIndex = this.airLinePath.findIndex(this.findIndexF1);
+      this.airLinePath.splice(deletePointIndex,1)
     },
 
-    addPolylinePoint () {
-      this.polylinePath.push({lng: 116.404, lat: 39.915})
-
+    findIndexF1(airLinePathPoint)
+    {
+      return(airLinePathPoint.lat==this.deletePoint.lat && airLinePathPoint.lng==this.deletePoint.lng);
     },
 
-    clickHandler (e) {
-      alert(`该无人机的坐标为 经度：${e.point.lng}   纬度：${e.point.lat}`);
+    findIndexF2(airLinePathPoint)
+    {
+      return(airLinePathPoint.lat==this.dragPoint.lat || airLinePathPoint.lng==this.dragPoint.lng);
     },
 
-    set_path () {
-      this.polylinePath = [this.startPoint,this.endPoint]
+    dragstartCB(e){
+      this.dragPoint.lat=e.target.point.lat;
+      this.dragPoint.lng=e.target.point.lng;
+      this.dragPointIndex = this.airLinePath.findIndex(this.findIndexF2);
+    },
+    dragendCB(e){
+      this.airLinePath[this.dragPointIndex].lat=e.point.lat;
+      this.airLinePath[this.dragPointIndex].lng=e.point.lng;
+      this.form.airlineDistance=this.get_airline_distance(this.airLinePath);
+    },
+    set_start_point(e){
+      this.airLinePath.splice(0, 0, e.point);
+    },
+    set_end_point(e){
+      this.airLinePath.push(e.point);
+      this.form.airlineDistance=this.get_airline_distance(this.airLinePath);
+      this.form.airlinePoints=JSON.stringify(this.airLinePath);
     },
 
-    set_start_point (e) {
-      this.startPoint=e.point;
-    },
-
-    set_end_point (e) {
-      this.endPoint=e.point;
-    },
-
-    build_airLine () {
-      // this.polylinePath = [this.startPoint,this.endPoint]
-      this.polylinePath = [this.startPoint, this.endPoint]
-      this.form.airlinePoints=JSON.stringify(this.polylinePath);
-      this.form.airlineDistance=this.get_airline_distance(this.polylinePath);
-      // this.form.airlineDistance=JSON.stringify(this.airlineDistance);
-    },
 
     submitForm() {
-      // this.form.airlinePoints=this.polylinePath;
-      this.form.airlinePoints=JSON.stringify(this.polylinePath);
-      this.form.airlineDistance=this.airlineDistance;
+      this.form.airlinePoints=JSON.stringify(this.airLinePath);
+      this.form.airlineDistance=this.form.airlineDistance;
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.id != null) {
             updateAirline(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
               this.open = false;
+              this.$emit('show',false)
               this.getList();
             });
           } else {
             addAirline(this.form).then(response => {
               this.$modal.msgSuccess("新增成功");
+              this.$emit('show',false)
               this.open = false;
               this.getList();
             });
@@ -242,11 +241,10 @@ export default {
     get_airline_distance(polyline){
       var distance = 0;
       for(var i=0;i<polyline.length-1;i++){
-        distance += this.get_2p_pistance(polyline[i].lng,polyline[i].lat,polyline[i+1].lng,polyline[i+1].lat);
+        distance += this.get_2p_pistance(polyline[i].lng,polyline[i].lat,polyline[i+1].lng,polyline[i+1].lat)*1000;
       }
       return distance
     }
-
 
   }, //end of methods
 }
@@ -263,15 +261,5 @@ export default {
   width: 100%;
   height: 600px;
 }
-
-.bg-purple {
-  background: #d3dce6;
-}
-
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-}
-
 
 </style>

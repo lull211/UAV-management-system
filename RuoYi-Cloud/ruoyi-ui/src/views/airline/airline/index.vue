@@ -3,21 +3,40 @@
   <el-container style="height: 800px; border: 1px solid #eee">
 
     <el-aside width="25%" style="background-color: rgb(238, 241, 246)">
-      <button class="addButton">添加航线</button>
+      <button class="addButton" @click="handleAdd">添加航线</button>
 
       <el-menu :default-openeds="['1',]">
         <el-submenu index="1">
           <template slot="title"><i class="el-icon-menu"></i>航线列表</template>
-            <div v-for="item in airlineList" :key="item.id">
-              <el-menu-item style="color:black" @click="selecteAirline(item)">{{ item.airlineName }}</el-menu-item>
+            <div v-for="(item,index) in airlineList" :key="item.id">
+              <el-menu-item style="color:black;display: flex;justify-content: space-between;padding:0 20px " @click="selecteAirline(item)" >
+              <span style="min-width: 150px">  {{ item.airlineName }}</span>
+               <div >
+                 <el-button
+                   size="mini"
+                   type="primary"
+                   icon="el-icon-edit"
+                   @click="handleUpdate(item)"
+                   v-hasPermi="['airline:airline:edit']"
+                 />
+                 <el-button
+                   size="mini"
+                   type="primary"
+                   icon="el-icon-delete"
+                   @click="handleDelete(item)"
+                   v-hasPermi="['airline:airline:remove']"
+                 />
+               </div>
+              </el-menu-item>
             </div>
         </el-submenu>
       </el-menu>
     </el-aside>
 
     <el-container>
-    <el-main style="height: 600px">
-      <div v-show="true">
+
+    <el-main style="height: 600px" :v-show="!show">
+      <div :v-show="!show">
         <baidu-map class="map" :center="map_center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true" >
           <!--    比例尺-->
           <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
@@ -35,14 +54,21 @@
 
     <el-footer style="height: 200px">{{ airlineDescription }}</el-footer>
   </el-container>
+
+    <el-dialog
+      :title="form.id?'修改航线':'添加航线'"
+      :visible.sync="show"
+      width="80%">
+      <addPath  style="width:100%" v-on:show="ifShow" :form="form"></addPath>
+    </el-dialog>
+
+
+
   </el-container>
 
-<!--  <p>-->
-<!--    {{airlineList}}-->
-<!--  </p>-->
 </div>
 </template>
-<style>
+<style  scoped>
 .el-header {
   background-color: #B3C0D1;
   color: #333;
@@ -58,7 +84,7 @@
 import { listAirline, getAirline, delAirline, addAirline, updateAirline } from "@/api/airline/airline";
 import BaiduMap from 'vue-baidu-map'
 import Vue from "vue";
-
+import addPath from "../addPath/index.vue";
 Vue.use(BaiduMap, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
   ak: 'webgl&ak=XAZzMQDbVhWrbevkjN0RmMR9XjCZnNHU'
@@ -66,6 +92,9 @@ Vue.use(BaiduMap, {
 
 export default {
   name: "Airline",
+  components:{
+    addPath,
+  },
   data() {
 
     return {
@@ -74,6 +103,7 @@ export default {
       uavList: [{lng: 113.280, lat: 23.126}, {lng: 113.281, lat: 23.127}, {lng: 113.282, lat: 23.128}],
       polylinePath: [],
 
+      show:false,//是否显示添加航线
       /** 百度地图参数 */
       // 遮罩层
       loading: true,
@@ -90,6 +120,26 @@ export default {
       airlineDescription:'',
       // 航线管理表格数据
       airlineList: [],
+      // 表单参数
+      form: {},
+      // 表单校验
+      rules: {
+        airlineName: [
+          { required: true, message: "航线名词不能为空", trigger: "blur" }
+        ],
+        airlineDistance: [
+          { required: true, message: "航线距离不能为空", trigger: "blur" }
+        ],
+        airlineExplain: [
+          { required: true, message: "航线说明不能为空", trigger: "blur" }
+        ],
+        airlinePoints: [
+          { required: true, message: "航线节点不能为空", trigger: "blur" }
+        ],
+        createTime: [
+          { required: true, message: "创建时间不能为空", trigger: "blur" }
+        ]
+      },
 
       }
   },  // end of data()
@@ -104,8 +154,10 @@ export default {
       this.map_center.lng = 113.280
       this.map_center.lat = 23.125
       this.zoom = 15
+    },
 
-
+    ifShow(value){
+      this.show=value;
     },
 
     clickHandler (e) {
@@ -114,10 +166,6 @@ export default {
 
     test () {
       alert("hello");
-    },
-
-    set_path () {
-      this.polylinePath = [this.startPoint,this.endPoint]
     },
 
     /** 查询航线管理列表 */
@@ -141,7 +189,7 @@ export default {
         airlineName: null,
         airlineDistance: null,
         airlineExplain: null,
-        airlinePoints: null,
+        airlinePoints: [],
         createTime: null
       };
       this.resetForm("form");
@@ -165,43 +213,34 @@ export default {
     /** 新增按钮操作 */
     handleAdd() {
       this.reset();
-      this.open = true;
-      this.title = "添加航线管理";
+      this.show=true;
     },
     /** 修改按钮操作 */
-    handleUpdate(row) {
+    handleUpdate(item) {
       this.reset();
-      const id = row.id || this.ids
-      getAirline(id).then(response => {
+      // console.log(index)
+      // console.log(this.airlineList[index].airlinePoints);
+
+      this.form.id=item.id;
+      this.form.airlineName=item.airlineName;
+      this.form.airlineDistance=item.airlineDistance;
+      this.form.airlineExplain=item.airlineExplain;
+      this.form.airlinePoints=item.airlinePoints;
+      this.show=true;
+      // const id = row.id || this.ids;
+      // this.form = row;
+      // this.show=true;
+      getAirline(item.id).then(response => {
         this.form = response.data;
-        this.open = true;
-        this.title = "修改航线管理";
+        console.log(this.form);
+
       });
     },
-    /** 提交按钮 */
-    submitForm() {
-      this.$refs["form"].validate(valid => {
-        if (valid) {
-          if (this.form.id != null) {
-            updateAirline(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
-              this.open = false;
-              this.getList();
-            });
-          } else {
-            addAirline(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            });
-          }
-        }
-      });
-    },
+
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除航线管理编号为"' + ids + '"的数据项？').then(function() {
+      this.$modal.confirm('是否确认删除航线名为"' + row.airlineName + '"的数据项？').then(function() {
         return delAirline(ids);
       }).then(() => {
         this.getList();
@@ -223,44 +262,19 @@ export default {
       this.polylinePath = JSON.parse(airlinePoints);
       this.map_center = this.polylinePath[0];
       var distance =  airlineDistance;
-      if (distance < 5){
-          this.zoom = 14;
-      }else if(distance < 50){
+      if (distance < 5000){
+        this.zoom = 14;
+      }else if(distance < 50000){
         this.zoom = 13;
-      } else if(distance < 100){
+      } else if(distance < 100000){
         this.zoom = 11;
-      }else if(distance < 200){
+      }else if(distance < 200000){
         this.zoom = 9;
       }else{
         this.zoom = 5;
       }
     },
 
-    /**
-     * 获取两经纬度之间的距离
-     * @param {number} e1 点1的东经, 单位:角度, 如果是西经则为负
-     * @param {number} n1 点1的北纬, 单位:角度, 如果是南纬则为负
-     * @param {number} e2
-     * @param {number} n2
-     */
-    getDistance(e1, n1, e2, n2){
-      const R = 6371
-      const { sin, cos, asin, PI, hypot } = Math
-
-      /** 根据经纬度获取点的坐标 */
-      let getPoint = (e, n) => {
-        e *= PI/180
-        n *= PI/180
-        //这里 R* 被去掉, 相当于先求单位圆上两点的距, 最后会再将这个距离放大 R 倍
-        return {x: cos(n)*cos(e), y: cos(n)*sin(e), z: sin(n)}
-      }
-
-      let a = getPoint(e1, n1)
-      let b = getPoint(e2, n2)
-      let c = hypot(a.x - b.x, a.y - b.y, a.z - b.z)
-      let r = asin(c/2)*2*R
-      return r;
-    }
   } ,// end of methods()
 
 };
@@ -269,6 +283,7 @@ export default {
 <style>
 
 .map {
+  display: block;
   width: 100%;
   height: 600px;
 }

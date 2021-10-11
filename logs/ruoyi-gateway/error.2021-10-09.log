@@ -1,0 +1,7 @@
+09:34:13.571 [reactor-http-nio-2] ERROR c.r.g.f.AuthFilter - [unauthorizedResponse,106] - [鉴权异常处理]请求路径:/system/user/getInfo
+09:34:22.397 [boundedElastic-4] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/airline/airline/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-airline"
+09:59:44.354 [boundedElastic-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/uav/uav_manage/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-uavs"
+10:00:23.041 [boundedElastic-4] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+10:59:52.261 [boundedElastic-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/uav/uav_manage/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-uavs"
+11:19:51.547 [boundedElastic-3] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/uav/uav_manage/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-uavs"
+14:03:36.246 [boundedElastic-3] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/uav/uav_manage/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-uavs"

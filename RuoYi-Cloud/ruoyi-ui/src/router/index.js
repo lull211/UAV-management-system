@@ -150,7 +150,16 @@ export const constantRoutes = [
         meta: { title: '修改生成配置', activeMenu: '/tool/gen'}
       }
     ]
-  }
+  },
+
+//  新添加的
+
+      {
+        path: '/airline/addPath',
+        component: (resolve) => require(['@/views/airline/addPath'], resolve),
+        hidden: true,
+      }
+,
 ]
 
 export default new Router({
