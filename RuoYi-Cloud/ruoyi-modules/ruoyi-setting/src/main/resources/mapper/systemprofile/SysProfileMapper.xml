@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.systemprofile.mapper.SysProfileMapper">
+    
+    <resultMap type="SysProfile" id="SysProfileResult">
+        <result property="id"    column="id"    />
+        <result property="sysLogo"    column="sys_logo"    />
+        <result property="sysTitle"    column="sys_title"    />
+    </resultMap>
+
+    <sql id="selectSysProfileVo">
+        select id, sys_logo, sys_title from sys_profile
+    </sql>
+
+    <select id="selectSysProfileList" parameterType="SysProfile" resultMap="SysProfileResult">
+        <include refid="selectSysProfileVo"/>
+        <where>  
+            <if test="sysLogo != null  and sysLogo != ''"> and sys_logo = #{sysLogo}</if>
+            <if test="sysTitle != null  and sysTitle != ''"> and sys_title = #{sysTitle}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysProfileById" parameterType="Long" resultMap="SysProfileResult">
+        <include refid="selectSysProfileVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysProfile" parameterType="SysProfile">
+        insert into sys_profile
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="sysLogo != null">sys_logo,</if>
+            <if test="sysTitle != null">sys_title,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="sysLogo != null">#{sysLogo},</if>
+            <if test="sysTitle != null">#{sysTitle},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysProfile" parameterType="SysProfile">
+        update sys_profile
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sysLogo != null">sys_logo = #{sysLogo},</if>
+            <if test="sysTitle != null">sys_title = #{sysTitle},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysProfileById" parameterType="Long">
+        delete from sys_profile where id = #{id}
+    </delete>
+
+    <delete id="deleteSysProfileByIds" parameterType="String">
+        delete from sys_profile where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

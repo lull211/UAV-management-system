@@ -14,6 +14,7 @@
         <module name="ruoyi-common-swagger" />
         <module name="ruoyi-common-core" />
         <module name="ruoyi-common-security" />
+        <module name="ruoyi-setting" />
         <module name="ruoyi-pilotsmanager" />
         <module name="ruoyi-common-datasource" />
         <module name="ruoyi-gateway" />
@@ -44,6 +45,8 @@
       <module name="ruoyi-modules-job" target="1.8" />
       <module name="ruoyi-modules-system" target="1.8" />
       <module name="ruoyi-pilotsmanager" target="1.8" />
+      <module name="ruoyi-setting" target="1.8" />
+      <module name="ruoyi-sysprofile" target="1.8" />
       <module name="ruoyi-visual" target="1.8" />
       <module name="ruoyi-visual-monitor" target="1.8" />
     </bytecodeTargetLevel>

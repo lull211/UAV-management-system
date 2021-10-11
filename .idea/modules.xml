@@ -21,6 +21,7 @@
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-job/ruoyi-modules-job.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-job/ruoyi-modules-job.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-system/ruoyi-modules-system.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-system/ruoyi-modules-system.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-pilotsmanager/ruoyi-pilotsmanager.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-pilotsmanager/ruoyi-pilotsmanager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-setting/ruoyi-setting.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-setting/ruoyi-setting.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-visual.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-visual.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-monitor/ruoyi-visual-monitor.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-visual/ruoyi-monitor/ruoyi-visual-monitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/uav_manage_system.iml" filepath="$PROJECT_DIR$/.idea/uav_manage_system.iml" />
