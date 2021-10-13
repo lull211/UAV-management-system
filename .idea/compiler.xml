@@ -16,6 +16,7 @@
         <module name="ruoyi-common-swagger" />
         <module name="ruoyi-common-core" />
         <module name="ruoyi-common-security" />
+        <module name="ruoyi-tasklist" />
         <module name="ruoyi-pilotsmanager" />
         <module name="ruoyi-common-datasource" />
         <module name="ruoyi-uavkeeper" />
@@ -25,6 +26,7 @@
         <module name="ruoyi-modules-gen" />
         <module name="ruoyi-visual-monitor" />
         <module name="ruoyi-auth" />
+        <module name="ruoyi-modules-system (1)" />
         <module name="ruoyi-common-log" />
         <module name="ruoyi-modules-file" />
         <module name="ruoyi-airline" />
@@ -51,7 +53,9 @@
       <module name="ruoyi-modules-gen" target="1.8" />
       <module name="ruoyi-modules-job" target="1.8" />
       <module name="ruoyi-modules-system" target="1.8" />
+      <module name="ruoyi-modules-system (1)" target="1.8" />
       <module name="ruoyi-pilotsmanager" target="1.8" />
+      <module name="ruoyi-tasklist" target="1.8" />
       <module name="ruoyi-uavdepartment" target="1.8" />
       <module name="ruoyi-uavkeeper" target="1.8" />
       <module name="ruoyi-uavmanager" target="1.8" />
