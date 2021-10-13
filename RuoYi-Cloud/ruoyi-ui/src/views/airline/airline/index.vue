@@ -35,8 +35,8 @@
 
     <el-container>
 
-    <el-main style="height: 600px" :v-show="!show">
-      <div :v-show="!show">
+    <el-main style="height: 600px">
+      <div>
         <baidu-map class="map" :center="map_center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true" >
           <!--    比例尺-->
           <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
@@ -55,14 +55,9 @@
     <el-footer style="height: 200px">{{ airlineDescription }}</el-footer>
   </el-container>
 
-    <el-dialog
-      :title="form.id?'修改航线':'添加航线'"
-      :visible.sync="show"
-      width="80%">
-      <addPath  style="width:100%" v-on:show="ifShow" :form="form"></addPath>
+    <el-dialog :title="title" :visible.sync="open" width="80%">
+      <addPath  style="width:100%" :dataForAddOrEditAirLinePath="dataForAddOrEditAirLinePath"></addPath>
     </el-dialog>
-
-
 
   </el-container>
 
@@ -102,8 +97,10 @@ export default {
       zoom: 0,
       uavList: [{lng: 113.280, lat: 23.126}, {lng: 113.281, lat: 23.127}, {lng: 113.282, lat: 23.128}],
       polylinePath: [],
-
-      show:false,//是否显示添加航线
+      addOrEditAirLinePath:[],
+      title: "",
+      // 是否显示弹出层
+      open: false,
       /** 百度地图参数 */
       // 遮罩层
       loading: true,
@@ -121,7 +118,24 @@ export default {
       // 航线管理表格数据
       airlineList: [],
       // 表单参数
-      form: {},
+      // form: {
+      //   id: null,
+      //   airlineName: null,
+      //   airlineDistance: null,
+      //   airlineExplain: null,
+      //   airlinePoints: [],
+      //   createTime: null
+      // },
+      dataForAddOrEditAirLinePath: {
+        id: null,
+        airlineName: null,
+        airlineDistance: null,
+        airlineExplain: null,
+        airlinePoints: [],
+        createTime: null,
+        zoom:null,
+        map_center:null,
+      },
       // 表单校验
       rules: {
         airlineName: [
@@ -154,10 +168,6 @@ export default {
       this.map_center.lng = 113.280
       this.map_center.lat = 23.125
       this.zoom = 15
-    },
-
-    ifShow(value){
-      this.show=value;
     },
 
     clickHandler (e) {
@@ -194,6 +204,17 @@ export default {
       };
       this.resetForm("form");
     },
+
+    reset2() {
+      this.dataForAddOrEditAirLinePath = {
+        id: null,
+        airlineName: null,
+        airlineDistance: null,
+        airlineExplain: null,
+        airlinePoints: [],
+        createTime: null
+      };
+    },
     /** 搜索按钮操作 */
     handleQuery() {
       this.queryParams.pageNum = 1;
@@ -212,28 +233,28 @@ export default {
     },
     /** 新增按钮操作 */
     handleAdd() {
-      this.reset();
-      this.show=true;
+      this.reset2();
+
+      this.open = true;
+      this.title = "添加航线管理";
     },
     /** 修改按钮操作 */
     handleUpdate(item) {
-      this.reset();
-      // console.log(index)
-      // console.log(this.airlineList[index].airlinePoints);
-
-      this.form.id=item.id;
-      this.form.airlineName=item.airlineName;
-      this.form.airlineDistance=item.airlineDistance;
-      this.form.airlineExplain=item.airlineExplain;
-      this.form.airlinePoints=item.airlinePoints;
-      this.show=true;
-      // const id = row.id || this.ids;
-      // this.form = row;
-      // this.show=true;
+      this.reset2();
       getAirline(item.id).then(response => {
-        this.form = response.data;
-        console.log(this.form);
+        // this.form = response.data;
+        this.dataForAddOrEditAirLinePath.id=response.data.id;
+        this.dataForAddOrEditAirLinePath.airlineName=response.data.airlineName;
+        this.dataForAddOrEditAirLinePath.airlinePoints=JSON.parse(response.data.airlinePoints);
+        this.dataForAddOrEditAirLinePath.airlineExplain=response.data.airlineExplain;
+        this.dataForAddOrEditAirLinePath.airlineDistance=response.data.airlineDistance;
+        // this.map_center = this.polylinePath[0];
+        this.update_map_center_and_zoom(this.dataForAddOrEditAirLinePath.airlinePoints);
+        // this.dataForAddOrEditAirLinePath.map_center=
+        this.open = true;
+        this.title = "修改航线管理";
 
+        // console.log(this.form);
       });
     },
 
@@ -258,6 +279,31 @@ export default {
       this.airlineDescription = e.airlineExplain;
       this.updateAirlineInMap(e.airlinePoints,e.airlineDistance);
     },
+
+    update_map_center_and_zoom(airlinePoints){
+      this.dataForAddOrEditAirLinePath.map_center=airlinePoints[0];
+      this.dataForAddOrEditAirLinePath.map_center={lng: 0, lat: 0};
+      let maxLngLatZoom = {};
+      let minLngLatZoom= {};
+      maxLngLatZoom.lng=airlinePoints[0].lng;
+      maxLngLatZoom.lat=airlinePoints[0].lat;
+      minLngLatZoom.lng=airlinePoints[0].lng;
+      minLngLatZoom.lat=airlinePoints[0].lat;
+      for (let i=0;i<airlinePoints.length;i++){
+        this.dataForAddOrEditAirLinePath.map_center.lng+=airlinePoints[i].lng;
+        this.dataForAddOrEditAirLinePath.map_center.lat+=airlinePoints[i].lat;
+        if(airlinePoints[i].lng>maxLngLatZoom.lng){maxLngLatZoom.lng=airlinePoints[i].lng};
+        if(airlinePoints[i].lat>maxLngLatZoom.lat){maxLngLatZoom.lat=airlinePoints[i].lat};
+        if(airlinePoints[i].lng<minLngLatZoom.lng){minLngLatZoom.lng=airlinePoints[i].lng};
+        if(airlinePoints[i].lat<minLngLatZoom.lat){minLngLatZoom.lat=airlinePoints[i].lat};
+      }
+      this.dataForAddOrEditAirLinePath.map_center.lng=(this.dataForAddOrEditAirLinePath.map_center.lng/airlinePoints.length);
+      this.dataForAddOrEditAirLinePath.map_center.lat=(this.dataForAddOrEditAirLinePath.map_center.lat/airlinePoints.length);
+
+      var zoomDist=this.get_distance(maxLngLatZoom.lng,maxLngLatZoom.lat,minLngLatZoom.lng,minLngLatZoom.lat)
+
+      this.dataForAddOrEditAirLinePath.zoom=this.get_zoom(zoomDist);
+    },
     updateAirlineInMap(airlinePoints,airlineDistance) {
       this.polylinePath = JSON.parse(airlinePoints);
       this.map_center = this.polylinePath[0];
@@ -274,7 +320,38 @@ export default {
         this.zoom = 5;
       }
     },
+    get_distance(e1, n1, e2, n2){
+      const R = 6371
+      const { sin, cos, asin, PI, hypot } = Math
 
+      /** 根据经纬度获取点的坐标 */
+      let getPoint = (e, n) => {
+        e *= PI/180
+        n *= PI/180
+        //这里 R* 被去掉, 相当于先求单位圆上两点的距, 最后会再将这个距离放大 R 倍
+        return {x: cos(n)*cos(e), y: cos(n)*sin(e), z: sin(n)}
+      }
+
+      let a = getPoint(e1, n1)
+      let b = getPoint(e2, n2)
+      let c = hypot(a.x - b.x, a.y - b.y, a.z - b.z)
+      let r = asin(c/2)*2*R
+      return r*1000;
+    },
+
+    get_zoom(distance){
+      if (distance < 5000){
+        return  14;
+      }else if(distance < 50000){
+        return 13;
+      } else if(distance < 100000){
+        return 11;
+      }else if(distance < 200000){
+        return  9;
+      }else{
+        return 5;
+      }
+    },
   } ,// end of methods()
 
 };

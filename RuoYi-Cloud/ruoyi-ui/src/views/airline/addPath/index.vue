@@ -1,14 +1,15 @@
 <template>
   <div>
     <div v-show="true">
-      <baidu-map class="map" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true" :double-click-zoom="false" @tilesloaded="mapInit">
+<!--      <baidu-map class="map" :center="center" :zoom="zoom" @ready="handler" :scroll-wheel-zoom="true" :double-click-zoom="false">-->
+      <baidu-map class="map" :center="dataForAddOrEditAirLinePath.map_center" :zoom="dataForAddOrEditAirLinePath.zoom" @ready="handler" :scroll-wheel-zoom="true" :double-click-zoom="false">
         <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
         <bm-map-type :map-types="['BMAP_NORMAL_MAP','BMAP_SATELLITE_MAP','BMAP_HYBRID_MAP']" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
         <bm-geolocation :showAddressBar="true" :autoLocation="true" anchor="BMAP_ANCHOR_BOTTOM_RIGHT"></bm-geolocation>
 
-        <bm-polyline :path="airLinePath" stroke-color="red" :stroke-opacity="1" :stroke-weight="5" :editing="true" @lineupdate="updatePolylinePath"></bm-polyline>
+        <bm-polyline :path="dataForAddOrEditAirLinePath.airlinePoints" stroke-color="red" :stroke-opacity="1" :stroke-weight="5" :editing="true" @lineupdate="updatePolylinePath"></bm-polyline>
 
-        <div v-for="item in airLinePath">
+        <div v-for="item in dataForAddOrEditAirLinePath.airlinePoints">
           <bm-marker :position="item" :dragging="true" @dragstart="dragstartCB" @dragend="dragendCB" >
             <bm-context-menu>
               <bm-context-menu-item :callback="delete_a_point" text="删除该点"></bm-context-menu-item>
@@ -28,21 +29,22 @@
 
     <el-form ref="form" :model="form" :rules="rules" label-width="80px">
       <el-form-item label="航线名称" prop="airlineName">
-        <el-input v-model="form.airlineName" placeholder="请输入航线名词" />
+        <el-input v-model="dataForAddOrEditAirLinePath.airlineName" placeholder="请输入航线名词" />
       </el-form-item>
 
       <el-form-item label="航线说明" prop="airlineExplain">
-        <el-input v-model="form.airlineExplain" placeholder="请输入航线说明" />
+        <el-input v-model="dataForAddOrEditAirLinePath.airlineExplain" placeholder="请输入航线说明" />
       </el-form-item>
       <el-form-item label="航线距离" prop="airlineDistance">
-        <el-input v-model="form.airlineDistance" :disabled="true" placeholder="航线距离" />
+        <el-input v-model="dataForAddOrEditAirLinePath.airlineDistance" :disabled="true" placeholder="航线距离" />
       </el-form-item>
-      <el-form-item label="航线节点" prop="airlinePoints" >
-        <el-input v-model="form.airlinePoints" :disabled="true" placeholder="航线节点数据" />
-      </el-form-item>
+<!--      <el-form-item label="航线节点" prop="airlinePoints" >-->
+<!--        <el-input v-model="dataForAddOrEditAirLinePath.airlinePoints" :disabled="true" placeholder="航线节点数据" />-->
+<!--      </el-form-item>-->
     </el-form>
     <div slot="footer" class="dialog-footer" style="text-align:center;">
       <el-button  type="primary" @click="submitForm">确 定</el-button>
+      <el-button  type="primary" @click="click">log</el-button>
     </div>
 
 
@@ -64,7 +66,9 @@ Vue.use(BaiduMap, {
 
 export default {
   name: "addPath",
-  props:["form"],
+  props:{
+    dataForAddOrEditAirLinePath:Object,
+  },
   data () {
     return {
       center: {lng: 0, lat: 0}, // 经纬度
@@ -73,26 +77,33 @@ export default {
       endPoint:{lng: 0, lat: 0},
 
       polylinePath: [],
-      airLinePath:[],
+
       dragPoint: {},
       dragPointIndex:null,
 
       deletePoint:{},
 
       // airlineDistance:0,
-
+      // airLinePath:[],
       pointList:[],
       isSetStartPoint: false,
       isSetEndPoint: false,
       // 表单参数
-
+      form: {
+        id: null,
+        airlineName: null,
+        airlineDistance: null,
+        airlineExplain: null,
+        airlinePoints: [],
+        createTime: null
+      },
       // 表单校验
       rules: {
         airlineName: [
           { required: true, message: "航线名词不能为空", trigger: "blur" }
         ],
         airlineDistance: [
-          { required: true, message: "航线距离不能为空", trigger: "blur" }
+          { required: false, message: "航线距离不能为空", trigger: "blur" }
         ],
         airlineExplain: [
           { required: true, message: "航线说明不能为空", trigger: "blur" }
@@ -106,52 +117,33 @@ export default {
       },
     }
   }, //end of data
-computed:{
-  airLinePath(){
-    return [];
-  }
-},
- 
-  beforeUpdate() {
-    this.mapInit();
-  },
+
   methods: {
-    mapInit(){
-      // let map = new BMap.Map('Bmap');
-      console.log(this.airLinePath);
-
-     let arr=JSON.parse(this.form.airlinePoints);
-      for (let index=0;index<arr.length;index++){
-       let lats=arr[index].lat;
-        let  lngs=arr[index].lng;
-        this.$set(this.airLinePath,index,{lat:lats,lng:lngs})
-        console.log(this.airLinePath)
-      }
-
-      console.log(this.airLinePath);
-    },
+    // 取消按钮
     handler ({BMap, map}) {
       this.center.lng = 113.280
       this.center.lat = 23.125
       this.zoom = 15
     },
     updatePolylinePath (e) {
-      this.airLinePath = e.target.getPath();
-      this.form.airlineDistance=this.get_airline_distance(this.airLinePath);
-      this.form.airlinePoints=JSON.stringify(this.airLinePath);
-      console.log(this.form)
+      this.dataForAddOrEditAirLinePath.airlinePoints = e.target.getPath();
+      this.dataForAddOrEditAirLinePath.airlineDistance=this.get_airline_distance(this.dataForAddOrEditAirLinePath.airlinePoints);
+      // this.form.airlinePoints=JSON.stringify(this.dataForAddOrEditAirLinePath.airlinePoints);
+      // this.form.airlineDistance=this.get_airline_distance(this.dataForAddOrEditAirLinePath.airlinePoints);
+      // this.form.airlinePoints=JSON.stringify(this.dataForAddOrEditAirLinePath.airlinePoints);
     },
-    click(point){
-      console.log(point)
+    click(){
+      // console.log(this.airLinePath)
+      console.log(this.form.airlineExplain)
     },
 
     delete_a_point(e){
       this.deletePoint.lat=e.target.point.lat;
       this.deletePoint.lng=e.target.point.lng;
 
-      console.log(this.airLinePath.findIndex(this.findIndexF1));
-      var deletePointIndex = this.airLinePath.findIndex(this.findIndexF1);
-      this.airLinePath.splice(deletePointIndex,1)
+      // console.log(this.airLinePath.findIndex(this.findIndexF1));
+      var deletePointIndex = this.dataForAddOrEditAirLinePath.airlinePoints.findIndex(this.findIndexF1);
+      this.dataForAddOrEditAirLinePath.airlinePoints.splice(deletePointIndex,1)
     },
 
     findIndexF1(airLinePathPoint)
@@ -167,25 +159,30 @@ computed:{
     dragstartCB(e){
       this.dragPoint.lat=e.target.point.lat;
       this.dragPoint.lng=e.target.point.lng;
-      this.dragPointIndex = this.airLinePath.findIndex(this.findIndexF2);
+      this.dragPointIndex = this.dataForAddOrEditAirLinePath.airlinePoints.findIndex(this.findIndexF2);
     },
     dragendCB(e){
-      this.airLinePath[this.dragPointIndex].lat=e.point.lat;
-      this.airLinePath[this.dragPointIndex].lng=e.point.lng;
-      this.form.airlineDistance=this.get_airline_distance(this.airLinePath);
+      this.dataForAddOrEditAirLinePath.airlinePoints[this.dragPointIndex].lat=e.point.lat;
+      this.dataForAddOrEditAirLinePath.airlinePoints[this.dragPointIndex].lng=e.point.lng;
+      this.form.airlineDistance=this.get_airline_distance(this.dataForAddOrEditAirLinePath.airlinePoints);
     },
     set_start_point(e){
-      this.airLinePath.splice(0, 0, e.point);
+      this.dataForAddOrEditAirLinePath.airlinePoints.splice(0, 0, e.point);
     },
     set_end_point(e){
-      this.airLinePath.push(e.point);
-      this.form.airlineDistance=this.get_airline_distance(this.airLinePath);
-      this.form.airlinePoints=JSON.stringify(this.airLinePath);
+      this.dataForAddOrEditAirLinePath.airlinePoints.push(e.point);
+      this.dataForAddOrEditAirLinePath.airlineDistance=this.get_airline_distance(this.dataForAddOrEditAirLinePath.airlinePoints);
+
+      // this.form.airlineDistance=this.get_airline_distance(this.dataForAddOrEditAirLinePath.airlinePoints);
+      // this.form.airlinePoints=JSON.stringify(this.dataForAddOrEditAirLinePath.airlinePoints);
     },
 
 
     submitForm() {
-      this.form.airlinePoints=JSON.stringify(this.airLinePath);
+      this.form.id=this.dataForAddOrEditAirLinePath.id;
+      this.form.airlineName=this.dataForAddOrEditAirLinePath.airlineName;
+      this.form.airlinePoints=JSON.stringify(this.dataForAddOrEditAirLinePath.airlinePoints);
+      this.form.airlineExplain=this.dataForAddOrEditAirLinePath.airlineExplain;
       this.form.airlineDistance=this.form.airlineDistance;
       this.$refs["form"].validate(valid => {
         if (valid) {
@@ -215,7 +212,7 @@ computed:{
      * @param {number} e2
      * @param {number} n2
      */
-    get_2p_pistance(e1, n1, e2, n2){
+    get_2p_distance(e1, n1, e2, n2){
       const R = 6371
       const { sin, cos, asin, PI, hypot } = Math
 
@@ -239,9 +236,9 @@ computed:{
      * @param {list} polyline 航线上的离散点
      */
     get_airline_distance(polyline){
-      var distance = 0;
-      for(var i=0;i<polyline.length-1;i++){
-        distance += this.get_2p_pistance(polyline[i].lng,polyline[i].lat,polyline[i+1].lng,polyline[i+1].lat)*1000;
+      let distance = 0;
+      for(let i=0;i<polyline.length-1;i++){
+        distance += this.get_2p_distance(polyline[i].lng,polyline[i].lat,polyline[i+1].lng,polyline[i+1].lat)*1000;
       }
       return distance
     }
