@@ -4,8 +4,13 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/RuoYi-Cloud/pom.xml" />
-        <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-airline/pom.xml" />
+        <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-missionlevel/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/uav_department/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="11" project-jdk-type="JavaSDK" />

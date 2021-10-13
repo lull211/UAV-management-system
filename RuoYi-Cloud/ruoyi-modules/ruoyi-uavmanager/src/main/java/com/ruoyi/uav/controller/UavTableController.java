@@ -26,7 +26,7 @@ import com.ruoyi.common.core.web.page.TableDataInfo;
  * 无人机信息管理Controller
  * 
  * @author ruoyi
- * @date 2021-10-03
+ * @date 2021-10-08
  */
 @RestController
 @RequestMapping("/uav_manage")

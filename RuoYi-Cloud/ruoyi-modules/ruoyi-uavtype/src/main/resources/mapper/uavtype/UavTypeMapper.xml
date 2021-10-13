@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.uavtype.mapper.UavTypeMapper">
+    
+    <resultMap type="UavType" id="UavTypeResult">
+        <result property="id"    column="id"    />
+        <result property="uavType"    column="uav_type"    />
+        <result property="typeExplain"    column="type_explain"    />
+    </resultMap>
+
+    <sql id="selectUavTypeVo">
+        select id, uav_type, type_explain from uav_type
+    </sql>
+
+    <select id="selectUavTypeList" parameterType="UavType" resultMap="UavTypeResult">
+        <include refid="selectUavTypeVo"/>
+        <where>  
+            <if test="uavType != null  and uavType != ''"> and uav_type like concat('%', #{uavType}, '%')</if>
+            <if test="typeExplain != null  and typeExplain != ''"> and type_explain = #{typeExplain}</if>
+        </where>
+    </select>
+    
+    <select id="selectUavTypeById" parameterType="Long" resultMap="UavTypeResult">
+        <include refid="selectUavTypeVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertUavType" parameterType="UavType" useGeneratedKeys="true" keyProperty="id">
+        insert into uav_type
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uavType != null and uavType != ''">uav_type,</if>
+            <if test="typeExplain != null">type_explain,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uavType != null and uavType != ''">#{uavType},</if>
+            <if test="typeExplain != null">#{typeExplain},</if>
+         </trim>
+    </insert>
+
+    <update id="updateUavType" parameterType="UavType">
+        update uav_type
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="uavType != null and uavType != ''">uav_type = #{uavType},</if>
+            <if test="typeExplain != null">type_explain = #{typeExplain},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUavTypeById" parameterType="Long">
+        delete from uav_type where id = #{id}
+    </delete>
+
+    <delete id="deleteUavTypeByIds" parameterType="String">
+        delete from uav_type where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

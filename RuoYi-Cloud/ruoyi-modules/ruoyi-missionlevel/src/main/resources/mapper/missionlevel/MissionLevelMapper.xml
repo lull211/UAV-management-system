@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.missionlevel.mapper.MissionLevelMapper">
+    
+    <resultMap type="MissionLevel" id="MissionLevelResult">
+        <result property="id"    column="id"    />
+        <result property="level"    column="level"    />
+        <result property="explain1"    column="explain1"    />
+    </resultMap>
+
+    <sql id="selectMissionLevelVo">
+        select id, level, explain1 from mission_level
+    </sql>
+
+    <select id="selectMissionLevelList" parameterType="MissionLevel" resultMap="MissionLevelResult">
+        <include refid="selectMissionLevelVo"/>
+        <where>  
+            <if test="level != null  and level != ''"> and level = #{level}</if>
+            <if test="explain1 != null  and explain1 != ''"> and explain1 = #{explain1}</if>
+        </where>
+    </select>
+    
+    <select id="selectMissionLevelById" parameterType="Long" resultMap="MissionLevelResult">
+        <include refid="selectMissionLevelVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertMissionLevel" parameterType="MissionLevel">
+        insert into mission_level
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="level != null and level != ''">level,</if>
+            <if test="explain1 != null">explain1,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="level != null and level != ''">#{level},</if>
+            <if test="explain1 != null">#{explain1},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMissionLevel" parameterType="MissionLevel">
+        update mission_level
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="level != null and level != ''">level = #{level},</if>
+            <if test="explain1 != null">explain1 = #{explain1},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMissionLevelById" parameterType="Long">
+        delete from mission_level where id = #{id}
+    </delete>
+
+    <delete id="deleteMissionLevelByIds" parameterType="String">
+        delete from mission_level where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

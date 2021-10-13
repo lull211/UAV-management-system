@@ -7,7 +7,7 @@ import com.ruoyi.uav.domain.UavTable;
  * 无人机信息管理Service接口
  * 
  * @author ruoyi
- * @date 2021-10-03
+ * @date 2021-10-08
  */
 public interface IUavTableService 
 {

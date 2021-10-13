@@ -93,7 +93,9 @@ public class SysDictDataController extends BaseController
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysDictData dict)
     {
+        System.out.println(dict);
         dict.setCreateBy(SecurityUtils.getUsername());
+        System.out.println(SecurityUtils.getUsername());
         return toAjax(dictDataService.insertDictData(dict));
     }
 

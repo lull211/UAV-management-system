@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ruoyi-uavdepartment" />
         <module name="ruoyi-uavmanager" />
         <module name="ruoyi-common-datascope" />
         <module name="ruoyi-modules-job" />
@@ -17,6 +18,9 @@
         <module name="ruoyi-common-security" />
         <module name="ruoyi-pilotsmanager" />
         <module name="ruoyi-common-datasource" />
+        <module name="ruoyi-uavkeeper" />
+        <module name="ruoyi-missionlevel" />
+        <module name="ruoyi-uavtype" />
         <module name="ruoyi-gateway" />
         <module name="ruoyi-modules-gen" />
         <module name="ruoyi-visual-monitor" />
@@ -41,13 +45,17 @@
       <module name="ruoyi-common-security" target="1.8" />
       <module name="ruoyi-common-swagger" target="1.8" />
       <module name="ruoyi-gateway" target="1.8" />
+      <module name="ruoyi-missionlevel" target="1.8" />
       <module name="ruoyi-modules" target="1.8" />
       <module name="ruoyi-modules-file" target="1.8" />
       <module name="ruoyi-modules-gen" target="1.8" />
       <module name="ruoyi-modules-job" target="1.8" />
       <module name="ruoyi-modules-system" target="1.8" />
       <module name="ruoyi-pilotsmanager" target="1.8" />
+      <module name="ruoyi-uavdepartment" target="1.8" />
+      <module name="ruoyi-uavkeeper" target="1.8" />
       <module name="ruoyi-uavmanager" target="1.8" />
+      <module name="ruoyi-uavtype" target="1.8" />
       <module name="ruoyi-visual" target="1.8" />
       <module name="ruoyi-visual-monitor" target="1.8" />
     </bytecodeTargetLevel>

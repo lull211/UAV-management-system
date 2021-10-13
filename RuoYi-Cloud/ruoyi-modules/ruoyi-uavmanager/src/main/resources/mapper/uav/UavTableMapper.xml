@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="uavInsurance"    column="uav_insurance"    />
         <result property="uavAssurance"    column="uav_assurance"    />
         <result property="uavMaintenance"    column="uav_maintenance"    />
-        <result property="uavKeeper"    column="uav_keeper"    />
+        <result property="uavKeeperId"    column="uav_keeper_id"    />
         <result property="uavPut"    column="uav_put"    />
         <result property="uavUsers"    column="uav_users"    />
         <result property="uavAttachment"    column="uav_attachment"    />
@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectUavTableVo">
-        select id, uav_unit, uav_name, uav_type, uav_number, uav_images, uav_sn, uav_flight_number, uav_beiqin_level, uav_enabled, uav_insurance, uav_assurance, uav_maintenance, uav_keeper, uav_put, uav_users, uav_attachment, delete_flag from uav_table
+        select id, uav_unit, uav_name, uav_type, uav_number, uav_images, uav_sn, uav_flight_number, uav_beiqin_level, uav_enabled, uav_insurance, uav_assurance, uav_maintenance, uav_keeper_id, uav_put, uav_users, uav_attachment, delete_flag from uav_table
     </sql>
 
     <select id="selectUavTableList" parameterType="UavTable" resultMap="UavTableResult">
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="uavInsurance != null "> and uav_insurance = #{uavInsurance}</if>
             <if test="uavAssurance != null "> and uav_assurance = #{uavAssurance}</if>
             <if test="uavMaintenance != null "> and uav_maintenance = #{uavMaintenance}</if>
-            <if test="uavKeeper != null  and uavKeeper != ''"> and uav_keeper = #{uavKeeper}</if>
+            <if test="uavKeeperId != null "> and uav_keeper_id = #{uavKeeperId}</if>
             <if test="uavPut != null "> and uav_put = #{uavPut}</if>
             <if test="uavUsers != null  and uavUsers != ''"> and uav_users = #{uavUsers}</if>
             <if test="uavAttachment != null  and uavAttachment != ''"> and uav_attachment = #{uavAttachment}</if>
@@ -72,7 +72,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="uavInsurance != null">uav_insurance,</if>
             <if test="uavAssurance != null">uav_assurance,</if>
             <if test="uavMaintenance != null">uav_maintenance,</if>
-            <if test="uavKeeper != null">uav_keeper,</if>
+            <if test="uavKeeperId != null">uav_keeper_id,</if>
             <if test="uavPut != null">uav_put,</if>
             <if test="uavUsers != null and uavUsers != ''">uav_users,</if>
             <if test="uavAttachment != null">uav_attachment,</if>
@@ -91,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="uavInsurance != null">#{uavInsurance},</if>
             <if test="uavAssurance != null">#{uavAssurance},</if>
             <if test="uavMaintenance != null">#{uavMaintenance},</if>
-            <if test="uavKeeper != null">#{uavKeeper},</if>
+            <if test="uavKeeperId != null">#{uavKeeperId},</if>
             <if test="uavPut != null">#{uavPut},</if>
             <if test="uavUsers != null and uavUsers != ''">#{uavUsers},</if>
             <if test="uavAttachment != null">#{uavAttachment},</if>
@@ -114,7 +114,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="uavInsurance != null">uav_insurance = #{uavInsurance},</if>
             <if test="uavAssurance != null">uav_assurance = #{uavAssurance},</if>
             <if test="uavMaintenance != null">uav_maintenance = #{uavMaintenance},</if>
-            <if test="uavKeeper != null">uav_keeper = #{uavKeeper},</if>
+            <if test="uavKeeperId != null">uav_keeper_id = #{uavKeeperId},</if>
             <if test="uavPut != null">uav_put = #{uavPut},</if>
             <if test="uavUsers != null and uavUsers != ''">uav_users = #{uavUsers},</if>
             <if test="uavAttachment != null">uav_attachment = #{uavAttachment},</if>

@@ -11,7 +11,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * 无人机信息管理对象 uav_table
  * 
  * @author ruoyi
- * @date 2021-10-03
+ * @date 2021-10-08
  */
 public class UavTable extends BaseEntity
 {
@@ -71,9 +71,9 @@ public class UavTable extends BaseEntity
     @Excel(name = "无人机保养到期时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date uavMaintenance;
 
-    /** 无人机保管员 */
-    @Excel(name = "无人机保管员")
-    private String uavKeeper;
+    /** 无人机保管员id */
+    @Excel(name = "无人机保管员id")
+    private Long uavKeeperId;
 
     /** 无人机入库时间 */
     private Date uavPut;
@@ -89,10 +89,6 @@ public class UavTable extends BaseEntity
     /** 删除码 */
     @Excel(name = "删除码")
     private Long deleteFlag;
-
-    /** 无人机保管员电话 */
-    @Excel(name = "无人机保管员电话")
-    private String keeperPhone;
 
     public void setId(Long id) 
     {
@@ -211,14 +207,14 @@ public class UavTable extends BaseEntity
     {
         return uavMaintenance;
     }
-    public void setUavKeeper(String uavKeeper) 
+    public void setUavKeeperId(Long uavKeeperId) 
     {
-        this.uavKeeper = uavKeeper;
+        this.uavKeeperId = uavKeeperId;
     }
 
-    public String getUavKeeper() 
+    public Long getUavKeeperId() 
     {
-        return uavKeeper;
+        return uavKeeperId;
     }
     public void setUavPut(Date uavPut) 
     {
@@ -256,15 +252,6 @@ public class UavTable extends BaseEntity
     {
         return deleteFlag;
     }
-    public void setKeeperPhone(String keeperPhone) 
-    {
-        this.keeperPhone = keeperPhone;
-    }
-
-    public String getKeeperPhone() 
-    {
-        return keeperPhone;
-    }
 
     @Override
     public String toString() {
@@ -282,12 +269,11 @@ public class UavTable extends BaseEntity
             .append("uavInsurance", getUavInsurance())
             .append("uavAssurance", getUavAssurance())
             .append("uavMaintenance", getUavMaintenance())
-            .append("uavKeeper", getUavKeeper())
+            .append("uavKeeperId", getUavKeeperId())
             .append("uavPut", getUavPut())
             .append("uavUsers", getUavUsers())
             .append("uavAttachment", getUavAttachment())
             .append("deleteFlag", getDeleteFlag())
-            .append("keeperPhone", getKeeperPhone())
             .toString();
     }
 }
