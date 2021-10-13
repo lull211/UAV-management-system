@@ -183,7 +183,7 @@ export default {
       this.form.airlineName=this.dataForAddOrEditAirLinePath.airlineName;
       this.form.airlinePoints=JSON.stringify(this.dataForAddOrEditAirLinePath.airlinePoints);
       this.form.airlineExplain=this.dataForAddOrEditAirLinePath.airlineExplain;
-      this.form.airlineDistance=this.form.airlineDistance;
+      this.form.airlineDistance=this.dataForAddOrEditAirLinePath.airlineDistance;
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.id != null) {
