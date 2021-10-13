@@ -145,6 +145,7 @@ export default {
     },
     // 上传成功回调
     handleUploadSuccess(res, file) {
+      console.log(res)
       this.$message.success("上传成功");
       this.fileList.push({ name: res.data.url, url: res.data.url });
       this.$emit("input", this.listToString(this.fileList));

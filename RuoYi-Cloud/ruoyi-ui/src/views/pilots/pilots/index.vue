@@ -293,7 +293,18 @@
           </el-select>
         </el-form-item>
         <el-form-item label="照片" prop="driverPhoto">
-          <el-input v-model="form.driverPhoto" placeholder="请输入驾驶员照片" />
+<!--          <el-input v-model="form.driverPhoto" placeholder="请输入驾驶员照片" />-->
+          <el-upload
+            class="upload-demo"
+            action="http://192.168.0.173:8083/test"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :file-list="fileList"
+            list-type="picture">
+            <el-button size="small" type="primary">点击上传</el-button>
+            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+          </el-upload>
+<!--          action="https://jsonplaceholder.typicode.com/posts/"-->
         </el-form-item>
         <el-form-item label="附件" prop="driverExtral">
           <el-input v-model="form.driverExtral" placeholder="请输入驾驶员附件" />
@@ -331,6 +342,7 @@ export default {
   dicts: ['sys_pilots_department', 'sys_pilots_craft_sort', 'sys_pilots_state', 'sys_pilots_gender'],
   data() {
     return {
+      fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}],
       // 遮罩层
       loading: true,
       // 选中数组
@@ -360,13 +372,14 @@ export default {
         driverAircraftSoft: [],
         driverAircraftSoftHelp: null,
         driverState: null,
-        driverPhoto: null,
+
         driverExtral: null,
         trainingTime: null,
         flyingTime: null,
         sumTime: null,
         deleteFlag: null,
         driverGender: null,
+        driverPhoto: '',
       },
       // 表单参数
       form: {},
@@ -399,6 +412,20 @@ export default {
     this.getList();
   },
   methods: {
+
+    /** 上传照片 */
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePreview(file) {
+      console.log(file);
+    },
+    handleExceed(files, fileList) {
+      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+    },
+    beforeRemove(file, fileList) {
+      return this.$confirm(`确定移除 ${ file.name }？`);
+    },
     /** 查询驾驶员管理列表 */
     getList() {
       this.loading = true;
@@ -543,4 +570,5 @@ export default {
   padding: 20px 0px;  //文本离开背景框距离 上下 左右
   color:black;
 }
+
 </style>

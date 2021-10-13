@@ -78,7 +78,9 @@ public class SysDictTypeController extends BaseController
         {
             return AjaxResult.error("新增字典'" + dict.getDictName() + "'失败，字典类型已存在");
         }
+        System.out.println(dict);
         dict.setCreateBy(SecurityUtils.getUsername());
+        System.out.println(SecurityUtils.getUsername());
         return toAjax(dictTypeService.insertDictType(dict));
     }
 
@@ -90,10 +92,12 @@ public class SysDictTypeController extends BaseController
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysDictType dict)
     {
+        System.out.println(dict);
         if (UserConstants.NOT_UNIQUE.equals(dictTypeService.checkDictTypeUnique(dict)))
         {
             return AjaxResult.error("修改字典'" + dict.getDictName() + "'失败，字典类型已存在");
         }
+        System.out.println(SecurityUtils.getUsername());
         dict.setUpdateBy(SecurityUtils.getUsername());
         return toAjax(dictTypeService.updateDictType(dict));
     }

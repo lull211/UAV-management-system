@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.uav.mapper.UavTableMapper">
+    
+    <resultMap type="UavTable" id="UavTableResult">
+        <result property="id"    column="id"    />
+        <result property="uavUnit"    column="uav_unit"    />
+        <result property="uavName"    column="uav_name"    />
+        <result property="uavType"    column="uav_type"    />
+        <result property="uavNumber"    column="uav_number"    />
+        <result property="uavImages"    column="uav_images"    />
+        <result property="uavSn"    column="uav_sn"    />
+        <result property="uavFlightNumber"    column="uav_flight_number"    />
+        <result property="uavBeiqinLevel"    column="uav_beiqin_level"    />
+        <result property="uavEnabled"    column="uav_enabled"    />
+        <result property="uavInsurance"    column="uav_insurance"    />
+        <result property="uavAssurance"    column="uav_assurance"    />
+        <result property="uavMaintenance"    column="uav_maintenance"    />
+        <result property="uavKeeperId"    column="uav_keeper_id"    />
+        <result property="uavPut"    column="uav_put"    />
+        <result property="uavUsers"    column="uav_users"    />
+        <result property="uavAttachment"    column="uav_attachment"    />
+        <result property="deleteFlag"    column="delete_flag"    />
+    </resultMap>
+
+    <sql id="selectUavTableVo">
+        select id, uav_unit, uav_name, uav_type, uav_number, uav_images, uav_sn, uav_flight_number, uav_beiqin_level, uav_enabled, uav_insurance, uav_assurance, uav_maintenance, uav_keeper_id, uav_put, uav_users, uav_attachment, delete_flag from uav_table
+    </sql>
+
+    <select id="selectUavTableList" parameterType="UavTable" resultMap="UavTableResult">
+        <include refid="selectUavTableVo"/>
+        <where>  
+            <if test="uavUnit != null  and uavUnit != ''"> and uav_unit = #{uavUnit}</if>
+            <if test="uavName != null  and uavName != ''"> and uav_name like concat('%', #{uavName}, '%')</if>
+            <if test="uavType != null  and uavType != ''"> and uav_type = #{uavType}</if>
+            <if test="uavNumber != null  and uavNumber != ''"> and uav_number = #{uavNumber}</if>
+            <if test="uavImages != null  and uavImages != ''"> and uav_images = #{uavImages}</if>
+            <if test="uavSn != null  and uavSn != ''"> and uav_sn = #{uavSn}</if>
+            <if test="uavFlightNumber != null  and uavFlightNumber != ''"> and uav_flight_number = #{uavFlightNumber}</if>
+            <if test="uavBeiqinLevel != null  and uavBeiqinLevel != ''"> and uav_beiqin_level = #{uavBeiqinLevel}</if>
+            <if test="uavEnabled != null "> and uav_enabled = #{uavEnabled}</if>
+            <if test="uavInsurance != null "> and uav_insurance = #{uavInsurance}</if>
+            <if test="uavAssurance != null "> and uav_assurance = #{uavAssurance}</if>
+            <if test="uavMaintenance != null "> and uav_maintenance = #{uavMaintenance}</if>
+            <if test="uavKeeperId != null "> and uav_keeper_id = #{uavKeeperId}</if>
+            <if test="uavPut != null "> and uav_put = #{uavPut}</if>
+            <if test="uavUsers != null  and uavUsers != ''"> and uav_users = #{uavUsers}</if>
+            <if test="uavAttachment != null  and uavAttachment != ''"> and uav_attachment = #{uavAttachment}</if>
+            <if test="deleteFlag != null "> and delete_flag = #{deleteFlag}</if>
+        </where>
+    </select>
+    
+    <select id="selectUavTableById" parameterType="Long" resultMap="UavTableResult">
+        <include refid="selectUavTableVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertUavTable" parameterType="UavTable" useGeneratedKeys="true" keyProperty="id">
+        insert into uav_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uavUnit != null and uavUnit != ''">uav_unit,</if>
+            <if test="uavName != null and uavName != ''">uav_name,</if>
+            <if test="uavType != null and uavType != ''">uav_type,</if>
+            <if test="uavNumber != null and uavNumber != ''">uav_number,</if>
+            <if test="uavImages != null and uavImages != ''">uav_images,</if>
+            <if test="uavSn != null and uavSn != ''">uav_sn,</if>
+            <if test="uavFlightNumber != null and uavFlightNumber != ''">uav_flight_number,</if>
+            <if test="uavBeiqinLevel != null">uav_beiqin_level,</if>
+            <if test="uavEnabled != null">uav_enabled,</if>
+            <if test="uavInsurance != null">uav_insurance,</if>
+            <if test="uavAssurance != null">uav_assurance,</if>
+            <if test="uavMaintenance != null">uav_maintenance,</if>
+            <if test="uavKeeperId != null">uav_keeper_id,</if>
+            <if test="uavPut != null">uav_put,</if>
+            <if test="uavUsers != null and uavUsers != ''">uav_users,</if>
+            <if test="uavAttachment != null">uav_attachment,</if>
+            <if test="deleteFlag != null">delete_flag,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uavUnit != null and uavUnit != ''">#{uavUnit},</if>
+            <if test="uavName != null and uavName != ''">#{uavName},</if>
+            <if test="uavType != null and uavType != ''">#{uavType},</if>
+            <if test="uavNumber != null and uavNumber != ''">#{uavNumber},</if>
+            <if test="uavImages != null and uavImages != ''">#{uavImages},</if>
+            <if test="uavSn != null and uavSn != ''">#{uavSn},</if>
+            <if test="uavFlightNumber != null and uavFlightNumber != ''">#{uavFlightNumber},</if>
+            <if test="uavBeiqinLevel != null">#{uavBeiqinLevel},</if>
+            <if test="uavEnabled != null">#{uavEnabled},</if>
+            <if test="uavInsurance != null">#{uavInsurance},</if>
+            <if test="uavAssurance != null">#{uavAssurance},</if>
+            <if test="uavMaintenance != null">#{uavMaintenance},</if>
+            <if test="uavKeeperId != null">#{uavKeeperId},</if>
+            <if test="uavPut != null">#{uavPut},</if>
+            <if test="uavUsers != null and uavUsers != ''">#{uavUsers},</if>
+            <if test="uavAttachment != null">#{uavAttachment},</if>
+            <if test="deleteFlag != null">#{deleteFlag},</if>
+         </trim>
+    </insert>
+
+    <update id="updateUavTable" parameterType="UavTable">
+        update uav_table
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="uavUnit != null and uavUnit != ''">uav_unit = #{uavUnit},</if>
+            <if test="uavName != null and uavName != ''">uav_name = #{uavName},</if>
+            <if test="uavType != null and uavType != ''">uav_type = #{uavType},</if>
+            <if test="uavNumber != null and uavNumber != ''">uav_number = #{uavNumber},</if>
+            <if test="uavImages != null and uavImages != ''">uav_images = #{uavImages},</if>
+            <if test="uavSn != null and uavSn != ''">uav_sn = #{uavSn},</if>
+            <if test="uavFlightNumber != null and uavFlightNumber != ''">uav_flight_number = #{uavFlightNumber},</if>
+            <if test="uavBeiqinLevel != null">uav_beiqin_level = #{uavBeiqinLevel},</if>
+            <if test="uavEnabled != null">uav_enabled = #{uavEnabled},</if>
+            <if test="uavInsurance != null">uav_insurance = #{uavInsurance},</if>
+            <if test="uavAssurance != null">uav_assurance = #{uavAssurance},</if>
+            <if test="uavMaintenance != null">uav_maintenance = #{uavMaintenance},</if>
+            <if test="uavKeeperId != null">uav_keeper_id = #{uavKeeperId},</if>
+            <if test="uavPut != null">uav_put = #{uavPut},</if>
+            <if test="uavUsers != null and uavUsers != ''">uav_users = #{uavUsers},</if>
+            <if test="uavAttachment != null">uav_attachment = #{uavAttachment},</if>
+            <if test="deleteFlag != null">delete_flag = #{deleteFlag},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUavTableById" parameterType="Long">
+        delete from uav_table where id = #{id}
+    </delete>
+
+    <delete id="deleteUavTableByIds" parameterType="String">
+        delete from uav_table where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

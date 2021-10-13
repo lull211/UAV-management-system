@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.missionlist.mapper.TaskListMapper">
+    
+    <resultMap type="TaskList" id="TaskListResult">
+        <result property="taskName"    column="task_name"    />
+        <result property="taskType"    column="task_type"    />
+        <result property="taskTime"    column="task_time"    />
+        <result property="taskDrone"    column="task_drone"    />
+        <result property="taskDriver"    column="task_driver"    />
+        <result property="driverPhone"    column="driver_phone"    />
+        <result property="id"    column="id"    />
+        <result property="taskAirline"    column="task_airline"    />
+        <result property="taskImages"    column="task_images"    />
+        <result property="taskAddress"    column="task_address"    />
+        <result property="deleteCode"    column="delete_code"    />
+        <result property="extraExplain"    column="extra_explain"    />
+    </resultMap>
+
+    <sql id="selectTaskListVo">
+        select task_name, task_type, task_time, task_drone, task_driver, driver_phone, id, task_airline, task_images, task_address, delete_code, extra_explain from task_list
+    </sql>
+
+    <select id="selectTaskListList" parameterType="TaskList" resultMap="TaskListResult">
+        <include refid="selectTaskListVo"/>
+        <where>  
+            <if test="taskName != null  and taskName != ''"> and task_name like concat('%', #{taskName}, '%')</if>
+            <if test="taskType != null  and taskType != ''"> and task_type = #{taskType}</if>
+            <if test="taskTime != null "> and task_time = #{taskTime}</if>
+            <if test="taskDrone != null  and taskDrone != ''"> and task_drone = #{taskDrone}</if>
+            <if test="taskDriver != null  and taskDriver != ''"> and task_driver like concat('%', #{taskDriver}, '%')</if>
+            <if test="driverPhone != null  and driverPhone != ''"> and driver_phone like concat('%', #{driverPhone}, '%')</if>
+            <if test="taskAirline != null  and taskAirline != ''"> and task_airline = #{taskAirline}</if>
+            <if test="taskImages != null  and taskImages != ''"> and task_images = #{taskImages}</if>
+            <if test="taskAddress != null  and taskAddress != ''"> and task_address = #{taskAddress}</if>
+            <if test="deleteCode != null "> and delete_code = #{deleteCode}</if>
+            <if test="extraExplain != null  and extraExplain != ''"> and extra_explain = #{extraExplain}</if>
+        </where>
+    </select>
+    
+    <select id="selectTaskListById" parameterType="Long" resultMap="TaskListResult">
+        <include refid="selectTaskListVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTaskList" parameterType="TaskList" useGeneratedKeys="true" keyProperty="id">
+        insert into task_list
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="taskName != null and taskName != ''">task_name,</if>
+            <if test="taskType != null and taskType != ''">task_type,</if>
+            <if test="taskTime != null">task_time,</if>
+            <if test="taskDrone != null and taskDrone != ''">task_drone,</if>
+            <if test="taskDriver != null and taskDriver != ''">task_driver,</if>
+            <if test="driverPhone != null and driverPhone != ''">driver_phone,</if>
+            <if test="taskAirline != null">task_airline,</if>
+            <if test="taskImages != null">task_images,</if>
+            <if test="taskAddress != null">task_address,</if>
+            <if test="deleteCode != null">delete_code,</if>
+            <if test="extraExplain != null">extra_explain,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="taskName != null and taskName != ''">#{taskName},</if>
+            <if test="taskType != null and taskType != ''">#{taskType},</if>
+            <if test="taskTime != null">#{taskTime},</if>
+            <if test="taskDrone != null and taskDrone != ''">#{taskDrone},</if>
+            <if test="taskDriver != null and taskDriver != ''">#{taskDriver},</if>
+            <if test="driverPhone != null and driverPhone != ''">#{driverPhone},</if>
+            <if test="taskAirline != null">#{taskAirline},</if>
+            <if test="taskImages != null">#{taskImages},</if>
+            <if test="taskAddress != null">#{taskAddress},</if>
+            <if test="deleteCode != null">#{deleteCode},</if>
+            <if test="extraExplain != null">#{extraExplain},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTaskList" parameterType="TaskList">
+        update task_list
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="taskName != null and taskName != ''">task_name = #{taskName},</if>
+            <if test="taskType != null and taskType != ''">task_type = #{taskType},</if>
+            <if test="taskTime != null">task_time = #{taskTime},</if>
+            <if test="taskDrone != null and taskDrone != ''">task_drone = #{taskDrone},</if>
+            <if test="taskDriver != null and taskDriver != ''">task_driver = #{taskDriver},</if>
+            <if test="driverPhone != null and driverPhone != ''">driver_phone = #{driverPhone},</if>
+            <if test="taskAirline != null">task_airline = #{taskAirline},</if>
+            <if test="taskImages != null">task_images = #{taskImages},</if>
+            <if test="taskAddress != null">task_address = #{taskAddress},</if>
+            <if test="deleteCode != null">delete_code = #{deleteCode},</if>
+            <if test="extraExplain != null">extra_explain = #{extraExplain},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTaskListById" parameterType="Long">
+        delete from task_list where id = #{id}
+    </delete>
+
+    <delete id="deleteTaskListByIds" parameterType="String">
+        delete from task_list where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
