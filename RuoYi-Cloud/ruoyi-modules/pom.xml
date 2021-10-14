@@ -16,6 +16,7 @@
         <module>ruoyi-pilotsmanager</module>
         <module>ruoyi-uavtype</module>
         <module>ruoyi-uavdepartment</module>
+        <module>ruoyi-flyrecord</module>
     </modules>
 
     <artifactId>ruoyi-modules</artifactId>

@@ -1,500 +1,157 @@
-00:40:25.633 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,90] - De-registering from Nacos Server now...
-00:40:25.634 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [deregisterService,136] - [DEREGISTER-SERVICE] public deregistering service ruoyi-system with instance: Instance{instanceId='null', ip='192.168.1.249', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={}}
-00:40:25.636 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,110] - De-registration finished.
-00:40:25.637 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,256] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown begin
-00:40:25.637 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,140] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown begin
-00:40:25.637 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,142] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown stop
-00:40:25.638 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,258] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown stop
-00:40:25.638 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,176] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown begin
-00:40:25.638 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,130] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown begin
-00:40:25.940 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,132] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown stop
-00:40:25.940 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,188] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown begin
-00:40:25.940 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,193] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown stop
-00:40:25.940 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,519] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown begin
-00:40:25.940 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,162] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown begin
-00:40:25.940 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,164] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown stop
-00:40:25.941 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialWatcher - [stop,105] - [null] CredentialWatcher is stopped
-00:40:25.941 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialService - [free,99] - [null] CredentialService is freed
-00:40:25.941 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,523] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown stop
-00:40:25.941 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,461] - Shutdown rpc client ,set status to shutdown
-00:40:25.941 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,463] - Shutdown  client event executor java.util.concurrent.ScheduledThreadPoolExecutor@79bd8828[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
-00:40:25.941 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,465] - Close current connection 1634029133760_127.0.0.1_57338
-00:40:25.942 [nacos-grpc-client-executor-5561] INFO  c.a.n.c.r.c.g.GrpcClient - [printIfInfoEnabled,60] - [1634029133760_127.0.0.1_57338]Ignore complete event,isRunning:false,isAbandon=false
-00:40:25.944 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.c.g.GrpcClient - [shutdown,83] - Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@4a9b851[Running, pool size = 5, active threads = 0, queued tasks = 0, completed tasks = 5562]
-00:40:25.944 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,251] - Shutdown grpc redo service executor java.util.concurrent.ScheduledThreadPoolExecutor@79acdfcf[Running, pool size = 1, active threads = 0, queued tasks = 1, completed tasks = 9215]
-00:40:25.944 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,182] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown stop
-00:40:26.166 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,226] - dynamic-datasource start closing ....
-00:40:26.168 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2043] - {dataSource-1} closing ...
-00:40:26.169 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2116] - {dataSource-1} closed
-00:40:26.169 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,230] - dynamic-datasource all closed success,bye
-09:33:38.435 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.0.Final
-09:33:38.984 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,67] - LOCAL_SNAPSHOT_PATH:C:\Users\80952\nacos\config
-09:33:38.986 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 1b00a9b5-4452-47af-a651-d1639e852c04_config-0
-09:33:39.010 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 14 ms to scan 1 urls, producing 3 keys and 6 values 
-09:33:39.024 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 4 keys and 9 values 
-09:33:39.031 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 5 ms to scan 1 urls, producing 3 keys and 10 values 
-09:33:39.039 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
-09:33:39.046 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 1 keys and 7 values 
-09:33:39.052 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 5 ms to scan 1 urls, producing 2 keys and 8 values 
-09:33:39.054 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0]RpcClient init label, labels={module=config, Vipserver-Tag=null, source=sdk, Amory-Tag=null, Location-Tag=null, taskId=0, AppName=unknown}
-09:33:39.055 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$451/0x000000080040dc40
-09:33:39.055 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$452/0x000000080040d040
-09:33:39.055 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0]Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
-09:33:39.055 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0]RpcClient init, ServerListFactory =com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
-09:33:39.061 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-09:33:40.128 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634088819972_127.0.0.1_52777
-09:33:40.128 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0]Notify connected event to listeners.
-09:33:40.129 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-09:33:40.129 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.c.i.ClientWorker - [onConnected,681] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0] Connected,notify listen context...
-09:33:40.129 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1b00a9b5-4452-47af-a651-d1639e852c04_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-09:33:40.154 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,56] - limitTime:5.0
-09:33:40.178 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,53] - isMultiInstance:false
-09:33:40.201 [main] INFO  c.r.s.RuoYiSystemApplication - [logStartupProfileInfo,663] - The following profiles are active: dev
-09:33:41.866 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9201"]
-09:33:41.866 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
-09:33:41.867 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.52]
-09:33:42.032 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
-09:33:42.895 [main] INFO  c.a.d.p.DruidDataSource - [init,990] - {dataSource-1,master} inited
-09:33:42.896 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,169] - dynamic-datasource - add a datasource named [master] success
-09:33:42.896 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,249] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
-09:33:45.340 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
-09:33:45.786 [main] INFO  c.a.n.client.naming - [initNamespaceForNaming,63] - initializer namespace from System Property : null
-09:33:45.787 [main] INFO  c.a.n.client.naming - [call,69] - initializer namespace from System Environment :null
-09:33:45.787 [main] INFO  c.a.n.client.naming - [call,79] - initializer namespace from System Property :null
-09:33:45.797 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 34dcb4cb-2fac-491f-a814-ec1bf81c0cf5
-09:33:45.798 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5]RpcClient init label, labels={module=naming, source=sdk}
-09:33:45.799 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5]RpcClient init, ServerListFactory =com.alibaba.nacos.client.naming.core.ServerListManager
-09:33:45.799 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5]Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
-09:33:45.799 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5]Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
-09:33:45.799 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-09:33:45.927 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634088825807_127.0.0.1_59543
-09:33:45.927 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5]Notify connected event to listeners.
-09:33:45.927 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-09:33:45.927 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.client.naming - [onConnected,76] - Grpc connection connect
-09:33:45.927 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-09:33:47.147 [main] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-09:33:47.153 [main] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-09:33:47.158 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9201"]
-09:33:47.174 [main] INFO  c.a.n.client.naming - [registerService,112] - [REGISTER-SERVICE] public registering service ruoyi-system with instance Instance{instanceId='null', ip='192.168.0.110', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
-09:33:47.179 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP ruoyi-system 192.168.0.110:9201 register finished
-09:33:47.720 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5]receive server push request,request=NotifySubscriberRequest,requestId=15
-09:33:47.721 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.110","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000}]
-09:33:47.722 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.110","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000}]
-09:33:47.723 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [34dcb4cb-2fac-491f-a814-ec1bf81c0cf5]ack server push request,request=NotifySubscriberRequest,requestId=15
-09:33:47.885 [main] INFO  c.r.s.RuoYiSystemApplication - [logStarted,61] - Started RuoYiSystemApplication in 10.008 seconds (JVM running for 11.051)
-09:33:47.892 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system+DEFAULT_GROUP
-09:33:47.893 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system, group=DEFAULT_GROUP, cnt=1
-09:33:47.893 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system.yml+DEFAULT_GROUP
-09:33:47.893 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system.yml, group=DEFAULT_GROUP, cnt=1
-09:33:47.894 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system-dev.yml+DEFAULT_GROUP
-09:33:47.894 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system-dev.yml, group=DEFAULT_GROUP, cnt=1
-09:33:48.151 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [isChangedServiceInfo,235] - new ips(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.110","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000}]
-09:33:48.151 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.110","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000}]
-09:33:48.174 [RMI TCP Connection(2)-192.168.0.110] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-12:20:29.515 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.0.Final
-12:20:30.324 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,67] - LOCAL_SNAPSHOT_PATH:C:\Users\80952\nacos\config
-12:20:30.326 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of ab211db3-34eb-4e7a-a87a-0860100b4822_config-0
-12:20:30.355 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 17 ms to scan 1 urls, producing 3 keys and 6 values 
-12:20:30.373 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 8 ms to scan 1 urls, producing 4 keys and 9 values 
-12:20:30.382 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 3 keys and 10 values 
-12:20:30.391 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
-12:20:30.400 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 1 keys and 7 values 
-12:20:30.407 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 2 keys and 8 values 
-12:20:30.410 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0]RpcClient init label, labels={module=config, Vipserver-Tag=null, source=sdk, Amory-Tag=null, Location-Tag=null, taskId=0, AppName=unknown}
-12:20:30.410 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$451/0x000000080040cc40
-12:20:30.411 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$452/0x000000080040c040
-12:20:30.411 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0]Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
-12:20:30.412 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0]RpcClient init, ServerListFactory =com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
-12:20:30.419 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-12:20:31.738 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634098831574_127.0.0.1_60646
-12:20:31.738 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0]Notify connected event to listeners.
-12:20:31.739 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-12:20:31.739 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.c.i.ClientWorker - [onConnected,681] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0] Connected,notify listen context...
-12:20:31.739 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ab211db3-34eb-4e7a-a87a-0860100b4822_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-12:20:31.763 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,56] - limitTime:5.0
-12:20:31.773 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,53] - isMultiInstance:false
-12:20:31.795 [main] INFO  c.r.s.RuoYiSystemApplication - [logStartupProfileInfo,663] - The following profiles are active: dev
-12:20:33.467 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9201"]
-12:20:33.468 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
-12:20:33.468 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.52]
-12:20:33.637 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
-12:20:34.464 [main] INFO  c.a.d.p.DruidDataSource - [init,990] - {dataSource-1,master} inited
-12:20:34.465 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,169] - dynamic-datasource - add a datasource named [master] success
-12:20:34.465 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,249] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
-12:20:36.900 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
-12:20:37.373 [main] INFO  c.a.n.client.naming - [initNamespaceForNaming,63] - initializer namespace from System Property : null
-12:20:37.374 [main] INFO  c.a.n.client.naming - [call,69] - initializer namespace from System Environment :null
-12:20:37.374 [main] INFO  c.a.n.client.naming - [call,79] - initializer namespace from System Property :null
-12:20:37.384 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 271d8d99-5d30-4130-bf6e-33db01c2103a
-12:20:37.384 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a]RpcClient init label, labels={module=naming, source=sdk}
-12:20:37.385 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a]RpcClient init, ServerListFactory =com.alibaba.nacos.client.naming.core.ServerListManager
-12:20:37.386 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a]Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
-12:20:37.386 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a]Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
-12:20:37.386 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-12:20:37.512 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634098837392_127.0.0.1_54891
-12:20:37.512 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-12:20:37.512 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a]Notify connected event to listeners.
-12:20:37.512 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.client.naming - [onConnected,76] - Grpc connection connect
-12:20:37.512 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-12:20:39.024 [main] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-12:20:39.030 [main] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-12:20:39.033 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9201"]
-12:20:39.047 [main] INFO  c.a.n.client.naming - [registerService,112] - [REGISTER-SERVICE] public registering service ruoyi-system with instance Instance{instanceId='null', ip='192.168.0.110', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
-12:20:39.051 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP ruoyi-system 192.168.0.110:9201 register finished
-12:20:39.622 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a]receive server push request,request=NotifySubscriberRequest,requestId=24
-12:20:39.623 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.110","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
-12:20:39.624 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.110","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
-12:20:39.625 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [271d8d99-5d30-4130-bf6e-33db01c2103a]ack server push request,request=NotifySubscriberRequest,requestId=24
-12:20:39.732 [main] INFO  c.r.s.RuoYiSystemApplication - [logStarted,61] - Started RuoYiSystemApplication in 11.086 seconds (JVM running for 12.637)
-12:20:39.738 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system+DEFAULT_GROUP
-12:20:39.738 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system, group=DEFAULT_GROUP, cnt=1
-12:20:39.738 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system.yml+DEFAULT_GROUP
-12:20:39.739 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system.yml, group=DEFAULT_GROUP, cnt=1
-12:20:39.739 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system-dev.yml+DEFAULT_GROUP
-12:20:39.740 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system-dev.yml, group=DEFAULT_GROUP, cnt=1
-12:20:40.009 [RMI TCP Connection(7)-192.168.0.110] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-12:20:40.023 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [isChangedServiceInfo,235] - new ips(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.110","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
-12:20:40.024 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.110","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
-15:45:38.216 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.0.Final
-15:45:39.659 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,67] - LOCAL_SNAPSHOT_PATH:C:\Users\Administrator\nacos\config
-15:45:39.661 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0
-15:45:39.696 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 20 ms to scan 1 urls, producing 3 keys and 6 values 
-15:45:39.731 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 22 ms to scan 1 urls, producing 4 keys and 9 values 
-15:45:39.753 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 18 ms to scan 1 urls, producing 3 keys and 10 values 
-15:45:39.765 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
-15:45:39.776 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 10 ms to scan 1 urls, producing 1 keys and 7 values 
-15:45:39.787 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 9 ms to scan 1 urls, producing 2 keys and 8 values 
-15:45:39.789 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0]RpcClient init label, labels={module=config, Vipserver-Tag=null, source=sdk, Amory-Tag=null, Location-Tag=null, taskId=0, AppName=unknown}
-15:45:39.790 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$451/0x000000080040cc40
-15:45:39.790 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$452/0x000000080040c040
-15:45:39.790 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0]Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
-15:45:39.791 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0]RpcClient init, ServerListFactory =com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
-15:45:39.797 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-15:45:42.513 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634111142332_127.0.0.1_49268
-15:45:42.513 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0]Notify connected event to listeners.
-15:45:42.514 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-15:45:42.514 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.c.i.ClientWorker - [onConnected,681] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0] Connected,notify listen context...
-15:45:42.514 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [9bdf759d-29b9-4c11-898a-4aa6b9c47471_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-15:45:42.552 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,56] - limitTime:5.0
-15:45:42.566 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,53] - isMultiInstance:false
-15:45:42.603 [main] INFO  c.r.s.RuoYiSystemApplication - [logStartupProfileInfo,663] - The following profiles are active: dev
-15:45:45.127 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9201"]
-15:45:45.127 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
-15:45:45.127 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.52]
-15:45:45.328 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
-15:45:46.552 [main] INFO  c.a.d.p.DruidDataSource - [init,990] - {dataSource-1,master} inited
-15:45:46.553 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,169] - dynamic-datasource - add a datasource named [master] success
-15:45:46.553 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,249] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
-15:45:50.264 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
-15:45:51.141 [main] INFO  c.a.n.client.naming - [initNamespaceForNaming,63] - initializer namespace from System Property : null
-15:45:51.142 [main] INFO  c.a.n.client.naming - [call,69] - initializer namespace from System Environment :null
-15:45:51.142 [main] INFO  c.a.n.client.naming - [call,79] - initializer namespace from System Property :null
-15:45:51.151 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 890299e7-464e-4cf0-a738-589a426ae827
-15:45:51.152 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827]RpcClient init label, labels={module=naming, source=sdk}
-15:45:51.153 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827]RpcClient init, ServerListFactory =com.alibaba.nacos.client.naming.core.ServerListManager
-15:45:51.153 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827]Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
-15:45:51.154 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827]Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
-15:45:51.154 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-15:45:51.275 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634111151163_127.0.0.1_49405
-15:45:51.275 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-15:45:51.275 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827]Notify connected event to listeners.
-15:45:51.275 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-15:45:51.275 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.client.naming - [onConnected,76] - Grpc connection connect
-15:45:53.024 [main] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-15:45:53.030 [main] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-15:45:53.034 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9201"]
-15:45:53.047 [main] INFO  c.a.n.client.naming - [registerService,112] - [REGISTER-SERVICE] public registering service ruoyi-system with instance Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
-15:45:53.052 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP ruoyi-system 192.168.0.173:9201 register finished
-15:45:53.584 [nacos-grpc-client-executor-7] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827]receive server push request,request=NotifySubscriberRequest,requestId=44
-15:45:53.585 [nacos-grpc-client-executor-7] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
-15:45:53.585 [nacos-grpc-client-executor-7] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
-15:45:53.586 [nacos-grpc-client-executor-7] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [890299e7-464e-4cf0-a738-589a426ae827]ack server push request,request=NotifySubscriberRequest,requestId=44
-15:45:54.025 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [isChangedServiceInfo,235] - new ips(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
-15:45:54.025 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
-15:45:54.221 [main] INFO  c.r.s.RuoYiSystemApplication - [logStarted,61] - Started RuoYiSystemApplication in 17.42 seconds (JVM running for 19.331)
-15:45:54.228 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system+DEFAULT_GROUP
-15:45:54.230 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system, group=DEFAULT_GROUP, cnt=1
-15:45:54.230 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system.yml+DEFAULT_GROUP
-15:45:54.230 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system.yml, group=DEFAULT_GROUP, cnt=1
-15:45:54.232 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system-dev.yml+DEFAULT_GROUP
-15:45:54.232 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system-dev.yml, group=DEFAULT_GROUP, cnt=1
-15:45:55.012 [RMI TCP Connection(2)-192.168.0.173] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-15:58:34.402 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,90] - De-registering from Nacos Server now...
-15:58:34.402 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [deregisterService,136] - [DEREGISTER-SERVICE] public deregistering service ruoyi-system with instance: Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={}}
-15:58:34.404 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,110] - De-registration finished.
-15:58:34.404 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,256] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown begin
-15:58:34.405 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,140] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown begin
-15:58:34.405 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,142] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown stop
-15:58:34.405 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,258] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown stop
-15:58:34.405 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,176] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown begin
-15:58:34.405 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,130] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown begin
-15:58:34.708 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,132] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown stop
-15:58:34.708 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,188] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown begin
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,193] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown stop
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,519] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown begin
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,162] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown begin
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,164] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown stop
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialWatcher - [stop,105] - [null] CredentialWatcher is stopped
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialService - [free,99] - [null] CredentialService is freed
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,523] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown stop
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,461] - Shutdown rpc client ,set status to shutdown
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,463] - Shutdown  client event executor java.util.concurrent.ScheduledThreadPoolExecutor@c0e8127[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
-15:58:34.709 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,465] - Close current connection 1634111151163_127.0.0.1_49405
-15:58:34.710 [nacos-grpc-client-executor-165] INFO  c.a.n.c.r.c.g.GrpcClient - [printIfInfoEnabled,60] - [1634111151163_127.0.0.1_49405]Ignore complete event,isRunning:false,isAbandon=false
-15:58:34.712 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.c.g.GrpcClient - [shutdown,83] - Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@38986523[Running, pool size = 5, active threads = 0, queued tasks = 0, completed tasks = 166]
-15:58:34.712 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,251] - Shutdown grpc redo service executor java.util.concurrent.ScheduledThreadPoolExecutor@14f1f5f9[Running, pool size = 1, active threads = 0, queued tasks = 1, completed tasks = 254]
-15:58:34.712 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,182] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown stop
-15:58:34.932 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,226] - dynamic-datasource start closing ....
-15:58:34.933 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2043] - {dataSource-1} closing ...
-15:58:34.935 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2116] - {dataSource-1} closed
-15:58:34.935 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,230] - dynamic-datasource all closed success,bye
-15:58:42.135 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.0.Final
-15:58:43.043 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,67] - LOCAL_SNAPSHOT_PATH:C:\Users\Administrator\nacos\config
-15:58:43.045 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0
-15:58:43.070 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 16 ms to scan 1 urls, producing 3 keys and 6 values 
-15:58:43.086 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 8 ms to scan 1 urls, producing 4 keys and 9 values 
-15:58:43.095 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 3 keys and 10 values 
-15:58:43.103 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
-15:58:43.111 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 1 keys and 7 values 
-15:58:43.119 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 2 keys and 8 values 
-15:58:43.120 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0]RpcClient init label, labels={module=config, Vipserver-Tag=null, source=sdk, Amory-Tag=null, Location-Tag=null, taskId=0, AppName=unknown}
-15:58:43.121 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$451/0x000000080040cc40
-15:58:43.121 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$452/0x000000080040c040
-15:58:43.122 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0]Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
-15:58:43.122 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0]RpcClient init, ServerListFactory =com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
-15:58:43.127 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-15:58:44.979 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634111924822_127.0.0.1_54724
-15:58:44.980 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-15:58:44.979 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0]Notify connected event to listeners.
-15:58:44.981 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.c.i.ClientWorker - [onConnected,681] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0] Connected,notify listen context...
-15:58:44.981 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [1c11174e-2d66-48fb-afdd-50edcdbda8b4_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-15:58:45.028 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,56] - limitTime:5.0
-15:58:45.038 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,53] - isMultiInstance:false
-15:58:45.063 [main] INFO  c.r.s.RuoYiSystemApplication - [logStartupProfileInfo,663] - The following profiles are active: dev
-15:58:46.738 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9201"]
-15:58:46.739 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
-15:58:46.739 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.52]
-15:58:46.860 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
-15:58:50.909 [main] INFO  c.a.d.p.DruidDataSource - [init,990] - {dataSource-1,master} inited
-15:58:50.909 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,169] - dynamic-datasource - add a datasource named [master] success
-15:58:50.909 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,249] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
-15:58:53.781 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
-15:58:54.533 [main] INFO  c.a.n.client.naming - [initNamespaceForNaming,63] - initializer namespace from System Property : null
-15:58:54.534 [main] INFO  c.a.n.client.naming - [call,69] - initializer namespace from System Environment :null
-15:58:54.534 [main] INFO  c.a.n.client.naming - [call,79] - initializer namespace from System Property :null
-15:58:54.544 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of bd1e2370-e722-4f92-ac5f-1e68489e74b8
-15:58:54.544 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8]RpcClient init label, labels={module=naming, source=sdk}
-15:58:54.545 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8]RpcClient init, ServerListFactory =com.alibaba.nacos.client.naming.core.ServerListManager
-15:58:54.545 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8]Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
-15:58:54.546 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8]Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
-15:58:54.546 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-15:58:54.663 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634111934554_127.0.0.1_57717
-15:58:54.663 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8]Notify connected event to listeners.
-15:58:54.663 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-15:58:54.663 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.client.naming - [onConnected,76] - Grpc connection connect
-15:58:54.663 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-15:58:56.210 [main] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-15:58:56.215 [main] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-15:58:56.218 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9201"]
-15:58:56.230 [main] INFO  c.a.n.client.naming - [registerService,112] - [REGISTER-SERVICE] public registering service ruoyi-system with instance Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
-15:58:56.234 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP ruoyi-system 192.168.0.173:9201 register finished
-15:58:56.764 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8]receive server push request,request=NotifySubscriberRequest,requestId=62
-15:58:56.765 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000}]
-15:58:56.766 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000}]
-15:58:56.766 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [bd1e2370-e722-4f92-ac5f-1e68489e74b8]ack server push request,request=NotifySubscriberRequest,requestId=62
-15:58:57.209 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [isChangedServiceInfo,235] - new ips(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000}]
-15:58:57.210 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000}]
-15:58:57.285 [main] INFO  c.r.s.RuoYiSystemApplication - [logStarted,61] - Started RuoYiSystemApplication in 16.199 seconds (JVM running for 17.406)
-15:58:57.290 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system+DEFAULT_GROUP
-15:58:57.290 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system, group=DEFAULT_GROUP, cnt=1
-15:58:57.290 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system.yml+DEFAULT_GROUP
-15:58:57.291 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system.yml, group=DEFAULT_GROUP, cnt=1
-15:58:57.292 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system-dev.yml+DEFAULT_GROUP
-15:58:57.292 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system-dev.yml, group=DEFAULT_GROUP, cnt=1
-15:58:58.549 [RMI TCP Connection(3)-192.168.0.173] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-16:01:47.265 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,90] - De-registering from Nacos Server now...
-16:01:47.265 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [deregisterService,136] - [DEREGISTER-SERVICE] public deregistering service ruoyi-system with instance: Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={}}
-16:01:47.267 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,110] - De-registration finished.
-16:01:47.268 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,256] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown begin
-16:01:47.268 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,140] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown begin
-16:01:47.268 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,142] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown stop
-16:01:47.268 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,258] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown stop
-16:01:47.268 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,176] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown begin
-16:01:47.269 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,130] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown begin
-16:01:47.571 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,132] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown stop
-16:01:47.571 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,188] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown begin
-16:01:47.571 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,193] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown stop
-16:01:47.571 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,519] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown begin
-16:01:47.571 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,162] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown begin
-16:01:47.571 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,164] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown stop
-16:01:47.571 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialWatcher - [stop,105] - [null] CredentialWatcher is stopped
-16:01:47.572 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialService - [free,99] - [null] CredentialService is freed
-16:01:47.572 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,523] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown stop
-16:01:47.572 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,461] - Shutdown rpc client ,set status to shutdown
-16:01:47.572 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,463] - Shutdown  client event executor java.util.concurrent.ScheduledThreadPoolExecutor@61d4ac0d[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
-16:01:47.572 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,465] - Close current connection 1634111934554_127.0.0.1_57717
-16:01:47.573 [nacos-grpc-client-executor-44] INFO  c.a.n.c.r.c.g.GrpcClient - [printIfInfoEnabled,60] - [1634111934554_127.0.0.1_57717]Ignore complete event,isRunning:false,isAbandon=false
-16:01:47.575 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.c.g.GrpcClient - [shutdown,83] - Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@1d9d894d[Running, pool size = 5, active threads = 0, queued tasks = 0, completed tasks = 45]
-16:01:47.575 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,251] - Shutdown grpc redo service executor java.util.concurrent.ScheduledThreadPoolExecutor@78fb6c77[Running, pool size = 1, active threads = 0, queued tasks = 1, completed tasks = 57]
-16:01:47.575 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,182] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown stop
-16:01:47.796 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,226] - dynamic-datasource start closing ....
-16:01:47.797 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2043] - {dataSource-1} closing ...
-16:01:47.803 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2116] - {dataSource-1} closed
-16:01:47.803 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,230] - dynamic-datasource all closed success,bye
-16:02:02.206 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.0.Final
-16:02:03.112 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,67] - LOCAL_SNAPSHOT_PATH:C:\Users\Administrator\nacos\config
-16:02:03.114 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0
-16:02:03.139 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 16 ms to scan 1 urls, producing 3 keys and 6 values 
-16:02:03.154 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 4 keys and 9 values 
-16:02:03.162 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 3 keys and 10 values 
-16:02:03.171 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
-16:02:03.179 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 1 keys and 7 values 
-16:02:03.187 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 2 keys and 8 values 
-16:02:03.189 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0]RpcClient init label, labels={module=config, Vipserver-Tag=null, source=sdk, Amory-Tag=null, Location-Tag=null, taskId=0, AppName=unknown}
-16:02:03.189 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$451/0x000000080040cc40
-16:02:03.189 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$452/0x000000080040c040
-16:02:03.190 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0]Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
-16:02:03.190 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0]RpcClient init, ServerListFactory =com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
-16:02:03.195 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-16:02:05.026 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634112124868_127.0.0.1_56575
-16:02:05.027 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-16:02:05.026 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0]Notify connected event to listeners.
-16:02:05.028 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.c.i.ClientWorker - [onConnected,681] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0] Connected,notify listen context...
-16:02:05.029 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [07aeacdb-7351-45b6-a79a-6ebff6a23212_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-16:02:05.061 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,56] - limitTime:5.0
-16:02:05.071 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,53] - isMultiInstance:false
-16:02:05.095 [main] INFO  c.r.s.RuoYiSystemApplication - [logStartupProfileInfo,663] - The following profiles are active: dev
-16:02:06.852 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9201"]
-16:02:06.853 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
-16:02:06.853 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.52]
-16:02:06.980 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
-16:02:14.218 [main] INFO  c.a.d.p.DruidDataSource - [init,990] - {dataSource-1,master} inited
-16:02:14.220 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,169] - dynamic-datasource - add a datasource named [master] success
-16:02:14.220 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,249] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
-16:02:17.255 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
-16:02:18.028 [main] INFO  c.a.n.client.naming - [initNamespaceForNaming,63] - initializer namespace from System Property : null
-16:02:18.029 [main] INFO  c.a.n.client.naming - [call,69] - initializer namespace from System Environment :null
-16:02:18.029 [main] INFO  c.a.n.client.naming - [call,79] - initializer namespace from System Property :null
-16:02:18.037 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 678084af-7208-42af-a358-603b593b08ff
-16:02:18.038 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff]RpcClient init label, labels={module=naming, source=sdk}
-16:02:18.039 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff]RpcClient init, ServerListFactory =com.alibaba.nacos.client.naming.core.ServerListManager
-16:02:18.040 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff]Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
-16:02:18.040 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff]Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
-16:02:18.040 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-16:02:18.159 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634112138049_127.0.0.1_63604
-16:02:18.159 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-16:02:18.159 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff]Notify connected event to listeners.
-16:02:18.159 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-16:02:18.160 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.client.naming - [onConnected,76] - Grpc connection connect
-16:02:19.735 [main] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-16:02:19.740 [main] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-16:02:19.743 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9201"]
-16:02:19.755 [main] INFO  c.a.n.client.naming - [registerService,112] - [REGISTER-SERVICE] public registering service ruoyi-system with instance Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
-16:02:19.759 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP ruoyi-system 192.168.0.173:9201 register finished
-16:02:20.335 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff]receive server push request,request=NotifySubscriberRequest,requestId=68
-16:02:20.337 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000}]
-16:02:20.337 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000}]
-16:02:20.337 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [678084af-7208-42af-a358-603b593b08ff]ack server push request,request=NotifySubscriberRequest,requestId=68
-16:02:20.736 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [isChangedServiceInfo,235] - new ips(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000}]
-16:02:20.737 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"instanceHeartBeatInterval":5000,"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000}]
-16:02:20.797 [main] INFO  c.r.s.RuoYiSystemApplication - [logStarted,61] - Started RuoYiSystemApplication in 19.627 seconds (JVM running for 20.843)
-16:02:20.803 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system+DEFAULT_GROUP
-16:02:20.804 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system, group=DEFAULT_GROUP, cnt=1
-16:02:20.804 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system.yml+DEFAULT_GROUP
-16:02:20.804 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system.yml, group=DEFAULT_GROUP, cnt=1
-16:02:20.805 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system-dev.yml+DEFAULT_GROUP
-16:02:20.805 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system-dev.yml, group=DEFAULT_GROUP, cnt=1
-16:02:21.306 [RMI TCP Connection(1)-192.168.0.173] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-16:06:14.182 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,90] - De-registering from Nacos Server now...
-16:06:14.182 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [deregisterService,136] - [DEREGISTER-SERVICE] public deregistering service ruoyi-system with instance: Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={}}
-16:06:14.185 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,110] - De-registration finished.
-16:06:14.185 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,256] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown begin
-16:06:14.186 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,140] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown begin
-16:06:14.186 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,142] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown stop
-16:06:14.186 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,258] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown stop
-16:06:14.186 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,176] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown begin
-16:06:14.186 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,130] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown begin
-16:06:14.487 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,132] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown stop
-16:06:14.487 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,188] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown begin
-16:06:14.487 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,193] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown stop
-16:06:14.487 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,519] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown begin
-16:06:14.487 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,162] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown begin
-16:06:14.488 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,164] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown stop
-16:06:14.488 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialWatcher - [stop,105] - [null] CredentialWatcher is stopped
-16:06:14.488 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialService - [free,99] - [null] CredentialService is freed
-16:06:14.488 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,523] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown stop
-16:06:14.488 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,461] - Shutdown rpc client ,set status to shutdown
-16:06:14.488 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,463] - Shutdown  client event executor java.util.concurrent.ScheduledThreadPoolExecutor@13331156[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
-16:06:14.488 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,465] - Close current connection 1634112138049_127.0.0.1_63604
-16:06:14.490 [nacos-grpc-client-executor-57] INFO  c.a.n.c.r.c.g.GrpcClient - [printIfInfoEnabled,60] - [1634112138049_127.0.0.1_63604]Ignore complete event,isRunning:false,isAbandon=false
-16:06:14.491 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.c.g.GrpcClient - [shutdown,83] - Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@399a0b11[Running, pool size = 5, active threads = 0, queued tasks = 0, completed tasks = 58]
-16:06:14.491 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,251] - Shutdown grpc redo service executor java.util.concurrent.ScheduledThreadPoolExecutor@47543f2b[Running, pool size = 1, active threads = 0, queued tasks = 1, completed tasks = 78]
-16:06:14.491 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,182] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown stop
-16:06:14.715 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,226] - dynamic-datasource start closing ....
-16:06:14.717 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2043] - {dataSource-1} closing ...
-16:06:14.719 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2116] - {dataSource-1} closed
-16:06:14.719 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,230] - dynamic-datasource all closed success,bye
-16:06:46.039 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.0.Final
-16:06:46.893 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,67] - LOCAL_SNAPSHOT_PATH:C:\Users\Administrator\nacos\config
-16:06:46.895 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 2fd79b48-5330-450b-98a4-8454bd9aa936_config-0
-16:06:46.921 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 16 ms to scan 1 urls, producing 3 keys and 6 values 
-16:06:46.937 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 8 ms to scan 1 urls, producing 4 keys and 9 values 
-16:06:46.946 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 3 keys and 10 values 
-16:06:46.957 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 8 ms to scan 1 urls, producing 1 keys and 5 values 
-16:06:46.967 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 9 ms to scan 1 urls, producing 1 keys and 7 values 
-16:06:46.976 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 8 ms to scan 1 urls, producing 2 keys and 8 values 
-16:06:46.978 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0]RpcClient init label, labels={module=config, Vipserver-Tag=null, source=sdk, Amory-Tag=null, Location-Tag=null, taskId=0, AppName=unknown}
-16:06:46.979 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$451/0x000000080040cc40
-16:06:46.979 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$452/0x000000080040c040
-16:06:46.979 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0]Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
-16:06:46.980 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0]RpcClient init, ServerListFactory =com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
-16:06:46.986 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-16:06:48.757 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634112408600_127.0.0.1_60328
-16:06:48.758 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-16:06:48.757 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0]Notify connected event to listeners.
-16:06:48.760 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.c.i.ClientWorker - [onConnected,681] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0] Connected,notify listen context...
-16:06:48.761 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [2fd79b48-5330-450b-98a4-8454bd9aa936_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-16:06:48.798 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,56] - limitTime:5.0
-16:06:48.808 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,53] - isMultiInstance:false
-16:06:48.832 [main] INFO  c.r.s.RuoYiSystemApplication - [logStartupProfileInfo,663] - The following profiles are active: dev
-16:06:50.480 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9201"]
-16:06:50.481 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
-16:06:50.481 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.52]
-16:06:50.598 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
-16:06:51.532 [main] INFO  c.a.d.p.DruidDataSource - [init,990] - {dataSource-1,master} inited
-16:06:51.533 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,169] - dynamic-datasource - add a datasource named [master] success
-16:06:51.533 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,249] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
-16:06:54.395 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
-16:06:55.108 [main] INFO  c.a.n.client.naming - [initNamespaceForNaming,63] - initializer namespace from System Property : null
-16:06:55.109 [main] INFO  c.a.n.client.naming - [call,69] - initializer namespace from System Environment :null
-16:06:55.109 [main] INFO  c.a.n.client.naming - [call,79] - initializer namespace from System Property :null
-16:06:55.117 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of ff602b2f-bf3c-477e-88e5-12c29edeef8b
-16:06:55.118 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b]RpcClient init label, labels={module=naming, source=sdk}
-16:06:55.119 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b]RpcClient init, ServerListFactory =com.alibaba.nacos.client.naming.core.ServerListManager
-16:06:55.120 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b]Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
-16:06:55.120 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b]Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
-16:06:55.120 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
-16:06:55.239 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634112415128_127.0.0.1_62249
-16:06:55.239 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
-16:06:55.240 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b]Notify connected event to listeners.
-16:06:55.240 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
-16:06:55.240 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.client.naming - [onConnected,76] - Grpc connection connect
-16:06:56.714 [main] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-16:06:56.719 [main] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
-16:06:56.722 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9201"]
-16:06:56.733 [main] INFO  c.a.n.client.naming - [registerService,112] - [REGISTER-SERVICE] public registering service ruoyi-system with instance Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
-16:06:56.737 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP ruoyi-system 192.168.0.173:9201 register finished
-16:06:57.247 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b]receive server push request,request=NotifySubscriberRequest,requestId=89
-16:06:57.248 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]
-16:06:57.248 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]
-16:06:57.249 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff602b2f-bf3c-477e-88e5-12c29edeef8b]ack server push request,request=NotifySubscriberRequest,requestId=89
-16:06:57.712 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [isChangedServiceInfo,235] - new ips(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]
-16:06:57.713 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]
-16:06:57.728 [main] INFO  c.r.s.RuoYiSystemApplication - [logStarted,61] - Started RuoYiSystemApplication in 12.68 seconds (JVM running for 13.866)
-16:06:57.733 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system+DEFAULT_GROUP
-16:06:57.733 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system, group=DEFAULT_GROUP, cnt=1
-16:06:57.733 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system.yml+DEFAULT_GROUP
-16:06:57.734 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system.yml, group=DEFAULT_GROUP, cnt=1
-16:06:57.735 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system-dev.yml+DEFAULT_GROUP
-16:06:57.735 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system-dev.yml, group=DEFAULT_GROUP, cnt=1
-16:06:58.964 [RMI TCP Connection(3)-192.168.0.173] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+09:25:37.869 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.0.Final
+09:25:40.500 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,67] - LOCAL_SNAPSHOT_PATH:C:\Users\Administrator\nacos\config
+09:25:40.510 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 919136b4-0cf3-42b1-acd4-49930336ab19_config-0
+09:25:40.653 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 94 ms to scan 1 urls, producing 3 keys and 6 values 
+09:25:40.700 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 26 ms to scan 1 urls, producing 4 keys and 9 values 
+09:25:40.731 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 23 ms to scan 1 urls, producing 3 keys and 10 values 
+09:25:40.746 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+09:25:40.760 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 12 ms to scan 1 urls, producing 1 keys and 7 values 
+09:25:40.769 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 2 keys and 8 values 
+09:25:40.771 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0]RpcClient init label, labels={module=config, Vipserver-Tag=null, source=sdk, Amory-Tag=null, Location-Tag=null, taskId=0, AppName=unknown}
+09:25:40.772 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$451/0x000000080040cc40
+09:25:40.772 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$452/0x000000080040c040
+09:25:40.772 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0]Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
+09:25:40.773 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0]RpcClient init, ServerListFactory =com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
+09:25:40.801 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
+09:25:44.166 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634174743990_127.0.0.1_63824
+09:25:44.168 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0]Notify connected event to listeners.
+09:25:44.169 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+09:25:44.170 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.c.i.ClientWorker - [onConnected,681] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0] Connected,notify listen context...
+09:25:44.170 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [919136b4-0cf3-42b1-acd4-49930336ab19_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
+09:25:44.261 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,56] - limitTime:5.0
+09:25:44.290 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,53] - isMultiInstance:false
+09:25:44.373 [main] INFO  c.r.s.RuoYiSystemApplication - [logStartupProfileInfo,663] - The following profiles are active: dev
+09:25:50.357 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9201"]
+09:25:50.358 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+09:25:50.358 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.52]
+09:25:50.558 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+09:25:51.975 [main] INFO  c.a.d.p.DruidDataSource - [init,990] - {dataSource-1,master} inited
+09:25:51.976 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,169] - dynamic-datasource - add a datasource named [master] success
+09:25:51.977 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,249] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+09:25:56.863 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+09:25:57.822 [main] INFO  c.a.n.client.naming - [initNamespaceForNaming,63] - initializer namespace from System Property : null
+09:25:57.823 [main] INFO  c.a.n.client.naming - [call,69] - initializer namespace from System Environment :null
+09:25:57.824 [main] INFO  c.a.n.client.naming - [call,79] - initializer namespace from System Property :null
+09:25:57.842 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of f4e59095-4e6d-4b69-9c2e-7243af6a5338
+09:25:57.843 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338]RpcClient init label, labels={module=naming, source=sdk}
+09:25:57.844 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338]RpcClient init, ServerListFactory =com.alibaba.nacos.client.naming.core.ServerListManager
+09:25:57.845 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338]Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
+09:25:57.845 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338]Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
+09:25:57.846 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
+09:25:57.971 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634174757858_127.0.0.1_63920
+09:25:57.971 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338]Notify connected event to listeners.
+09:25:57.971 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+09:25:57.972 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.client.naming - [onConnected,76] - Grpc connection connect
+09:25:57.972 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
+09:26:00.468 [main] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
+09:26:00.478 [main] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
+09:26:00.483 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9201"]
+09:26:00.521 [main] INFO  c.a.n.client.naming - [registerService,112] - [REGISTER-SERVICE] public registering service ruoyi-system with instance Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
+09:26:00.534 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP ruoyi-system 192.168.0.173:9201 register finished
+09:26:01.061 [nacos-grpc-client-executor-9] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338]receive server push request,request=NotifySubscriberRequest,requestId=5
+09:26:01.062 [nacos-grpc-client-executor-9] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+09:26:01.063 [nacos-grpc-client-executor-9] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+09:26:01.063 [nacos-grpc-client-executor-9] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [f4e59095-4e6d-4b69-9c2e-7243af6a5338]ack server push request,request=NotifySubscriberRequest,requestId=5
+09:26:01.477 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [isChangedServiceInfo,235] - new ips(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+09:26:01.478 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+09:26:02.235 [main] INFO  c.r.s.RuoYiSystemApplication - [logStarted,61] - Started RuoYiSystemApplication in 26.098 seconds (JVM running for 29.154)
+09:26:02.240 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system+DEFAULT_GROUP
+09:26:02.241 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system, group=DEFAULT_GROUP, cnt=1
+09:26:02.241 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system.yml+DEFAULT_GROUP
+09:26:02.242 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system.yml, group=DEFAULT_GROUP, cnt=1
+09:26:02.243 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system-dev.yml+DEFAULT_GROUP
+09:26:02.243 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system-dev.yml, group=DEFAULT_GROUP, cnt=1
+09:26:03.184 [RMI TCP Connection(6)-192.168.0.173] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+13:59:13.099 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,90] - De-registering from Nacos Server now...
+13:59:13.099 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [deregisterService,136] - [DEREGISTER-SERVICE] public deregistering service ruoyi-system with instance: Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={}}
+13:59:13.101 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,110] - De-registration finished.
+13:59:13.102 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,256] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown begin
+13:59:13.102 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,140] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown begin
+13:59:13.102 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,142] - com.alibaba.nacos.client.naming.backups.FailoverReactor do shutdown stop
+13:59:13.102 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,258] - com.alibaba.nacos.client.naming.cache.ServiceInfoHolder do shutdown stop
+13:59:13.102 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,176] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown begin
+13:59:13.102 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,130] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown begin
+13:59:13.403 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,132] - com.alibaba.nacos.client.naming.core.ServiceInfoUpdateService do shutdown stop
+13:59:13.404 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,188] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown begin
+13:59:13.404 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,193] - com.alibaba.nacos.client.naming.core.ServerListManager do shutdown stop
+13:59:13.404 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,519] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown begin
+13:59:13.404 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,162] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown begin
+13:59:13.404 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,164] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown stop
+13:59:13.404 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialWatcher - [stop,105] - [null] CredentialWatcher is stopped
+13:59:13.404 [SpringApplicationShutdownHook] INFO  c.a.n.c.i.CredentialService - [free,99] - [null] CredentialService is freed
+13:59:13.405 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,523] - com.alibaba.nacos.client.naming.remote.http.NamingHttpClientProxy do shutdown stop
+13:59:13.405 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,461] - Shutdown rpc client ,set status to shutdown
+13:59:13.405 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,463] - Shutdown  client event executor java.util.concurrent.ScheduledThreadPoolExecutor@1b17ac73[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
+13:59:13.405 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.client - [shutdown,465] - Close current connection 1634174757858_127.0.0.1_63920
+13:59:13.406 [nacos-grpc-client-executor-3304] INFO  c.a.n.c.r.c.g.GrpcClient - [printIfInfoEnabled,60] - [1634174757858_127.0.0.1_63920]Ignore complete event,isRunning:false,isAbandon=false
+13:59:13.408 [SpringApplicationShutdownHook] INFO  c.a.n.c.r.c.g.GrpcClient - [shutdown,83] - Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@22946e9[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 3305]
+13:59:13.408 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,251] - Shutdown grpc redo service executor java.util.concurrent.ScheduledThreadPoolExecutor@717f3d98[Running, pool size = 1, active threads = 0, queued tasks = 1, completed tasks = 5463]
+13:59:13.408 [SpringApplicationShutdownHook] INFO  c.a.n.client.naming - [shutdown,182] - com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate do shutdown stop
+13:59:13.629 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,226] - dynamic-datasource start closing ....
+13:59:13.631 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2043] - {dataSource-1} closing ...
+13:59:13.633 [SpringApplicationShutdownHook] INFO  c.a.d.p.DruidDataSource - [close,2116] - {dataSource-1} closed
+13:59:13.634 [SpringApplicationShutdownHook] INFO  c.b.d.d.DynamicRoutingDataSource - [destroy,230] - dynamic-datasource all closed success,bye
+13:59:24.820 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.0.Final
+13:59:25.731 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,67] - LOCAL_SNAPSHOT_PATH:C:\Users\Administrator\nacos\config
+13:59:25.733 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0
+13:59:25.758 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 16 ms to scan 1 urls, producing 3 keys and 6 values 
+13:59:25.773 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 4 keys and 9 values 
+13:59:25.783 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 7 ms to scan 1 urls, producing 3 keys and 10 values 
+13:59:25.793 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 8 ms to scan 1 urls, producing 1 keys and 5 values 
+13:59:25.803 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 9 ms to scan 1 urls, producing 1 keys and 7 values 
+13:59:25.812 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 8 ms to scan 1 urls, producing 2 keys and 8 values 
+13:59:25.814 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0]RpcClient init label, labels={module=config, Vipserver-Tag=null, source=sdk, Amory-Tag=null, Location-Tag=null, taskId=0, AppName=unknown}
+13:59:25.815 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$451/0x000000080040cc40
+13:59:25.815 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0]Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$452/0x000000080040c040
+13:59:25.815 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0]Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
+13:59:25.816 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0]RpcClient init, ServerListFactory =com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
+13:59:25.822 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
+13:59:27.531 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634191167373_127.0.0.1_55128
+13:59:27.531 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0]Notify connected event to listeners.
+13:59:27.531 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+13:59:27.532 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.c.i.ClientWorker - [onConnected,681] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0] Connected,notify listen context...
+13:59:27.532 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [05eca94b-bde7-49ba-8cb2-694752cf85bd_config-0]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
+13:59:27.557 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,56] - limitTime:5.0
+13:59:27.568 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,53] - isMultiInstance:false
+13:59:27.692 [main] INFO  c.r.s.RuoYiSystemApplication - [logStartupProfileInfo,663] - The following profiles are active: dev
+13:59:29.760 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9201"]
+13:59:29.760 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+13:59:29.761 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.52]
+13:59:29.883 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+13:59:48.737 [main] INFO  c.a.d.p.DruidDataSource - [init,990] - {dataSource-1,master} inited
+13:59:48.738 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,169] - dynamic-datasource - add a datasource named [master] success
+13:59:48.738 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,249] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+13:59:51.725 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+13:59:52.465 [main] INFO  c.a.n.client.naming - [initNamespaceForNaming,63] - initializer namespace from System Property : null
+13:59:52.465 [main] INFO  c.a.n.client.naming - [call,69] - initializer namespace from System Environment :null
+13:59:52.465 [main] INFO  c.a.n.client.naming - [call,79] - initializer namespace from System Property :null
+13:59:52.475 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,77] - [RpcClientFactory] create a new rpc client of 39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63
+13:59:52.475 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63]RpcClient init label, labels={module=naming, source=sdk}
+13:59:52.476 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63]RpcClient init, ServerListFactory =com.alibaba.nacos.client.naming.core.ServerListManager
+13:59:52.476 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63]Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
+13:59:52.477 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63]Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
+13:59:52.477 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63] Try to connect to server on start up, server: {serverIp='127.0.0.1', server main port=8848}
+13:59:52.597 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63] Success to connect to server [127.0.0.1:8848] on start up,connectionId=1634191192487_127.0.0.1_52969
+13:59:52.597 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+13:59:52.597 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63]Notify connected event to listeners.
+13:59:52.598 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.client.naming - [onConnected,76] - Grpc connection connect
+13:59:52.598 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63]Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$4
+13:59:54.111 [main] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
+13:59:54.116 [main] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(0) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> []
+13:59:54.119 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9201"]
+13:59:54.131 [main] INFO  c.a.n.client.naming - [registerService,112] - [REGISTER-SERVICE] public registering service ruoyi-system with instance Instance{instanceId='null', ip='192.168.0.173', port=9201, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
+13:59:54.135 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP ruoyi-system 192.168.0.173:9201 register finished
+13:59:54.696 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63]receive server push request,request=NotifySubscriberRequest,requestId=27
+13:59:54.697 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [isChangedServiceInfo,181] - init new ips(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+13:59:54.698 [nacos-grpc-client-executor-6] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+13:59:54.698 [nacos-grpc-client-executor-6] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [39cc8fb4-4a1c-4dd1-90ff-ec661f4dcc63]ack server push request,request=NotifySubscriberRequest,requestId=27
+13:59:55.121 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [isChangedServiceInfo,235] - new ips(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+13:59:55.121 [com.alibaba.nacos.client.naming.updater.0] INFO  c.a.n.client.naming - [processServiceInfo,166] - current ips:(1) service: DEFAULT_GROUP@@ruoyi-system@@DEFAULT -> [{"ip":"192.168.0.173","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@ruoyi-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+13:59:55.153 [main] INFO  c.r.s.RuoYiSystemApplication - [logStarted,61] - Started RuoYiSystemApplication in 31.265 seconds (JVM running for 32.64)
+13:59:55.159 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system+DEFAULT_GROUP
+13:59:55.159 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system, group=DEFAULT_GROUP, cnt=1
+13:59:55.160 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system.yml+DEFAULT_GROUP
+13:59:55.160 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system.yml, group=DEFAULT_GROUP, cnt=1
+13:59:55.160 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,384] - [config_rpc_client] [subscribe] ruoyi-system-dev.yml+DEFAULT_GROUP
+13:59:55.160 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,173] - [config_rpc_client] [add-listener] ok, tenant=, dataId=ruoyi-system-dev.yml, group=DEFAULT_GROUP, cnt=1
+13:59:56.018 [RMI TCP Connection(2)-192.168.0.173] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
