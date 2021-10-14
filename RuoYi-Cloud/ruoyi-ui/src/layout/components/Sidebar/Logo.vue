@@ -26,16 +26,21 @@ export default {
     }
   },
   computed: {
+
     variables() {
       return variables;
     },
 	sideTheme() {
       return this.$store.state.settings.sideTheme
-    }
+    },
+    // title(){
+    //   console.log(this.$store.state.settings)
+    //   return this.$store.state.settings.title
+    // },
   },
   data() {
     return {
-      title: '无人机管理系统',
+title:'',
       logo: logoImg
     }
   }

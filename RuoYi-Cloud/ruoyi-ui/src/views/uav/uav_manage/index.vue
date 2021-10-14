@@ -541,6 +541,7 @@ export default {
           }
         }
 
+
       });
       /** 获取无人机归口部门信息 */
       listUavdepartment(this.UserqueryParams).then(response => {
@@ -638,14 +639,13 @@ export default {
         if (valid) {
           if (this.form.id != null) {
             updateUav_manage(this.form).then(response => {
-              console.log(this.form)
+
               this.$modal.msgSuccess("修改成功");
               this.open = false;
               this.getList();
             });
           } else {
             addUav_manage(this.form).then(response => {
-              console.log(this.form)
               this.$modal.msgSuccess("新增成功");
               this.open = false;
               this.getList();
