@@ -5,3 +5,131 @@
 13:30:09.483 [boundedElastic-6] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/tasktype/tasktype/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-tasktype"
 13:41:34.896 [reactor-http-nio-7] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
 13:49:46.650 [boundedElastic-2] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/missionlist/missionlist/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-missionlist"
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
+14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
