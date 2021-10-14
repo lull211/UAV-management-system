@@ -120,6 +120,7 @@ export default {
     // 上传成功回调
     handleUploadSuccess(res) {
       this.fileList.push({ name: res.data.url, url: res.data.url });
+      console.log(this.fileList)
       this.$emit("input", this.listToString(this.fileList));
       this.loading.close();
     },
