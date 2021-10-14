@@ -9,6 +9,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-airline/pom.xml" />
+        <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-flyrecord/pom.xml" />
         <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavdepartment/pom.xml" />
         <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavkeeper/pom.xml" />
         <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavmanager/pom.xml" />
