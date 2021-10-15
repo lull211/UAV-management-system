@@ -7,7 +7,7 @@ import com.ruoyi.pilots.domain.PilotsTable;
  * 驾驶员管理Service接口
  * 
  * @author ruoyi
- * @date 2021-09-28
+ * @date 2021-10-14
  */
 public interface IPilotsTableService 
 {
@@ -18,6 +18,11 @@ public interface IPilotsTableService
      * @return 驾驶员管理
      */
     public PilotsTable selectPilotsTableById(Long id);
+
+    /**
+     * 用名字查询驾驶员
+     */
+    public PilotsTable selectPilotsByName(String Name);
 
     /**
      * 查询驾驶员管理列表

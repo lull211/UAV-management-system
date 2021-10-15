@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.ruoyi.pilots.mapper.PilotsTableMapper">
+    
     <resultMap type="PilotsTable" id="PilotsTableResult">
         <result property="id"    column="id"    />
         <result property="driverName"    column="driver_name"    />
@@ -33,23 +33,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="driverDepartment != null  and driverDepartment != ''"> and driver_department = #{driverDepartment}</if>
             <if test="driverIdcard != null  and driverIdcard != ''"> and driver_idcard = #{driverIdcard}</if>
             <if test="driverPhone != null  and driverPhone != ''"> and driver_phone = #{driverPhone}</if>
-<!--            <if test="driverAircraftSoft != null  and driverAircraftSoft != ''"> and driver_aircraft_soft = #{driverAircraftSoft}</if>-->
-            <if test="driverAircraftSoft != null  and driverAircraftSoft != ''">and driver_aircraft_soft like concat('%', #{driverAircraftSoft}, '%')</if>
+            <if test="driverAircraftSoft != null  and driverAircraftSoft != ''"> and driver_aircraft_soft = #{driverAircraftSoft}</if>
             <if test="driverState != null "> and driver_state = #{driverState}</if>
             <if test="driverPhoto != null  and driverPhoto != ''"> and driver_photo = #{driverPhoto}</if>
             <if test="driverExtral != null  and driverExtral != ''"> and driver_extral = #{driverExtral}</if>
             <if test="trainingTime != null "> and training_time = #{trainingTime}</if>
             <if test="flyingTime != null "> and flying_time = #{flyingTime}</if>
             <if test="sumTime != null "> and sum_time = #{sumTime}</if>
-            <if test="deleteFlag != null "> and delete_flag = 0</if>
+            <if test="deleteFlag != null "> and delete_flag = #{deleteFlag}</if>
             <if test="driverGender != null "> and driver_gender = #{driverGender}</if>
-             and delete_flag = 0
         </where>
     </select>
     
     <select id="selectPilotsTableById" parameterType="Long" resultMap="PilotsTableResult">
         <include refid="selectPilotsTableVo"/>
         where id = #{id}
+    </select>
+
+    <select id="selectPilotsTableByName" parameterType="String" resultMap="PilotsTableResult">
+        <include refid="selectPilotsTableVo"/>
     </select>
         
     <insert id="insertPilotsTable" parameterType="PilotsTable" useGeneratedKeys="true" keyProperty="id">
@@ -59,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="driverDepartment != null and driverDepartment != ''">driver_department,</if>
             <if test="driverIdcard != null">driver_idcard,</if>
             <if test="driverPhone != null and driverPhone != ''">driver_phone,</if>
-            <if test="driverAircraftSoft != null">driver_aircraft_soft,</if>
+            <if test="driverAircraftSoft != null and driverAircraftSoft != ''">driver_aircraft_soft,</if>
             <if test="driverState != null">driver_state,</if>
             <if test="driverPhoto != null">driver_photo,</if>
             <if test="driverExtral != null">driver_extral,</if>
@@ -75,7 +77,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="driverDepartment != null and driverDepartment != ''">#{driverDepartment},</if>
             <if test="driverIdcard != null">#{driverIdcard},</if>
             <if test="driverPhone != null and driverPhone != ''">#{driverPhone},</if>
-            <if test="driverAircraftSoft != null">#{driverAircraftSoft},</if>
+            <if test="driverAircraftSoft != null and driverAircraftSoft != ''">#{driverAircraftSoft},</if>
             <if test="driverState != null">#{driverState},</if>
             <if test="driverPhoto != null">#{driverPhoto},</if>
             <if test="driverExtral != null">#{driverExtral},</if>
@@ -95,7 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="driverDepartment != null and driverDepartment != ''">driver_department = #{driverDepartment},</if>
             <if test="driverIdcard != null">driver_idcard = #{driverIdcard},</if>
             <if test="driverPhone != null and driverPhone != ''">driver_phone = #{driverPhone},</if>
-            <if test="driverAircraftSoft != null">driver_aircraft_soft = #{driverAircraftSoft},</if>
+            <if test="driverAircraftSoft != null and driverAircraftSoft != ''">driver_aircraft_soft = #{driverAircraftSoft},</if>
             <if test="driverState != null">driver_state = #{driverState},</if>
             <if test="driverPhoto != null">driver_photo = #{driverPhoto},</if>
             <if test="driverExtral != null">driver_extral = #{driverExtral},</if>
@@ -114,7 +116,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deletePilotsTableByIds" parameterType="String">
-        update pilots_table set delete_flag=1 where id in
+        delete from pilots_table where id in 
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

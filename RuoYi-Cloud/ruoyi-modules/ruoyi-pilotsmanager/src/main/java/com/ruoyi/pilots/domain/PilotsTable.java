@@ -5,17 +5,11 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.web.domain.BaseEntity;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 /**
  * 驾驶员管理对象 pilots_table
  * 
  * @author ruoyi
- * @date 2021-09-28
+ * @date 2021-10-14
  */
 public class PilotsTable extends BaseEntity
 {
@@ -121,12 +115,12 @@ public class PilotsTable extends BaseEntity
     {
         return driverPhone;
     }
-    public void setDriverAircraftSoft(String driverAircraftSoft)
+    public void setDriverAircraftSoft(String driverAircraftSoft) 
     {
         this.driverAircraftSoft = driverAircraftSoft;
     }
 
-    public String getDriverAircraftSoft()
+    public String getDriverAircraftSoft() 
     {
         return driverAircraftSoft;
     }

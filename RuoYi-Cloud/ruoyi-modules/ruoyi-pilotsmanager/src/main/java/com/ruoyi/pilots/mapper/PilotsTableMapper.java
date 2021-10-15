@@ -7,10 +7,19 @@ import com.ruoyi.pilots.domain.PilotsTable;
  * 驾驶员管理Mapper接口
  * 
  * @author ruoyi
- * @date 2021-09-28
+ * @date 2021-10-14
  */
 public interface PilotsTableMapper 
 {
+    /**
+     * 用姓名查询驾驶员
+     *
+     * @param Name
+     * 驾驶员管理主键
+     * @return 驾驶员管理
+     */
+    public PilotsTable selectPilotsTableByName(String Name);
+
     /**
      * 查询驾驶员管理
      * 

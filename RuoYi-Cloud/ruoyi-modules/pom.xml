@@ -17,6 +17,7 @@
         <module>ruoyi-uavtype</module>
         <module>ruoyi-uavdepartment</module>
         <module>ruoyi-flyrecord</module>
+        <module>ruoyi-myflyrecord</module>
     </modules>
 
     <artifactId>ruoyi-modules</artifactId>

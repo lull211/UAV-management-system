@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.myflyrecord.mapper.MyFlyRecordMapper">
+    
+    <resultMap type="MyFlyRecord" id="MyFlyRecordResult">
+        <result property="id"    column="id"    />
+        <result property="taskState"    column="task_state"    />
+        <result property="startTime"    column="start_time"    />
+        <result property="driverId"    column="driver_id"    />
+        <result property="uavId"    column="uav_id"    />
+        <result property="taskType"    column="task_type"    />
+        <result property="sumDistance"    column="sum_distance"    />
+        <result property="taskDescription"    column="task_description"    />
+        <result property="airlineId"    column="airline_id"    />
+        <result property="department"    column="department"    />
+        <result property="taskReplay"    column="task_replay"    />
+        <result property="taskLine"    column="task_line"    />
+    </resultMap>
+
+    <sql id="selectMyFlyRecordVo">
+        select id, task_state, start_time, driver_id, uav_id, task_type, sum_distance, task_description, airline_id, department, task_replay, task_line from fly_record
+    </sql>
+
+    <select id="selectMyFlyRecordList" parameterType="MyFlyRecord" resultMap="MyFlyRecordResult">
+        <include refid="selectMyFlyRecordVo"/>
+        <where>  
+            <if test="taskState != null  and taskState != ''"> and task_state = #{taskState}</if>
+            <if test="startTime != null "> and start_time = #{startTime}</if>
+            <if test="driverId != null  and driverId != ''"> and driver_id = #{driverId}</if>
+            <if test="uavId != null "> and uav_id = #{uavId}</if>
+            <if test="taskType != null  and taskType != ''"> and task_type = #{taskType}</if>
+            <if test="sumDistance != null "> and sum_distance = #{sumDistance}</if>
+            <if test="taskDescription != null  and taskDescription != ''"> and task_description = #{taskDescription}</if>
+            <if test="airlineId != null  and airlineId != ''"> and airline_id = #{airlineId}</if>
+            <if test="department != null  and department != ''"> and department = #{department}</if>
+            <if test="taskReplay != null  and taskReplay != ''"> and task_replay = #{taskReplay}</if>
+            <if test="taskLine != null  and taskLine != ''"> and task_line = #{taskLine}</if>
+        </where>
+    </select>
+    
+    <select id="selectMyFlyRecordById" parameterType="Long" resultMap="MyFlyRecordResult">
+        <include refid="selectMyFlyRecordVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertMyFlyRecord" parameterType="MyFlyRecord" useGeneratedKeys="true" keyProperty="id">
+        insert into fly_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="taskState != null">task_state,</if>
+            <if test="startTime != null">start_time,</if>
+            <if test="driverId != null">driver_id,</if>
+            <if test="uavId != null">uav_id,</if>
+            <if test="taskType != null">task_type,</if>
+            <if test="sumDistance != null">sum_distance,</if>
+            <if test="taskDescription != null">task_description,</if>
+            <if test="airlineId != null">airline_id,</if>
+            <if test="department != null">department,</if>
+            <if test="taskReplay != null">task_replay,</if>
+            <if test="taskLine != null">task_line,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="taskState != null">#{taskState},</if>
+            <if test="startTime != null">#{startTime},</if>
+            <if test="driverId != null">#{driverId},</if>
+            <if test="uavId != null">#{uavId},</if>
+            <if test="taskType != null">#{taskType},</if>
+            <if test="sumDistance != null">#{sumDistance},</if>
+            <if test="taskDescription != null">#{taskDescription},</if>
+            <if test="airlineId != null">#{airlineId},</if>
+            <if test="department != null">#{department},</if>
+            <if test="taskReplay != null">#{taskReplay},</if>
+            <if test="taskLine != null">#{taskLine},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMyFlyRecord" parameterType="MyFlyRecord">
+        update fly_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="taskState != null">task_state = #{taskState},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="driverId != null">driver_id = #{driverId},</if>
+            <if test="uavId != null">uav_id = #{uavId},</if>
+            <if test="taskType != null">task_type = #{taskType},</if>
+            <if test="sumDistance != null">sum_distance = #{sumDistance},</if>
+            <if test="taskDescription != null">task_description = #{taskDescription},</if>
+            <if test="airlineId != null">airline_id = #{airlineId},</if>
+            <if test="department != null">department = #{department},</if>
+            <if test="taskReplay != null">task_replay = #{taskReplay},</if>
+            <if test="taskLine != null">task_line = #{taskLine},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMyFlyRecordById" parameterType="Long">
+        delete from fly_record where id = #{id}
+    </delete>
+
+    <delete id="deleteMyFlyRecordByIds" parameterType="String">
+        delete from fly_record where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

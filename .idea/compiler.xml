@@ -14,12 +14,17 @@
         <module name="ruoyi-common-swagger" />
         <module name="ruoyi-common-core" />
         <module name="ruoyi-common-security" />
+        <module name="ruoyi-tasklist" />
         <module name="ruoyi-setting" />
         <module name="ruoyi-pilotsmanager" />
         <module name="ruoyi-common-datasource" />
+        <module name="ruoyi-missionlevel" />
+        <module name="ruoyi-myflyrecord" />
+        <module name="ruoyi-flyrecord" />
         <module name="ruoyi-gateway" />
         <module name="ruoyi-modules-gen" />
         <module name="ruoyi-visual-monitor" />
+        <module name="ruoyi-sysprofile" />
         <module name="ruoyi-auth" />
         <module name="ruoyi-common-log" />
         <module name="ruoyi-modules-file" />
@@ -38,15 +43,20 @@
       <module name="ruoyi-common-redis" target="1.8" />
       <module name="ruoyi-common-security" target="1.8" />
       <module name="ruoyi-common-swagger" target="1.8" />
+      <module name="ruoyi-flyrecord" target="1.8" />
+      <module name="ruoyi-flyrecord (1)" target="1.8" />
       <module name="ruoyi-gateway" target="1.8" />
+      <module name="ruoyi-missionlevel" target="1.8" />
       <module name="ruoyi-modules" target="1.8" />
       <module name="ruoyi-modules-file" target="1.8" />
       <module name="ruoyi-modules-gen" target="1.8" />
       <module name="ruoyi-modules-job" target="1.8" />
       <module name="ruoyi-modules-system" target="1.8" />
+      <module name="ruoyi-myflyrecord" target="1.8" />
       <module name="ruoyi-pilotsmanager" target="1.8" />
       <module name="ruoyi-setting" target="1.8" />
       <module name="ruoyi-sysprofile" target="1.8" />
+      <module name="ruoyi-tasklist" target="1.8" />
       <module name="ruoyi-visual" target="1.8" />
       <module name="ruoyi-visual-monitor" target="1.8" />
     </bytecodeTargetLevel>

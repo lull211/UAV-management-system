@@ -13,3 +13,13 @@
 14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
 13:59:32.063 [reactor-http-nio-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:Connection refused: no further information: /192.168.0.173:9201
 14:00:39.254 [reactor-http-nio-1] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+14:51:51.355 [boundedElastic-9] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+14:52:30.140 [boundedElastic-8] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+14:58:35.932 [boundedElastic-5] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/tasktype/tasktype/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-tasktype"
+14:58:36.235 [boundedElastic-7] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/missionlist/missionlist/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-missionlist"
+15:15:30.276 [boundedElastic-2] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/myflyrecord/myflyrecord/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-myflyrecord"
+15:25:40.868 [boundedElastic-11] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/uavtype/uavtype/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-uavtype"
+15:41:06.731 [reactor-http-nio-10] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:Connection prematurely closed BEFORE response
+16:26:21.045 [boundedElastic-13] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/pilots/pilots/name,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-pilots"
+16:52:31.297 [boundedElastic-13] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/system/user/getInfo,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-system"
+17:11:59.136 [reactor-http-nio-6] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/myflyrecord/myflyrecord/list,异常信息:Connection refused: no further information: /192.168.0.173:9221

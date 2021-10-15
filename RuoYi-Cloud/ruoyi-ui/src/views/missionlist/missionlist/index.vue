@@ -351,7 +351,6 @@ export default {
       });
       /** 获取驾驶员信息 */
       listPilots(this.UserqueryParams).then(response => {
-
         this.drivelist = response.rows;
         this.loading = false;
       });
@@ -433,13 +432,6 @@ export default {
         this.form = response.data;
         //类型转换，字符串转int，解决下拉框只显示id的bug
         this.form.taskDriver = parseInt(this.form.taskDriver);
-        // for (let i = 0; i < this.drivelist.length; i++) {
-        //   if(this.drivelist[i].id == this.form.taskDriver) {
-        //     //this.form.driverInfo = '* ' + this.drivelist[i].driverName + ' ' + this.drivelist[i].driverPhone;
-        //     this.form.driverPhone = this.drivelist[i].driverPhone;
-        //   }
-        // }
-
         this.open = true;
         this.title = "修改任务列表";
       });
