@@ -26,7 +26,7 @@ import com.ruoyi.common.core.web.page.TableDataInfo;
  * 飞行记录Controller
  * 
  * @author ruoyi
- * @date 2021-10-14
+ * @date 2021-10-18
  */
 @RestController
 @RequestMapping("/flyrecord")

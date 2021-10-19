@@ -26,7 +26,7 @@ import com.ruoyi.common.core.web.page.TableDataInfo;
  * 我的飞行记录Controller
  * 
  * @author ruoyi
- * @date 2021-10-14
+ * @date 2021-10-18
  */
 @RestController
 @RequestMapping("/myflyrecord")
@@ -43,7 +43,6 @@ public class MyFlyRecordController extends BaseController
     public TableDataInfo list(MyFlyRecord myFlyRecord)
     {
         startPage();
-        System.out.println(myFlyRecord);
         List<MyFlyRecord> list = myFlyRecordService.selectMyFlyRecordList(myFlyRecord);
         return getDataTable(list);
     }
@@ -65,10 +64,10 @@ public class MyFlyRecordController extends BaseController
      * 获取我的飞行记录详细信息
      */
     @PreAuthorize(hasPermi = "myflyrecord:myflyrecord:query")
-    @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") Long id)
+    @GetMapping(value = "/{taskId}")
+    public AjaxResult getInfo(@PathVariable("taskId") Long taskId)
     {
-        return AjaxResult.success(myFlyRecordService.selectMyFlyRecordById(id));
+        return AjaxResult.success(myFlyRecordService.selectMyFlyRecordById(taskId));
     }
 
     /**

@@ -7,7 +7,7 @@ import com.ruoyi.flyrecord.domain.FlyRecord;
  * 飞行记录Mapper接口
  * 
  * @author ruoyi
- * @date 2021-10-14
+ * @date 2021-10-18
  */
 public interface FlyRecordMapper 
 {

@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="taskType"    column="task_type"    />
         <result property="taskTime"    column="task_time"    />
         <result property="taskDrone"    column="task_drone"    />
+        <result property="endTime"    column="end_time"    />
         <result property="taskDriver"    column="task_driver"    />
         <result property="driverPhone"    column="driver_phone"    />
         <result property="id"    column="id"    />
@@ -17,10 +18,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="taskAddress"    column="task_address"    />
         <result property="deleteCode"    column="delete_code"    />
         <result property="extraExplain"    column="extra_explain"    />
+        <result property="taskState"    column="task_state"    />
     </resultMap>
 
     <sql id="selectTaskListVo">
-        select task_name, task_type, task_time, task_drone, task_driver, driver_phone, id, task_airline, task_images, task_address, delete_code, extra_explain from task_list
+        select task_name, task_type, task_time, task_drone, end_time, task_driver, driver_phone, id, task_airline, task_images, task_address, delete_code, extra_explain, task_state from task_list
     </sql>
 
     <select id="selectTaskListList" parameterType="TaskList" resultMap="TaskListResult">
@@ -30,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskType != null  and taskType != ''"> and task_type = #{taskType}</if>
             <if test="taskTime != null "> and task_time = #{taskTime}</if>
             <if test="taskDrone != null  and taskDrone != ''"> and task_drone = #{taskDrone}</if>
+            <if test="endTime != null "> and end_time = #{endTime}</if>
             <if test="taskDriver != null  and taskDriver != ''"> and task_driver like concat('%', #{taskDriver}, '%')</if>
             <if test="driverPhone != null  and driverPhone != ''"> and driver_phone like concat('%', #{driverPhone}, '%')</if>
             <if test="taskAirline != null  and taskAirline != ''"> and task_airline = #{taskAirline}</if>
@@ -37,6 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskAddress != null  and taskAddress != ''"> and task_address = #{taskAddress}</if>
             <if test="deleteCode != null "> and delete_code = #{deleteCode}</if>
             <if test="extraExplain != null  and extraExplain != ''"> and extra_explain = #{extraExplain}</if>
+            <if test="taskState != null "> and task_state = #{taskState}</if>
         </where>
     </select>
     
@@ -52,6 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskType != null and taskType != ''">task_type,</if>
             <if test="taskTime != null">task_time,</if>
             <if test="taskDrone != null and taskDrone != ''">task_drone,</if>
+            <if test="endTime != null">end_time,</if>
             <if test="taskDriver != null and taskDriver != ''">task_driver,</if>
             <if test="driverPhone != null and driverPhone != ''">driver_phone,</if>
             <if test="taskAirline != null">task_airline,</if>
@@ -59,12 +64,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskAddress != null">task_address,</if>
             <if test="deleteCode != null">delete_code,</if>
             <if test="extraExplain != null">extra_explain,</if>
+            <if test="taskState != null">task_state,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="taskName != null and taskName != ''">#{taskName},</if>
             <if test="taskType != null and taskType != ''">#{taskType},</if>
             <if test="taskTime != null">#{taskTime},</if>
             <if test="taskDrone != null and taskDrone != ''">#{taskDrone},</if>
+            <if test="endTime != null">#{endTime},</if>
             <if test="taskDriver != null and taskDriver != ''">#{taskDriver},</if>
             <if test="driverPhone != null and driverPhone != ''">#{driverPhone},</if>
             <if test="taskAirline != null">#{taskAirline},</if>
@@ -72,6 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskAddress != null">#{taskAddress},</if>
             <if test="deleteCode != null">#{deleteCode},</if>
             <if test="extraExplain != null">#{extraExplain},</if>
+            <if test="taskState != null">#{taskState},</if>
          </trim>
     </insert>
 
@@ -82,6 +90,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskType != null and taskType != ''">task_type = #{taskType},</if>
             <if test="taskTime != null">task_time = #{taskTime},</if>
             <if test="taskDrone != null and taskDrone != ''">task_drone = #{taskDrone},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
             <if test="taskDriver != null and taskDriver != ''">task_driver = #{taskDriver},</if>
             <if test="driverPhone != null and driverPhone != ''">driver_phone = #{driverPhone},</if>
             <if test="taskAirline != null">task_airline = #{taskAirline},</if>
@@ -89,6 +98,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskAddress != null">task_address = #{taskAddress},</if>
             <if test="deleteCode != null">delete_code = #{deleteCode},</if>
             <if test="extraExplain != null">extra_explain = #{extraExplain},</if>
+            <if test="taskState != null">task_state = #{taskState},</if>
         </trim>
         where id = #{id}
     </update>

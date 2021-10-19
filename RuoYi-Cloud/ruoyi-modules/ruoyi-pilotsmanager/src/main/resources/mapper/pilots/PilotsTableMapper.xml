@@ -52,6 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="selectPilotsTableByName" parameterType="String" resultMap="PilotsTableResult">
         <include refid="selectPilotsTableVo"/>
+        where driver_name = #{name}
     </select>
         
     <insert id="insertPilotsTable" parameterType="PilotsTable" useGeneratedKeys="true" keyProperty="id">

@@ -1,45 +1,23 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="任务状态" prop="taskState">
+      <el-form-item label="起飞经度" prop="homeLongtitude">
         <el-input
-          v-model="queryParams.taskState"
-          placeholder="请输入任务状态"
+          v-model="queryParams.homeLongtitude"
+          placeholder="请输入起飞经度"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="起始时间" prop="startTime">
-        <el-date-picker clearable size="small"
-          v-model="queryParams.startTime"
-          type="date"
-          value-format="yyyy-MM-dd"
-          placeholder="选择起始时间">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="驾驶员ID" prop="driverId">
+      <el-form-item label="起飞纬度" prop="homeLatittude">
         <el-input
-          v-model="queryParams.driverId"
-          placeholder="请输入驾驶员ID"
+          v-model="queryParams.homeLatittude"
+          placeholder="请输入起飞纬度"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
-      </el-form-item>
-      <el-form-item label="无人机ID" prop="uavId">
-        <el-input
-          v-model="queryParams.uavId"
-          placeholder="请输入无人机ID"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="任务类型" prop="taskType">
-        <el-select v-model="queryParams.taskType" placeholder="请选择任务类型" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
-        </el-select>
       </el-form-item>
       <el-form-item label="飞行距离" prop="sumDistance">
         <el-input
@@ -50,28 +28,37 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="任务描述" prop="taskDescription">
+      <el-form-item label="终点经度" prop="endLongtitude">
         <el-input
-          v-model="queryParams.taskDescription"
-          placeholder="请输入任务描述"
+          v-model="queryParams.endLongtitude"
+          placeholder="请输入终点经度"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="航线id" prop="airlineId">
+      <el-form-item label="飞行高度" prop="altitude">
         <el-input
-          v-model="queryParams.airlineId"
-          placeholder="请输入航线id"
+          v-model="queryParams.altitude"
+          placeholder="请输入飞行高度"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="所属部门" prop="department">
+      <el-form-item label="水平飞行速度" prop="velocity">
         <el-input
-          v-model="queryParams.department"
-          placeholder="请输入所属部门"
+          v-model="queryParams.velocity"
+          placeholder="请输入水平飞行速度"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="垂直飞行速度" prop="verticalSpeed">
+        <el-input
+          v-model="queryParams.verticalSpeed"
+          placeholder="请输入垂直飞行速度"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -86,10 +73,28 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="记录附件" prop="flyDoc">
+        <el-input
+          v-model="queryParams.flyDoc"
+          placeholder="请输入记录附件"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="飞行路线" prop="taskLine">
         <el-input
           v-model="queryParams.taskLine"
           placeholder="请输入飞行路线"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="飞行录像" prop="flyVideo">
+        <el-input
+          v-model="queryParams.flyVideo"
+          placeholder="请输入飞行录像"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -150,21 +155,18 @@
     <el-table v-loading="loading" :data="flyrecordList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="飞行记录" align="center" prop="id" />
-      <el-table-column label="任务状态" align="center" prop="taskState" />
-      <el-table-column label="起始时间" align="center" prop="startTime" width="180">
-        <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.startTime, '{y}-{m}-{d}') }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="驾驶员ID" align="center" prop="driverId" />
-      <el-table-column label="无人机ID" align="center" prop="uavId" />
-      <el-table-column label="任务类型" align="center" prop="taskType" />
+      <el-table-column label="任务ID" align="center" prop="taskId" />
+      <el-table-column label="起飞经度" align="center" prop="homeLongtitude" />
+      <el-table-column label="起飞纬度" align="center" prop="homeLatittude" />
       <el-table-column label="飞行距离" align="center" prop="sumDistance" />
-      <el-table-column label="任务描述" align="center" prop="taskDescription" />
-      <el-table-column label="航线id" align="center" prop="airlineId" />
-      <el-table-column label="所属部门" align="center" prop="department" />
+      <el-table-column label="终点经度" align="center" prop="endLongtitude" />
+      <el-table-column label="飞行高度" align="center" prop="altitude" />
+      <el-table-column label="水平飞行速度" align="center" prop="velocity" />
+      <el-table-column label="垂直飞行速度" align="center" prop="verticalSpeed" />
       <el-table-column label="任务回放" align="center" prop="taskReplay" />
+      <el-table-column label="记录附件" align="center" prop="flyDoc" />
       <el-table-column label="飞行路线" align="center" prop="taskLine" />
+      <el-table-column label="飞行录像" align="center" prop="flyVideo" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -196,45 +198,38 @@
     <!-- 添加或修改飞行记录对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="任务状态" prop="taskState">
-          <el-input v-model="form.taskState" placeholder="请输入任务状态" />
+        <el-form-item label="起飞经度" prop="homeLongtitude">
+          <el-input v-model="form.homeLongtitude" placeholder="请输入起飞经度" />
         </el-form-item>
-        <el-form-item label="起始时间" prop="startTime">
-          <el-date-picker clearable size="small"
-            v-model="form.startTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="选择起始时间">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="驾驶员ID" prop="driverId">
-          <el-input v-model="form.driverId" placeholder="请输入驾驶员ID" />
-        </el-form-item>
-        <el-form-item label="无人机ID" prop="uavId">
-          <el-input v-model="form.uavId" placeholder="请输入无人机ID" />
-        </el-form-item>
-        <el-form-item label="任务类型" prop="taskType">
-          <el-select v-model="form.taskType" placeholder="请选择任务类型">
-            <el-option label="请选择字典生成" value="" />
-          </el-select>
+        <el-form-item label="起飞纬度" prop="homeLatittude">
+          <el-input v-model="form.homeLatittude" placeholder="请输入起飞纬度" />
         </el-form-item>
         <el-form-item label="飞行距离" prop="sumDistance">
           <el-input v-model="form.sumDistance" placeholder="请输入飞行距离" />
         </el-form-item>
-        <el-form-item label="任务描述" prop="taskDescription">
-          <el-input v-model="form.taskDescription" placeholder="请输入任务描述" />
+        <el-form-item label="终点经度" prop="endLongtitude">
+          <el-input v-model="form.endLongtitude" placeholder="请输入终点经度" />
         </el-form-item>
-        <el-form-item label="航线id" prop="airlineId">
-          <el-input v-model="form.airlineId" placeholder="请输入航线id" />
+        <el-form-item label="飞行高度" prop="altitude">
+          <el-input v-model="form.altitude" placeholder="请输入飞行高度" />
         </el-form-item>
-        <el-form-item label="所属部门" prop="department">
-          <el-input v-model="form.department" placeholder="请输入所属部门" />
+        <el-form-item label="水平飞行速度" prop="velocity">
+          <el-input v-model="form.velocity" placeholder="请输入水平飞行速度" />
+        </el-form-item>
+        <el-form-item label="垂直飞行速度" prop="verticalSpeed">
+          <el-input v-model="form.verticalSpeed" placeholder="请输入垂直飞行速度" />
         </el-form-item>
         <el-form-item label="任务回放" prop="taskReplay">
           <el-input v-model="form.taskReplay" placeholder="请输入任务回放" />
         </el-form-item>
+        <el-form-item label="记录附件" prop="flyDoc">
+          <el-input v-model="form.flyDoc" placeholder="请输入记录附件" />
+        </el-form-item>
         <el-form-item label="飞行路线" prop="taskLine">
           <el-input v-model="form.taskLine" placeholder="请输入飞行路线" />
+        </el-form-item>
+        <el-form-item label="飞行录像" prop="flyVideo">
+          <el-input v-model="form.flyVideo" placeholder="请输入飞行录像" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -274,17 +269,17 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
-        taskState: null,
-        startTime: null,
-        driverId: null,
-        uavId: null,
-        taskType: null,
+        homeLongtitude: null,
+        homeLatittude: null,
         sumDistance: null,
-        taskDescription: null,
-        airlineId: null,
-        department: null,
+        endLongtitude: null,
+        altitude: null,
+        velocity: null,
+        verticalSpeed: null,
         taskReplay: null,
-        taskLine: null
+        flyDoc: null,
+        taskLine: null,
+        flyVideo: null
       },
       // 表单参数
       form: {},
@@ -315,17 +310,18 @@ export default {
     reset() {
       this.form = {
         id: null,
-        taskState: null,
-        startTime: null,
-        driverId: null,
-        uavId: null,
-        taskType: null,
+        taskId: null,
+        homeLongtitude: null,
+        homeLatittude: null,
         sumDistance: null,
-        taskDescription: null,
-        airlineId: null,
-        department: null,
+        endLongtitude: null,
+        altitude: null,
+        velocity: null,
+        verticalSpeed: null,
         taskReplay: null,
-        taskLine: null
+        flyDoc: null,
+        taskLine: null,
+        flyVideo: null
       };
       this.resetForm("form");
     },

@@ -7,14 +7,14 @@ import com.ruoyi.myflyrecord.domain.MyFlyRecord;
  * 我的飞行记录Service接口
  * 
  * @author ruoyi
- * @date 2021-10-14
+ * @date 2021-10-18
  */
 public interface IMyFlyRecordService 
 {
     /**
      * 查询我的飞行记录
      * 
-     * @param id 驾驶员主键
+     * @param id 我的飞行记录主键
      * @return 我的飞行记录
      */
     public MyFlyRecord selectMyFlyRecordById(Long id);

@@ -18,6 +18,7 @@
         <module>ruoyi-uavdepartment</module>
         <module>ruoyi-flyrecord</module>
         <module>ruoyi-myflyrecord</module>
+        <module>ruoyi-mytasklist</module>
     </modules>
 
     <artifactId>ruoyi-modules</artifactId>

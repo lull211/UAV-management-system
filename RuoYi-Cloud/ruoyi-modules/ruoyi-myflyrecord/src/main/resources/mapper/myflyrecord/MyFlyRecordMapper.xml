@@ -6,91 +6,95 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <resultMap type="MyFlyRecord" id="MyFlyRecordResult">
         <result property="id"    column="id"    />
-        <result property="taskState"    column="task_state"    />
-        <result property="startTime"    column="start_time"    />
-        <result property="driverId"    column="driver_id"    />
-        <result property="uavId"    column="uav_id"    />
-        <result property="taskType"    column="task_type"    />
+        <result property="taskId"    column="task_ID"    />
+        <result property="homeLongtitude"    column="home_longtitude"    />
+        <result property="homeLatittude"    column="home_latittude"    />
         <result property="sumDistance"    column="sum_distance"    />
-        <result property="taskDescription"    column="task_description"    />
-        <result property="airlineId"    column="airline_id"    />
-        <result property="department"    column="department"    />
+        <result property="endLongtitude"    column="end_longtitude"    />
+        <result property="altitude"    column="altitude"    />
+        <result property="velocity"    column="velocity"    />
+        <result property="verticalSpeed"    column="vertical_speed"    />
         <result property="taskReplay"    column="task_replay"    />
+        <result property="flyDoc"    column="fly_doc"    />
         <result property="taskLine"    column="task_line"    />
+        <result property="flyVideo"    column="fly_video"    />
     </resultMap>
 
     <sql id="selectMyFlyRecordVo">
-        select id, task_state, start_time, driver_id, uav_id, task_type, sum_distance, task_description, airline_id, department, task_replay, task_line from fly_record
+        select id, task_ID, home_longtitude, home_latittude, sum_distance, end_longtitude, altitude, velocity, vertical_speed, task_replay, fly_doc, task_line, fly_video from fly_record
     </sql>
 
     <select id="selectMyFlyRecordList" parameterType="MyFlyRecord" resultMap="MyFlyRecordResult">
         <include refid="selectMyFlyRecordVo"/>
-        <where>
-            <if test="taskState != null  and taskState != ''"> and task_state = #{taskState}</if>
-            <if test="startTime != null "> and start_time = #{startTime}</if>
-            <if test="driverId != null  and driverId != ''"> and driver_id = #{driverId}</if>
-            <if test="uavId != null "> and uav_id = #{uavId}</if>
-            <if test="taskType != null  and taskType != ''"> and task_type = #{taskType}</if>
+        <where>  
+            <if test="homeLongtitude != null  and homeLongtitude != ''"> and home_longtitude = #{homeLongtitude}</if>
+            <if test="homeLatittude != null  and homeLatittude != ''"> and home_latittude = #{homeLatittude}</if>
             <if test="sumDistance != null "> and sum_distance = #{sumDistance}</if>
-            <if test="taskDescription != null  and taskDescription != ''"> and task_description = #{taskDescription}</if>
-            <if test="airlineId != null  and airlineId != ''"> and airline_id = #{airlineId}</if>
-            <if test="department != null  and department != ''"> and department = #{department}</if>
+            <if test="endLongtitude != null  and endLongtitude != ''"> and end_longtitude = #{endLongtitude}</if>
+            <if test="altitude != null  and altitude != ''"> and altitude = #{altitude}</if>
+            <if test="velocity != null  and velocity != ''"> and velocity = #{velocity}</if>
+            <if test="verticalSpeed != null "> and vertical_speed = #{verticalSpeed}</if>
             <if test="taskReplay != null  and taskReplay != ''"> and task_replay = #{taskReplay}</if>
+            <if test="flyDoc != null  and flyDoc != ''"> and fly_doc = #{flyDoc}</if>
             <if test="taskLine != null  and taskLine != ''"> and task_line = #{taskLine}</if>
+            <if test="flyVideo != null  and flyVideo != ''"> and fly_video = #{flyVideo}</if>
         </where>
     </select>
     
     <select id="selectMyFlyRecordById" parameterType="Long" resultMap="MyFlyRecordResult">
         <include refid="selectMyFlyRecordVo"/>
-        where driver_id = #{driverId}
+        where task_Id = #{taskId}
     </select>
         
     <insert id="insertMyFlyRecord" parameterType="MyFlyRecord" useGeneratedKeys="true" keyProperty="id">
         insert into fly_record
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="taskState != null">task_state,</if>
-            <if test="startTime != null">start_time,</if>
-            <if test="driverId != null">driver_id,</if>
-            <if test="uavId != null">uav_id,</if>
-            <if test="taskType != null">task_type,</if>
+            <if test="taskId != null">task_ID,</if>
+            <if test="homeLongtitude != null">home_longtitude,</if>
+            <if test="homeLatittude != null">home_latittude,</if>
             <if test="sumDistance != null">sum_distance,</if>
-            <if test="taskDescription != null">task_description,</if>
-            <if test="airlineId != null">airline_id,</if>
-            <if test="department != null">department,</if>
+            <if test="endLongtitude != null">end_longtitude,</if>
+            <if test="altitude != null">altitude,</if>
+            <if test="velocity != null">velocity,</if>
+            <if test="verticalSpeed != null">vertical_speed,</if>
             <if test="taskReplay != null">task_replay,</if>
+            <if test="flyDoc != null">fly_doc,</if>
             <if test="taskLine != null">task_line,</if>
+            <if test="flyVideo != null">fly_video,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="taskState != null">#{taskState},</if>
-            <if test="startTime != null">#{startTime},</if>
-            <if test="driverId != null">#{driverId},</if>
-            <if test="uavId != null">#{uavId},</if>
-            <if test="taskType != null">#{taskType},</if>
+            <if test="taskId != null">#{taskId},</if>
+            <if test="homeLongtitude != null">#{homeLongtitude},</if>
+            <if test="homeLatittude != null">#{homeLatittude},</if>
             <if test="sumDistance != null">#{sumDistance},</if>
-            <if test="taskDescription != null">#{taskDescription},</if>
-            <if test="airlineId != null">#{airlineId},</if>
-            <if test="department != null">#{department},</if>
+            <if test="endLongtitude != null">#{endLongtitude},</if>
+            <if test="altitude != null">#{altitude},</if>
+            <if test="velocity != null">#{velocity},</if>
+            <if test="verticalSpeed != null">#{verticalSpeed},</if>
             <if test="taskReplay != null">#{taskReplay},</if>
+            <if test="flyDoc != null">#{flyDoc},</if>
             <if test="taskLine != null">#{taskLine},</if>
+            <if test="flyVideo != null">#{flyVideo},</if>
          </trim>
     </insert>
 
     <update id="updateMyFlyRecord" parameterType="MyFlyRecord">
         update fly_record
         <trim prefix="SET" suffixOverrides=",">
-            <if test="taskState != null">task_state = #{taskState},</if>
-            <if test="startTime != null">start_time = #{startTime},</if>
-            <if test="driverId != null">driver_id = #{driverId},</if>
-            <if test="uavId != null">uav_id = #{uavId},</if>
-            <if test="taskType != null">task_type = #{taskType},</if>
+            <if test="taskId != null">task_ID = #{taskId},</if>
+            <if test="homeLongtitude != null">home_longtitude = #{homeLongtitude},</if>
+            <if test="homeLatittude != null">home_latittude = #{homeLatittude},</if>
             <if test="sumDistance != null">sum_distance = #{sumDistance},</if>
-            <if test="taskDescription != null">task_description = #{taskDescription},</if>
-            <if test="airlineId != null">airline_id = #{airlineId},</if>
-            <if test="department != null">department = #{department},</if>
+            <if test="endLongtitude != null">end_longtitude = #{endLongtitude},</if>
+            <if test="altitude != null">altitude = #{altitude},</if>
+            <if test="velocity != null">velocity = #{velocity},</if>
+            <if test="verticalSpeed != null">vertical_speed = #{verticalSpeed},</if>
             <if test="taskReplay != null">task_replay = #{taskReplay},</if>
+            <if test="flyDoc != null">fly_doc = #{flyDoc},</if>
             <if test="taskLine != null">task_line = #{taskLine},</if>
+            <if test="flyVideo != null">fly_video = #{flyVideo},</if>
         </trim>
-        where id = #{id}
+        where task_ID = #{taskId}
     </update>
 
     <delete id="deleteMyFlyRecordById" parameterType="Long">

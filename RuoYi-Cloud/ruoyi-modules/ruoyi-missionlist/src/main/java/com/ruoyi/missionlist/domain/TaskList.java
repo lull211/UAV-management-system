@@ -11,7 +11,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * 任务列表对象 task_list
  * 
  * @author ruoyi
- * @date 2021-10-13
+ * @date 2021-10-18
  */
 public class TaskList extends BaseEntity
 {
@@ -33,6 +33,11 @@ public class TaskList extends BaseEntity
     /** 无人机编号 */
     @Excel(name = "无人机编号")
     private String taskDrone;
+
+    /** 结束时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "结束时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date endTime;
 
     /** 驾驶员 */
     @Excel(name = "驾驶员")
@@ -64,6 +69,10 @@ public class TaskList extends BaseEntity
     /** 描述 */
     @Excel(name = "描述")
     private String extraExplain;
+
+    /** 任务状态 */
+    @Excel(name = "任务状态")
+    private Long taskState;
 
     public void setTaskName(String taskName) 
     {
@@ -100,6 +109,15 @@ public class TaskList extends BaseEntity
     public String getTaskDrone() 
     {
         return taskDrone;
+    }
+    public void setEndTime(Date endTime) 
+    {
+        this.endTime = endTime;
+    }
+
+    public Date getEndTime() 
+    {
+        return endTime;
     }
     public void setTaskDriver(String taskDriver) 
     {
@@ -173,6 +191,15 @@ public class TaskList extends BaseEntity
     {
         return extraExplain;
     }
+    public void setTaskState(Long taskState) 
+    {
+        this.taskState = taskState;
+    }
+
+    public Long getTaskState() 
+    {
+        return taskState;
+    }
 
     @Override
     public String toString() {
@@ -181,6 +208,7 @@ public class TaskList extends BaseEntity
             .append("taskType", getTaskType())
             .append("taskTime", getTaskTime())
             .append("taskDrone", getTaskDrone())
+            .append("endTime", getEndTime())
             .append("taskDriver", getTaskDriver())
             .append("driverPhone", getDriverPhone())
             .append("id", getId())
@@ -189,6 +217,7 @@ public class TaskList extends BaseEntity
             .append("taskAddress", getTaskAddress())
             .append("deleteCode", getDeleteCode())
             .append("extraExplain", getExtraExplain())
+            .append("taskState", getTaskState())
             .toString();
     }
 }

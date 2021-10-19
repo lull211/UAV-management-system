@@ -1,7 +1,5 @@
 package com.ruoyi.flyrecord.domain;
 
-import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
@@ -11,7 +9,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * 飞行记录对象 fly_record
  * 
  * @author ruoyi
- * @date 2021-10-14
+ * @date 2021-10-18
  */
 public class FlyRecord extends BaseEntity
 {
@@ -20,50 +18,52 @@ public class FlyRecord extends BaseEntity
     /** 飞行记录 */
     private Long id;
 
-    /** 任务状态 */
-    @Excel(name = "任务状态")
-    private String taskState;
+    /** 任务ID */
+    private Long taskId;
 
-    /** 起始时间 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Excel(name = "起始时间", width = 30, dateFormat = "yyyy-MM-dd")
-    private Date startTime;
+    /** 起飞经度 */
+    @Excel(name = "起飞经度")
+    private String homeLongtitude;
 
-    /** 驾驶员ID */
-    @Excel(name = "驾驶员ID")
-    private String driverId;
-
-    /** 无人机ID */
-    @Excel(name = "无人机ID")
-    private Long uavId;
-
-    /** 任务类型 */
-    @Excel(name = "任务类型")
-    private String taskType;
+    /** 起飞纬度 */
+    @Excel(name = "起飞纬度")
+    private String homeLatittude;
 
     /** 飞行距离 */
     @Excel(name = "飞行距离")
     private Long sumDistance;
 
-    /** 任务描述 */
-    @Excel(name = "任务描述")
-    private String taskDescription;
+    /** 终点经度 */
+    @Excel(name = "终点经度")
+    private String endLongtitude;
 
-    /** 航线id */
-    @Excel(name = "航线id")
-    private String airlineId;
+    /** 飞行高度 */
+    @Excel(name = "飞行高度")
+    private String altitude;
 
-    /** 所属部门 */
-    @Excel(name = "所属部门")
-    private String department;
+    /** 水平飞行速度 */
+    @Excel(name = "水平飞行速度")
+    private String velocity;
+
+    /** 垂直飞行速度 */
+    @Excel(name = "垂直飞行速度")
+    private Long verticalSpeed;
 
     /** 任务回放 */
     @Excel(name = "任务回放")
     private String taskReplay;
 
+    /** 记录附件 */
+    @Excel(name = "记录附件")
+    private String flyDoc;
+
     /** 飞行路线 */
     @Excel(name = "飞行路线")
     private String taskLine;
+
+    /** 飞行录像 */
+    @Excel(name = "飞行录像")
+    private String flyVideo;
 
     public void setId(Long id) 
     {
@@ -74,50 +74,32 @@ public class FlyRecord extends BaseEntity
     {
         return id;
     }
-    public void setTaskState(String taskState) 
+    public void setTaskId(Long taskId) 
     {
-        this.taskState = taskState;
+        this.taskId = taskId;
     }
 
-    public String getTaskState() 
+    public Long getTaskId() 
     {
-        return taskState;
+        return taskId;
     }
-    public void setStartTime(Date startTime) 
+    public void setHomeLongtitude(String homeLongtitude) 
     {
-        this.startTime = startTime;
-    }
-
-    public Date getStartTime() 
-    {
-        return startTime;
-    }
-    public void setDriverId(String driverId) 
-    {
-        this.driverId = driverId;
+        this.homeLongtitude = homeLongtitude;
     }
 
-    public String getDriverId() 
+    public String getHomeLongtitude() 
     {
-        return driverId;
+        return homeLongtitude;
     }
-    public void setUavId(Long uavId) 
+    public void setHomeLatittude(String homeLatittude) 
     {
-        this.uavId = uavId;
-    }
-
-    public Long getUavId() 
-    {
-        return uavId;
-    }
-    public void setTaskType(String taskType) 
-    {
-        this.taskType = taskType;
+        this.homeLatittude = homeLatittude;
     }
 
-    public String getTaskType() 
+    public String getHomeLatittude() 
     {
-        return taskType;
+        return homeLatittude;
     }
     public void setSumDistance(Long sumDistance) 
     {
@@ -128,32 +110,41 @@ public class FlyRecord extends BaseEntity
     {
         return sumDistance;
     }
-    public void setTaskDescription(String taskDescription) 
+    public void setEndLongtitude(String endLongtitude) 
     {
-        this.taskDescription = taskDescription;
+        this.endLongtitude = endLongtitude;
     }
 
-    public String getTaskDescription() 
+    public String getEndLongtitude() 
     {
-        return taskDescription;
+        return endLongtitude;
     }
-    public void setAirlineId(String airlineId) 
+    public void setAltitude(String altitude) 
     {
-        this.airlineId = airlineId;
-    }
-
-    public String getAirlineId() 
-    {
-        return airlineId;
-    }
-    public void setDepartment(String department) 
-    {
-        this.department = department;
+        this.altitude = altitude;
     }
 
-    public String getDepartment() 
+    public String getAltitude() 
     {
-        return department;
+        return altitude;
+    }
+    public void setVelocity(String velocity) 
+    {
+        this.velocity = velocity;
+    }
+
+    public String getVelocity() 
+    {
+        return velocity;
+    }
+    public void setVerticalSpeed(Long verticalSpeed) 
+    {
+        this.verticalSpeed = verticalSpeed;
+    }
+
+    public Long getVerticalSpeed() 
+    {
+        return verticalSpeed;
     }
     public void setTaskReplay(String taskReplay) 
     {
@@ -164,6 +155,15 @@ public class FlyRecord extends BaseEntity
     {
         return taskReplay;
     }
+    public void setFlyDoc(String flyDoc) 
+    {
+        this.flyDoc = flyDoc;
+    }
+
+    public String getFlyDoc() 
+    {
+        return flyDoc;
+    }
     public void setTaskLine(String taskLine) 
     {
         this.taskLine = taskLine;
@@ -173,22 +173,32 @@ public class FlyRecord extends BaseEntity
     {
         return taskLine;
     }
+    public void setFlyVideo(String flyVideo) 
+    {
+        this.flyVideo = flyVideo;
+    }
+
+    public String getFlyVideo() 
+    {
+        return flyVideo;
+    }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("id", getId())
-            .append("taskState", getTaskState())
-            .append("startTime", getStartTime())
-            .append("driverId", getDriverId())
-            .append("uavId", getUavId())
-            .append("taskType", getTaskType())
+            .append("taskId", getTaskId())
+            .append("homeLongtitude", getHomeLongtitude())
+            .append("homeLatittude", getHomeLatittude())
             .append("sumDistance", getSumDistance())
-            .append("taskDescription", getTaskDescription())
-            .append("airlineId", getAirlineId())
-            .append("department", getDepartment())
+            .append("endLongtitude", getEndLongtitude())
+            .append("altitude", getAltitude())
+            .append("velocity", getVelocity())
+            .append("verticalSpeed", getVerticalSpeed())
             .append("taskReplay", getTaskReplay())
+            .append("flyDoc", getFlyDoc())
             .append("taskLine", getTaskLine())
+            .append("flyVideo", getFlyVideo())
             .toString();
     }
 }

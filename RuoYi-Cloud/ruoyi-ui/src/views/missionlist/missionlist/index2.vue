@@ -11,11 +11,8 @@
         />
       </el-form-item>
       <el-form-item label="任务类型" prop="taskType">
-
-
         <el-select v-model="queryParams.taskType" placeholder="请选择任务类型" clearable size="small">
-          <el-option v-for="item in typelist" :key="item.id"  :label="item.taskType" :value="item.taskType">
-          </el-option>
+          <el-option label="请选择字典生成" value="" />
         </el-select>
       </el-form-item>
       <el-form-item label="任务时间" prop="taskTime">
@@ -36,10 +33,13 @@
         />
       </el-form-item>
       <el-form-item label="驾驶员" prop="taskDriver">
-        <el-select v-model="queryParams.taskDriver" placeholder="请选择驾驶员" clearable size="small">
-          <el-option v-for="item in drivelist" :key="item.id"  :label="item.driverName" :value="item.id">
-          </el-option>
-        </el-select>
+        <el-input
+          v-model="queryParams.taskDriver"
+          placeholder="请输入驾驶员"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
       </el-form-item>
       <el-form-item label="驾驶员手机号码" prop="driverPhone">
         <el-input
@@ -90,6 +90,15 @@
         <el-input
           v-model="queryParams.extraExplain"
           placeholder="请输入描述"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="任务状态" prop="taskState">
+        <el-input
+          v-model="queryParams.taskState"
+          placeholder="请输入任务状态"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -157,7 +166,7 @@
         </template>
       </el-table-column>
       <el-table-column label="无人机编号" align="center" prop="taskDrone" />
-      <el-table-column label="驾驶员" align="center" prop="driverName" />
+      <el-table-column label="驾驶员" align="center" prop="taskDriver" />
       <el-table-column label="驾驶员手机号码" align="center" prop="driverPhone" />
       <el-table-column label="主键id" align="center" prop="id" />
       <el-table-column label="航线" align="center" prop="taskAirline" />
@@ -165,6 +174,7 @@
       <el-table-column label="任务地点" align="center" prop="taskAddress" />
       <el-table-column label="删除码" align="center" prop="deleteCode" />
       <el-table-column label="描述" align="center" prop="extraExplain" />
+      <el-table-column label="任务状态" align="center" prop="taskState" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -200,9 +210,8 @@
           <el-input v-model="form.taskName" placeholder="请输入任务名称" />
         </el-form-item>
         <el-form-item label="任务类型" prop="taskType">
-            <el-select v-model="form.taskType" placeholder="请选择任务类型" clearable size="small">
-              <el-option v-for="item in typelist" :key="item.id"  :label="item.taskType" :value="item.taskType">
-              </el-option>
+          <el-select v-model="form.taskType" placeholder="请选择任务类型">
+            <el-option label="请选择字典生成" value="" />
           </el-select>
         </el-form-item>
         <el-form-item label="任务时间" prop="taskTime">
@@ -217,12 +226,11 @@
           <el-input v-model="form.taskDrone" placeholder="请输入无人机编号" />
         </el-form-item>
         <el-form-item label="驾驶员" prop="taskDriver">
-          <el-select v-model="form.taskDriver" placeholder="请选择驾驶员" clearable size="small">
-            <el-option v-for="item in drivelist" :key="item.id" :label="item.driverName + ' ' + item.driverPhone" :value="item.id">
-            </el-option>
-          </el-select>
+          <el-input v-model="form.taskDriver" placeholder="请输入驾驶员" />
         </el-form-item>
-
+        <el-form-item label="驾驶员手机号码" prop="driverPhone">
+          <el-input v-model="form.driverPhone" placeholder="请输入驾驶员手机号码" />
+        </el-form-item>
         <el-form-item label="航线" prop="taskAirline">
           <el-input v-model="form.taskAirline" placeholder="请输入航线" />
         </el-form-item>
@@ -238,6 +246,9 @@
         <el-form-item label="描述" prop="extraExplain">
           <el-input v-model="form.extraExplain" placeholder="请输入描述" />
         </el-form-item>
+        <el-form-item label="任务状态" prop="taskState">
+          <el-input v-model="form.taskState" placeholder="请输入任务状态" />
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm">确 定</el-button>
@@ -249,10 +260,6 @@
 
 <script>
 import { listMissionlist, getMissionlist, delMissionlist, addMissionlist, updateMissionlist } from "@/api/missionlist/missionlist";
-import {listTasktype} from "@/api/tasktype/tasktype";
-import {listPilots,getPilots} from "@/api/pilots/pilots";
-import {listUav_manage} from "@/api/uav/uav_manage";
-import {getKeeper} from "@/api/keeper/keeper";
 
 export default {
   name: "Missionlist",
@@ -271,11 +278,7 @@ export default {
       // 总条数
       total: 0,
       // 任务列表表格数据
-      typeList: [],
-      drivelist:[],
-
-      missionlistList:[],
-
+      missionlistList: [],
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -287,8 +290,6 @@ export default {
         taskName: null,
         taskType: null,
         taskTime: null,
-
-
         taskDrone: null,
         taskDriver: null,
         driverPhone: null,
@@ -296,17 +297,9 @@ export default {
         taskImages: null,
         taskAddress: null,
         deleteCode: null,
-        extraExplain: null
+        extraExplain: null,
+        taskState: null
       },
-      //查询保管员的参数
-      UserqueryParams: {
-        pageNum: 1,
-        pageSize: 10,
-        name: null,
-        phone: null
-      },
-      //储存任务类型
-      typelist:[],
       // 表单参数
       form: {},
       // 表单校验
@@ -329,6 +322,9 @@ export default {
         driverPhone: [
           { required: true, message: "驾驶员手机号码不能为空", trigger: "blur" }
         ],
+        taskState: [
+          { required: true, message: "任务状态不能为空", trigger: "blur" }
+        ]
       }
     };
   },
@@ -339,44 +335,11 @@ export default {
     /** 查询任务列表列表 */
     getList() {
       this.loading = true;
-      // listMissionlist(this.queryParams).then(response => {
-      //   this.missionlistList = response.rows;
-      //   this.total = response.total;
-      //   this.loading = false;
-      // });
-      /** 获取任务类型信息 */
-      listTasktype(this.UserqueryParams).then(response => {
-        this.typelist = response.rows;
-        this.loading = false;
-      });
-      /** 获取驾驶员信息 */
-      listPilots(this.UserqueryParams).then(response => {
-        this.drivelist = response.rows;
-        this.loading = false;
-      });
-
       listMissionlist(this.queryParams).then(response => {
         this.missionlistList = response.rows;
         this.total = response.total;
         this.loading = false;
-        //查询某个驾驶员信息
-        for (let i = 0; i < this.missionlistList.length; i++) {
-          if (this.missionlistList[i].id){
-            getPilots(this.missionlistList[i].taskDriver).then(resp=>{
-              this.$set(this.missionlistList[i],'driverName',resp.data.driverName);
-              this.$set(this.missionlistList[i],'driverPhone',resp.data.driverPhone);
-            }
-          )
-
-          }else{//ID 为0时
-            this.uav_manageList[i].driverName="无";
-            this.uav_manageList[i].driverPhone="无";
-          }
-        }
-
       });
-
-
     },
     // 取消按钮
     cancel() {
@@ -391,13 +354,14 @@ export default {
         taskTime: null,
         taskDrone: null,
         taskDriver: null,
+        driverPhone: null,
         id: null,
         taskAirline: null,
         taskImages: null,
         taskAddress: null,
         deleteCode: null,
         extraExplain: null,
-        driverPhone: null
+        taskState: null
       };
       this.resetForm("form");
     },
@@ -428,10 +392,7 @@ export default {
       this.reset();
       const id = row.id || this.ids
       getMissionlist(id).then(response => {
-        //这里重新赋了一下值，把id换成修改时展示的中文
         this.form = response.data;
-        //类型转换，字符串转int，解决下拉框只显示id的bug
-        this.form.taskDriver = parseInt(this.form.taskDriver);
         this.open = true;
         this.title = "修改任务列表";
       });
@@ -440,14 +401,6 @@ export default {
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
-          for (let i = 0; i < this.drivelist.length; i++) {
-            if(this.drivelist[i].id == this.form.taskDriver) {
-              //this.form.driverInfo = '* ' + this.drivelist[i].driverName + ' ' + this.drivelist[i].driverPhone;
-              this.form.driverPhone = this.drivelist[i].driverPhone;
-            }
-          }
-          console.log("sh")
-          console.log(this.form)
           if (this.form.id != null) {
             updateMissionlist(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
