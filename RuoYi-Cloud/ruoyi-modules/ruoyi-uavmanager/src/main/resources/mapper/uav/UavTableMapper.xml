@@ -56,6 +56,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectUavTableVo"/>
         where id = #{id}
     </select>
+
+    <select id="selectUavTableByuavFlightNumber" parameterType="String" resultMap="UavTableResult">
+        <include refid="selectUavTableVo"/>
+        where uav_flight_number = #{uavFlightNumber}
+    </select>
         
     <insert id="insertUavTable" parameterType="UavTable" useGeneratedKeys="true" keyProperty="id">
         insert into uav_table

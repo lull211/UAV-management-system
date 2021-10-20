@@ -17,6 +17,14 @@ export function getUav_manage(id) {
   })
 }
 
+// 查询无人机信息管理详细
+export function getUav_manage_by_flightNumber(uavFlightNumber) {
+  return request({
+    url: '/uav/uav_manage/FlightNumber/' + uavFlightNumber,
+    method: 'get'
+  })
+}
+
 // 新增无人机信息管理
 export function addUav_manage(data) {
   return request({

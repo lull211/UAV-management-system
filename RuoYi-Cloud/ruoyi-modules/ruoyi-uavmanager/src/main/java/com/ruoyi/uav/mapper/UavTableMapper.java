@@ -19,6 +19,13 @@ public interface UavTableMapper
      */
     public UavTable selectUavTableById(Long id);
 
+
+    /**
+     * 通过飞控编号查询无人机信息
+     */
+    public UavTable selectUavTableByuavFlightNumber(String uavFlightNumber);
+
+
     /**
      * 查询无人机信息管理列表
      * 

@@ -71,6 +71,16 @@ public class UavTableController extends BaseController
     }
 
     /**
+     * 通过飞控编号获取无人机信息管理详细信息
+     */
+    @PreAuthorize(hasPermi = "uav:uav_manage:query")
+    @GetMapping(value = "/FlightNumber/{uavFlightNumber}")
+    public AjaxResult getInfoByFlightNumber(@PathVariable("uavFlightNumber") String uavFlightNumber)
+    {
+        return AjaxResult.success(uavTableService.selectUavTableByuavFlightNumber(uavFlightNumber));
+    }
+
+    /**
      * 新增无人机信息管理
      */
     @PreAuthorize(hasPermi = "uav:uav_manage:add")

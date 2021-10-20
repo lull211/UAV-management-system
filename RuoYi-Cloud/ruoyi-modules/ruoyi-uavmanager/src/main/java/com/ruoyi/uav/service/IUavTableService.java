@@ -19,6 +19,8 @@ public interface IUavTableService
      */
     public UavTable selectUavTableById(Long id);
 
+
+    public UavTable selectUavTableByuavFlightNumber(String uavFlightNumber);
     /**
      * 查询无人机信息管理列表
      * 

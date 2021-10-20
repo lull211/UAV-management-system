@@ -32,7 +32,7 @@ public class PilotsTableController extends BaseController
     /**
      * 查询驾驶员管理列表
      */
-    @PreAuthorize(hasPermi = "pilots:pilots:list")
+    @PreAuthorize(hasPermi = "pilots:pilots:query")
     @GetMapping("/list")
     public TableDataInfo list(PilotsTable pilotsTable)
     {

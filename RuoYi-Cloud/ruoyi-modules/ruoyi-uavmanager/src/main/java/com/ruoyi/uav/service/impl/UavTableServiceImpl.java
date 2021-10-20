@@ -90,4 +90,8 @@ public class UavTableServiceImpl implements IUavTableService
     {
         return uavTableMapper.deleteUavTableById(id);
     }
+
+    public UavTable selectUavTableByuavFlightNumber(String uavFlightNumber){
+        return uavTableMapper.selectUavTableByuavFlightNumber(uavFlightNumber);
+    }
 }

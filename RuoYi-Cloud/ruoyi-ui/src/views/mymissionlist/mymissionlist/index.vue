@@ -223,7 +223,7 @@
             <el-button
               size="mini"
               type="text"
-              @click="openVideo()"
+              @click="openVideo(scope.row)"
               v-hasPermi="['mymissionlist:mymissionlist:query']"
             >查看回放</el-button>
 
@@ -235,10 +235,11 @@
               v-hasPermi="['mymissionlist:mymissionlist:query']"
             >填写记录</el-button>
 
+            <!--调用上传文件组件-->
             <el-dialog :title="title" :visible.sync="uploadFileFlag" width="500px" height="1000px">
 
                 <el-form label-width="80px">
-                  <file-upload v-model="flyDoc"></file-upload>
+                  <file-upload v-model="flyDoc" :limit="1"></file-upload>
                 </el-form>
 
                 <el-button type="primary" @click="submitFlyFile(scope.row)">确 定</el-button>
@@ -247,13 +248,6 @@
 
           </p>
 
-<!--          <el-button-->
-<!--            size="mini"-->
-<!--            type="text"-->
-<!--            icon="el-icon-delete"-->
-<!--            @click="handleDelete(scope.row)"-->
-<!--            v-hasPermi="['missionlist:missionlist:remove']"-->
-<!--          >删除</el-button>-->
         </template>
       </el-table-column>
     </el-table>
@@ -326,17 +320,16 @@
 
 <script>
 import {listMymissionlist, getMymissionlist} from "@/api/mymissionlist/mymissionlist";
-import {listTasktype} from "@/api/tasktype/tasktype";
 import {listPilots,getPilots} from "@/api/pilots/pilots";
 import {getUserProfile} from "../../../api/system/user";
-import {getPilotsByName} from "../../../api/pilots/pilots";
+import {getPilotsByName, updatePilots} from "../../../api/pilots/pilots";
 import {updateMymissionlist} from "../../../api/mymissionlist/mymissionlist";
 import VueAliPlayer from "../../../components/VueAliPlayer/VueAliPlayer";
 import FileUpload from "@/components/FileUpload/index.vue";
 import {updateMyflyrecord} from "../../../api/myflyrecord/myflyrecord";
 import {getMyflyrecord} from "../../../api/myflyrecord/myflyrecord";
 import {addMyflyrecord} from "../../../api/myflyrecord/myflyrecord";
-import {listMyflyrecord} from "../../../api/myflyrecord/myflyrecord";
+import { getUav_manage_by_flightNumber, updateUav_manage} from "../../../api/uav/uav_manage";
 
 
 export default {
@@ -354,6 +347,9 @@ export default {
       //上传附件窗口
       uploadFileFlag: false,
 
+
+      uavForm: {},
+
       url: 'https://www.w3school.com.cn/example/html5/mov_bbb.mp4',
 
       // 遮罩层
@@ -370,13 +366,17 @@ export default {
       total: 0,
       // 任务列表表格数据
       typeList: [],
+      //驾驶员信息列表
       drivelist:[],
       flyDoc: null,
       missionlistList:[],
+      //更新飞行记录的表单
       recordForm: {
         taskId: null,
         flyDoc: null
       },
+
+
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -457,9 +457,12 @@ export default {
 
     },
 
-    openVideo(){
+    openVideo(row){
       this.title = "查看回放";
       this.videoFlag = true;
+      getMyflyrecord(row.id).then(response => {
+        this.url=response.flyVideo;
+      })
     },
 
     finishFile(){
@@ -473,11 +476,13 @@ export default {
       //找到用户的名字
 
       getUserProfile().then(response => {
+
         let name = response.data.nickName;
 
         let obj = {
           name: name
         }
+
         getPilotsByName(obj).then(response => {
 
           if (response.data) {
@@ -541,11 +546,27 @@ export default {
         taskState: null,
         driverPhone: null
       };
+      //飞行记录请求表
       this.recordForm = {
         taskId: null,
         flyDoc: null
       };
+
+      this.pilotForm ={
+        trainingTime: null,
+        flyingTime: null,
+        traingingTime: null,
+      };
+
+      this.uavForm = {
+
+      };
+
+      //重置表单
       this.resetForm("form");
+      this.resetForm("recordForm");
+      this.resetForm("pilotForm");
+      this.resetForm("uavForm");
     },
     /** 搜索按钮操作 */
     handleQuery() {
@@ -587,7 +608,6 @@ export default {
       const id = row.id || this.ids
       getMymissionlist(id).then(response => {
         this.form = response.data;
-
         //类型转换，字符串转int，解决下拉框只显示id的bug
         const date=new Date();
         const year=date.getFullYear(); //获取当前年份
@@ -619,6 +639,26 @@ export default {
         const s=date.getSeconds(); //获取秒
         this.form.endTime = year + "-" + mon + "-" + day + " " + h + ":" + m + ":" + s;
         this.form.taskState = 2;
+
+        //这里写死了训练试飞
+        if(this.form.taskType == "训练"){
+          this.resetForm("pilotForm");
+          //时间相减
+          const endTime = new Date(this.form.endTime)
+          const startTime = new Date(this.form.taskTime)
+          //计算训练总时长，单位为毫秒
+          this.pilotForm.trainingTime = (endTime.getTime()-startTime.getTime());
+        }
+        //这里写死了训练试飞
+        else{
+          this.resetForm("pilotForm");
+          //时间相减
+          const endTime = new Date(this.form.endTime)
+          const startTime = new Date(this.form.taskTime)
+          //计算训练总时长，单位为m秒
+          this.pilotForm.flyingTime = (endTime.getTime()-startTime.getTime());
+        }
+
         this.open = true;
         this.title = "确认完成任务？";
       });
@@ -627,16 +667,42 @@ export default {
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
-          for (let i = 0; i < this.drivelist.length; i++) {
-            if(this.drivelist[i].id == this.form.taskDriver) {
-              this.form.driverPhone = this.drivelist[i].driverPhone;
-            }
-          }
+
           if (this.form.id != null) {
+            //更新飞行员信息表和飞行器信息表
+
+            //驾驶员ID
+            const id = this.form.taskDriver;
+            //飞行器编号
+            const uav_flight_number = this.form.taskDrone;
+            //任务状态
+            const taskState = this.form.taskState;
+
+            //查找对应的驾驶员，形成表单更新驾驶员状态
+            getPilots(id).then(response =>{
+              const traingTime = this.pilotForm.trainingTime;
+              const flyingTime = this.pilotForm.flyingTime;
+              this.pilotForm = response.data;
+
+              //更新任务状态
+              this.pilotForm.driverState = taskState;
+              this.pilotForm.trainingTime = this.pilotForm.trainingTime + traingTime;
+              this.pilotForm.flyingTime = this.pilotForm.flyingTime + flyingTime;
+              this.pilotForm.sumTime = this.pilotForm.flyingTime + this.pilotForm.trainingTime;
+              updatePilots(this.pilotForm)
+            })
+
+            //查找对应的飞行器，形成表单更新飞行器状态
+            getUav_manage_by_flightNumber(uav_flight_number).then(response =>{
+              this.uavForm = response.data
+              this.uavForm.uavEnabled = taskState
+              updateUav_manage(this.uavForm)
+            })
+
             //飞行任务入飞行记录 还需要在这里添加出发点记录入库 TODO
             this.recordForm.taskId = this.form.id;
+
             getMyflyrecord(this.recordForm.taskId).then(response => {
-              console.log(response)
               if (response.data) {
                 //如果可以获取得到数据 即该id已存在，则执行更新
                 updateMyflyrecord(this.recordForm)
