@@ -14,3 +14,4 @@
 10:23:53.625 [boundedElastic-8] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/file/upload,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-file"
 10:31:00.184 [boundedElastic-6] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/flyrecord/flyrecord/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-flyrecord"
 10:32:32.938 [boundedElastic-9] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/code/gen/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-gen"
+13:45:06.600 [boundedElastic-6] ERROR c.r.g.h.GatewayExceptionHandler - [handle,52] - [网关异常处理]请求路径:/flyrecord/flyrecord/list,异常信息:503 SERVICE_UNAVAILABLE "Unable to find instance for ruoyi-flyrecord"

@@ -11,7 +11,7 @@ import com.ruoyi.myflyrecord.service.IMyFlyRecordService;
  * 我的飞行记录Service业务层处理
  * 
  * @author ruoyi
- * @date 2021-10-18
+ * @date 2021-10-20
  */
 @Service
 public class MyFlyRecordServiceImpl implements IMyFlyRecordService 

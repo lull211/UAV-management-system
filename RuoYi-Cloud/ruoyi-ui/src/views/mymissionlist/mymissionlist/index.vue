@@ -372,6 +372,7 @@ export default {
       missionlistList:[],
       //更新飞行记录的表单
       recordForm: {
+        driverId: null,
         taskId: null,
         flyDoc: null
       },
@@ -544,10 +545,12 @@ export default {
         deleteCode: null,
         extraExplain: null,
         taskState: null,
-        driverPhone: null
+        driverPhone: null,
+        driverId: null
       };
       //飞行记录请求表
       this.recordForm = {
+        driverId: null,
         taskId: null,
         flyDoc: null
       };
@@ -701,10 +704,12 @@ export default {
 
             //飞行任务入飞行记录 还需要在这里添加出发点记录入库 TODO
             this.recordForm.taskId = this.form.id;
+            this.recordForm.driverId = id;
 
             getMyflyrecord(this.recordForm.taskId).then(response => {
               if (response.data) {
                 //如果可以获取得到数据 即该id已存在，则执行更新
+                console.log(this.recordForm)
                 updateMyflyrecord(this.recordForm)
               } else {
                 //否则插入一条记录

@@ -9,7 +9,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * 我的飞行记录对象 fly_record
  * 
  * @author ruoyi
- * @date 2021-10-18
+ * @date 2021-10-20
  */
 public class MyFlyRecord extends BaseEntity
 {
@@ -32,6 +32,10 @@ public class MyFlyRecord extends BaseEntity
     /** 飞行距离 */
     @Excel(name = "飞行距离")
     private Long sumDistance;
+
+    /** 终点纬度 */
+    @Excel(name = "终点纬度")
+    private String endLatittude;
 
     /** 终点经度 */
     @Excel(name = "终点经度")
@@ -64,6 +68,10 @@ public class MyFlyRecord extends BaseEntity
     /** 飞行录像 */
     @Excel(name = "飞行录像")
     private String flyVideo;
+
+    /** 驾驶员ID */
+    @Excel(name = "驾驶员ID")
+    private Long driverId;
 
     public void setId(Long id) 
     {
@@ -109,6 +117,15 @@ public class MyFlyRecord extends BaseEntity
     public Long getSumDistance() 
     {
         return sumDistance;
+    }
+    public void setEndLatittude(String endLatittude) 
+    {
+        this.endLatittude = endLatittude;
+    }
+
+    public String getEndLatittude() 
+    {
+        return endLatittude;
     }
     public void setEndLongtitude(String endLongtitude) 
     {
@@ -182,6 +199,15 @@ public class MyFlyRecord extends BaseEntity
     {
         return flyVideo;
     }
+    public void setDriverId(Long driverId) 
+    {
+        this.driverId = driverId;
+    }
+
+    public Long getDriverId() 
+    {
+        return driverId;
+    }
 
     @Override
     public String toString() {
@@ -191,6 +217,7 @@ public class MyFlyRecord extends BaseEntity
             .append("homeLongtitude", getHomeLongtitude())
             .append("homeLatittude", getHomeLatittude())
             .append("sumDistance", getSumDistance())
+            .append("endLatittude", getEndLatittude())
             .append("endLongtitude", getEndLongtitude())
             .append("altitude", getAltitude())
             .append("velocity", getVelocity())
@@ -199,6 +226,7 @@ public class MyFlyRecord extends BaseEntity
             .append("flyDoc", getFlyDoc())
             .append("taskLine", getTaskLine())
             .append("flyVideo", getFlyVideo())
+            .append("driverId", getDriverId())
             .toString();
     }
 }

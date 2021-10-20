@@ -7,7 +7,7 @@ import com.ruoyi.myflyrecord.domain.MyFlyRecord;
  * 我的飞行记录Service接口
  * 
  * @author ruoyi
- * @date 2021-10-18
+ * @date 2021-10-20
  */
 public interface IMyFlyRecordService 
 {

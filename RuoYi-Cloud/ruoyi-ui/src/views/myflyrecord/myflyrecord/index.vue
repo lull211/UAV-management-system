@@ -186,7 +186,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -241,7 +241,10 @@
 </template>
 
 <script>
-import { listMyflyrecord, getMyflyrecord, delMyflyrecord, addMyflyrecord, updateMyflyrecord } from "@/api/myflyrecord/myflyrecord";
+import {listMyflyrecord, getMyflyrecord, delMyflyrecord, addMyflyrecord, updateMyflyrecord } from "@/api/myflyrecord/myflyrecord";
+import {getUserProfile} from "../../../api/system/user";
+import {getPilotsByName} from "../../../api/pilots/pilots";
+import {getMymissionlist, listMymissionlist} from "../../../api/mymissionlist/mymissionlist";
 
 export default {
   name: "Myflyrecord",
@@ -294,12 +297,30 @@ export default {
   methods: {
     /** 查询我的飞行记录列表 */
     getList() {
-      this.loading = true;
-      listMyflyrecord(this.queryParams).then(response => {
-        this.myflyrecordList = response.rows;
-        this.total = response.total;
-        this.loading = false;
-      });
+
+      getUserProfile().then(response => {
+
+        let name = response.data.nickName;
+
+        let obj = {
+          name: name
+        };
+
+        getPilotsByName(obj).then(response => {
+          const driverId = response.data.id
+
+          this.queryParams.driverId = driverId
+
+          this.loading = true
+          listMyflyrecord(this.queryParams).then(response => {
+            this.myflyrecordList = response.rows;
+            this.total = response.total;
+            this.loading = false;
+          });
+
+        })
+      })
+
     },
     // 取消按钮
     cancel() {
