@@ -20,6 +20,7 @@
         <module name="ruoyi-common-datasource" />
         <module name="ruoyi-missionlevel" />
         <module name="ruoyi-myflyrecord" />
+        <module name="ruoyi-uavtype" />
         <module name="ruoyi-flyrecord" />
         <module name="ruoyi-gateway" />
         <module name="ruoyi-modules-gen" />
@@ -57,6 +58,7 @@
       <module name="ruoyi-setting" target="1.8" />
       <module name="ruoyi-sysprofile" target="1.8" />
       <module name="ruoyi-tasklist" target="1.8" />
+      <module name="ruoyi-uavtype" target="1.8" />
       <module name="ruoyi-visual" target="1.8" />
       <module name="ruoyi-visual-monitor" target="1.8" />
     </bytecodeTargetLevel>

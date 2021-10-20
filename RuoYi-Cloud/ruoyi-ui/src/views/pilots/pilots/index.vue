@@ -39,7 +39,7 @@
 
       <el-form-item label="准驾机型" prop="driverAircraftSoft">
         <el-select v-model="queryParams.driverAircraftSoft" multiple placeholder="请选择驾驶员准驾机型" clearable size="small">
-          <el-option v-for="item in uavTypeList" :key="item.id"  :label="item.uavType" :value="item.id">
+          <el-option v-for="item in uavTypeList" :key="item.id"  :label="item.uavType" :value="item.id.toString()">
           </el-option>
         </el-select>
       </el-form-item>
@@ -183,7 +183,7 @@
 
       <el-table-column label="身份证号" align="center" prop="driverIdcard" />
       <el-table-column label="手机号码" align="center" prop="driverPhone" />
-      <el-table-column label="准驾机型" align="center" prop="driverAircraftSoft">
+      <el-table-column label="准驾机型" align="center" prop="driverAircraftSoftHelp">
 
       </el-table-column>
 
@@ -275,12 +275,16 @@
 
         <el-form-item label="准驾机型" prop="driverAircraftSoft">
 
-          <el-select v-model="form.driverAircraftSoft" multiple  placeholder="请选择准驾机型">
+          <el-select v-model="form.driverAircraftSoft"
+                     filterable
+                     multiple  placeholder="请选择准驾机型">
             <el-option
               v-for="item in uavTypeList"
               :key="item.id"
               :label="item.uavType"
-                :value="item.id">
+                :value="item.id"
+
+            >
             </el-option>
           </el-select>
         </el-form-item>
@@ -362,12 +366,12 @@ export default {
       open: false,
       // 查询参数
       queryParams: {
+        id:null,
         pageNum: 1,
         pageSize: 10,
         driverName: null,
         driverDepartment: null,
-        driverAircraftSoft: [],
-        driverAircraftSoftHelp:'',
+        driverAircraftSoft: [],//查询的无人机类型id
         driverIdcard: null,
         driverPhone: null,
         F: [],
@@ -394,6 +398,9 @@ export default {
         ],
         driverPhone: [
           { required: true, message: "驾驶员手机号码不能为空", trigger: "blur" }
+        ],
+        driverAircraftSoft: [
+          { required: true, message: "无人机类型不能为空", trigger: "blur" }
         ],
         sumTime: [
           { required: true, message: "驾驶员总时间不能为空", trigger: "blur" }
@@ -427,12 +434,16 @@ export default {
       return this.$confirm(`确定移除 ${ file.name }？`);
     },
     /** 查询驾驶员管理列表 */
-    getList() {
+    getList(addList=false) {
       this.loading = true;
-
-
       listPilots(this.queryParams).then(response => {
-        this.pilotsList = response.rows;
+
+        for (const item of response.rows) {
+
+          item.driverAircraftSoftHelp=[];
+        }
+       addList?this.pilotsList+=response.rows: this.pilotsList = response.rows;
+
         this.total = response.total;
         this.loading = false;
 
@@ -446,6 +457,25 @@ export default {
       /** 获取无人机准驾型号 */
       listUavtype().then(response => {
         this.uavTypeList = response.rows;
+        console.log(this.pilotsList)
+        if (!this.pilotsList) return;
+        for (const item of  this.pilotsList){
+          if (item.driverAircraftSoft){
+            item.driverAircraftSoft= item.driverAircraftSoft.split(",");
+
+            for (let i=0;i<this.uavTypeList.length;i++){
+              item.driverAircraftSoft.forEach(v=>{
+                if(v==this.uavTypeList[i].id.toString()) {
+                  item.driverAircraftSoftHelp.push(this.uavTypeList[i].uavType)
+                }
+              })
+            };
+          }
+
+
+         item.driverAircraftSoftHelp= item.driverAircraftSoftHelp.toString();
+        }
+        console.log(this.pilotsList)
       });
 
     },
@@ -463,7 +493,7 @@ export default {
         driverIdcard: null,
         driverPhone: null,
         driverAircraftSoft: [],
-        driverAircraftSoftHelp: '',
+        driverAircraftSoftHelp: [],
         driverState: null,
         driverPhoto: null,
         driverExtral: null,
@@ -483,8 +513,11 @@ export default {
 
       //处理准驾机型中文转数字字符串
       //存放提交查询前的准驾机型数据
-      // this.queryParams.driverAircraftSoft = this.queryParams.driverAircraftSoftHelp.sort().join().toString();
+      console.log(this.queryParams)
+      this.queryParams.driverAircraftSoft = this.queryParams.driverAircraftSoft.sort().join().toString();
       this.getList();
+      // this.queryParams.driverAircraftSoft =["1","2","3"].sort().join().toString();
+      this.getList(true);
       //获取列表后返回原来的格式以便下次查询
     },
     /** 重置按钮操作 */
@@ -520,7 +553,7 @@ export default {
         //   this.uavTypeById[k] = this.form.driverAircraftSoftHelp[k]
         // }
         // 解决了回显问题
-        // this.form.driverAircraftSoftHelp = this.form.driverAircraftSoft.toString().split(",");
+        this.form.driverAircraftSoft? this.form.driverAircraftSoft= this.form.driverAircraftSoft.split(",").map(Number):'';
         console.log(this.uavTypeById)
         this.open = true;
         this.title = "修改驾驶员管理";
@@ -531,24 +564,8 @@ export default {
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
-
-
-          for (const item of this.form["driverAircraftSoft"]) {
-            console.log(this.form["driverAircraftSoft"])
-            console.log(this.uavTypeList)
-            for (let i=0;i<this.uavTypeList.length;i++){
-              console.log(this.uavTypeList[i].id==item)
-              if (this.uavTypeList[i].id ==item)
-              {
-                console.log(this.form.driverAircraftSoftHelp)
-                this.form["driverAircraftSoftHelp"] += `${this.uavTypeList[i].uavType}`+',';
-
-                console.log(this.form["driverAircraftSoftHelp"])
-              }
-            }
-            // this.form["driverAircraftSoft"]=
-          }
-          this.form["driverAircraftSoft"] = this.form["driverAircraftSoft"] .sort().join().toString();
+if (this.form["driverAircraftSoft"].length==0) return;
+          this.form["driverAircraftSoft"].sort().join().toString();
           if (this.form.id != null) {
             updatePilots(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
