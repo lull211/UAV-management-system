@@ -12,7 +12,7 @@ import com.ruoyi.pilots.service.IPilotsTableService;
  * 驾驶员管理Service业务层处理
  * 
  * @author ruoyi
- * @date 2021-09-28
+ * @date 2021-10-14
  */
 @Service
 public class PilotsTableServiceImpl implements IPilotsTableService 
@@ -31,6 +31,19 @@ public class PilotsTableServiceImpl implements IPilotsTableService
     {
         return pilotsTableMapper.selectPilotsTableById(id);
     }
+
+    /**
+     * 用名字查询驾驶员管理
+     *
+     * @param Name 驾驶员姓名
+     * @return 驾驶员管理
+     */
+    @Override
+    public PilotsTable selectPilotsByName(String Name)
+    {
+        return pilotsTableMapper.selectPilotsTableByName(Name);
+    }
+
 
     /**
      * 查询驾驶员管理列表

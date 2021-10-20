@@ -38,10 +38,10 @@
         </div>
       </div>
 
-      <el-divider/>
+      <el-divider style="margin:15px 0"/>
 
       <h3 class="drawer-title">系统布局配置</h3>
-      
+
       <div class="drawer-item">
         <span>开启 TopNav</span>
         <el-switch v-model="topNav" class="drawer-switch" />
@@ -57,31 +57,63 @@
         <el-switch v-model="fixedHeader" class="drawer-switch" />
       </div>
 
-      <div class="drawer-item">
-        <span>显示 Logo</span>
-        <el-switch v-model="sidebarLogo" class="drawer-switch" />
-      </div>
+
 
       <div class="drawer-item">
         <span>动态标题</span>
         <el-switch v-model="dynamicTitle" class="drawer-switch" />
       </div>
 
-      <el-divider/>
+      <div class="drawer-item">
+        <span>显示 Logo</span>
+        <el-switch v-model="sidebarLogo" class="drawer-switch" />
+      </div>
 
+      <!--修改系统名-->
+      <div class="drawer-item" style="display: flex;justify-content: space-between">
+        <el-input  v-model="title" :disabled="disabled" :placeholder="title" size="small" @blur="setTitle" style="width:70% ;margin-right:15px"></el-input>
+        <el-button type="primary" icon="el-icon-edit" round style="padding: 5px 14px;margin:4px 0" size="mini" @click="disabled=!disabled" ></el-button>
+      </div>
+
+
+      <div class="drawer-item" style="height: 90px " >
+        <span >修改头像</span>
+        <userAvatar style="width:90px;height: 90px "   class="drawer-switch" />
+      </div>
+
+      <el-divider/>
       <el-button size="small" type="primary" plain icon="el-icon-document-add" @click="saveSetting">保存配置</el-button>
       <el-button size="small" plain icon="el-icon-refresh" @click="resetSetting">重置配置</el-button>
     </div>
+
   </div>
 </template>
 
 <script>
 import ThemePicker from '@/components/ThemePicker'
+import request from '@/utils/request'
+// import userAvatar from "@/views/system/user/profile/userAvatar";
+import userAvatar from "./userAvatar";
+
+// import Logo form "@components/Sidebar/Logo";
 
 export default {
-  components: { ThemePicker },
+
+  components: { ThemePicker,   userAvatar },
   data() {
     return {
+      systemC:'',
+      rules:'',
+      //ljt
+      title:this.$store.state.settings.title,//系统名
+      disabled:true,
+      // 是否显示弹出层
+      open: false,
+      // 是否展开，默认全部折叠
+      form: {},
+      // 表单参数
+      user: {},
+      // ljt
       theme: this.$store.state.settings.theme,
       sideTheme: this.$store.state.settings.sideTheme
     };
@@ -147,6 +179,14 @@ export default {
     },
   },
   methods: {
+
+    //修改系统名
+    setTitle(){
+      this.disabled=!this.disabled
+      console.log(this.disabled)
+      console.log(this.title);
+      this.$store.dispatch('settings/setTitle',this.title)
+    },
     themeChange(val) {
       this.$store.dispatch('settings/changeSetting', {
         key: 'theme',
@@ -184,6 +224,9 @@ export default {
     }
   }
 }
+
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -244,6 +287,7 @@ export default {
     }
 
     .drawer-item {
+      width: 100%;
       color: rgba(0, 0, 0, .65);
       font-size: 14px;
       padding: 12px 0;
@@ -253,4 +297,6 @@ export default {
       float: right
     }
   }
+
+
 </style>

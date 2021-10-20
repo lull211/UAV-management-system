@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.uavdepartment.mapper.UavDepartmentMapper">
+    
+    <resultMap type="UavDepartment" id="UavDepartmentResult">
+        <result property="id"    column="id"    />
+        <result property="uavDepartment"    column="uav_department"    />
+        <result property="extraExplain"    column="extra_explain"    />
+    </resultMap>
+
+    <sql id="selectUavDepartmentVo">
+        select id, uav_department, extra_explain from uav_department
+    </sql>
+
+    <select id="selectUavDepartmentList" parameterType="UavDepartment" resultMap="UavDepartmentResult">
+        <include refid="selectUavDepartmentVo"/>
+        <where>  
+            <if test="uavDepartment != null  and uavDepartment != ''"> and uav_department = #{uavDepartment}</if>
+            <if test="extraExplain != null  and extraExplain != ''"> and extra_explain = #{extraExplain}</if>
+        </where>
+    </select>
+    
+    <select id="selectUavDepartmentById" parameterType="Long" resultMap="UavDepartmentResult">
+        <include refid="selectUavDepartmentVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertUavDepartment" parameterType="UavDepartment" useGeneratedKeys="true" keyProperty="id">
+        insert into uav_department
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uavDepartment != null and uavDepartment != ''">uav_department,</if>
+            <if test="extraExplain != null">extra_explain,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uavDepartment != null and uavDepartment != ''">#{uavDepartment},</if>
+            <if test="extraExplain != null">#{extraExplain},</if>
+         </trim>
+    </insert>
+
+    <update id="updateUavDepartment" parameterType="UavDepartment">
+        update uav_department
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="uavDepartment != null and uavDepartment != ''">uav_department = #{uavDepartment},</if>
+            <if test="extraExplain != null">extra_explain = #{extraExplain},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUavDepartmentById" parameterType="Long">
+        delete from uav_department where id = #{id}
+    </delete>
+
+    <delete id="deleteUavDepartmentByIds" parameterType="String">
+        delete from uav_department where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

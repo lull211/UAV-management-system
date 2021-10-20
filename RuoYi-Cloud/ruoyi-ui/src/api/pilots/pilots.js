@@ -17,6 +17,15 @@ export function getPilots(id) {
   })
 }
 
+// 通过姓名查询驾驶员管理详细
+export function getPilotsByName(name) {
+  return request({
+    url: '/pilots/pilots/name',
+    method: 'get',
+    params: name
+  })
+}
+
 // 新增驾驶员管理
 export function addPilots(data) {
   return request({

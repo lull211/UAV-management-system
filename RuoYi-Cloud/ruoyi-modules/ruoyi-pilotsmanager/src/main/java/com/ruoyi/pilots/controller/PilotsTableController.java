@@ -2,17 +2,10 @@ package com.ruoyi.pilots.controller;
 
 import java.util.List;
 import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.log.annotation.Log;
 import com.ruoyi.common.log.enums.BusinessType;
 import com.ruoyi.common.security.annotation.PreAuthorize;
@@ -27,13 +20,12 @@ import com.ruoyi.common.core.web.page.TableDataInfo;
  * 驾驶员管理Controller
  * 
  * @author ruoyi
- * @date 2021-09-28
+ * @date 2021-10-14
  */
 @RestController
 @RequestMapping("/pilots")
 public class PilotsTableController extends BaseController
 {
-
     @Autowired
     private IPilotsTableService pilotsTableService;
 
@@ -44,11 +36,8 @@ public class PilotsTableController extends BaseController
     @GetMapping("/list")
     public TableDataInfo list(PilotsTable pilotsTable)
     {
-
         startPage();
-
         List<PilotsTable> list = pilotsTableService.selectPilotsTableList(pilotsTable);
-
         return getDataTable(list);
     }
 
@@ -76,6 +65,16 @@ public class PilotsTableController extends BaseController
     }
 
     /**
+     * 用名字查询驾驶员管理详细信息
+     */
+    @PreAuthorize(hasPermi = "pilots:pilots:query")
+    @GetMapping(value = "/name")
+    public AjaxResult getInfoByName(String name)
+    {
+        return AjaxResult.success(pilotsTableService.selectPilotsByName(name));
+    }
+
+    /**
      * 新增驾驶员管理
      */
     @PreAuthorize(hasPermi = "pilots:pilots:add")
@@ -83,7 +82,6 @@ public class PilotsTableController extends BaseController
     @PostMapping
     public AjaxResult add(@RequestBody PilotsTable pilotsTable)
     {
-        System.out.println(pilotsTable);
         return toAjax(pilotsTableService.insertPilotsTable(pilotsTable));
     }
 
