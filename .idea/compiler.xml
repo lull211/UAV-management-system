@@ -25,6 +25,7 @@
         <module name="ruoyi-common-core" />
         <module name="ruoyi-tasklist" />
         <module name="ruoyi-setting" />
+        <module name="ruoyi-missionMonitor" />
         <module name="ruoyi-pilotsmanager" />
         <module name="ruoyi-missionlevel" />
         <module name="ruoyi-uavtype" />
@@ -52,6 +53,7 @@
       <module name="ruoyi-flyrecord (1)" target="1.8" />
       <module name="ruoyi-gateway" target="1.8" />
       <module name="ruoyi-missionlevel" target="1.8" />
+      <module name="ruoyi-missionMonitor" target="1.8" />
       <module name="ruoyi-modules" target="1.8" />
       <module name="ruoyi-modules-file" target="1.8" />
       <module name="ruoyi-modules-gen" target="1.8" />

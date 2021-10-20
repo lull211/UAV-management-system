@@ -16,6 +16,7 @@
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-swagger/ruoyi-common-swagger.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-common/ruoyi-common-swagger/ruoyi-common-swagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-flyrecord/ruoyi-flyrecord.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-flyrecord/ruoyi-flyrecord.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-gateway/ruoyi-gateway.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-gateway/ruoyi-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-missionMonitor/ruoyi-missionMonitor.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-missionMonitor/ruoyi-missionMonitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-missionlevel/ruoyi-missionlevel.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-missionlevel/ruoyi-missionlevel.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-modules.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-modules.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-file/ruoyi-modules-file.iml" filepath="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-file/ruoyi-modules-file.iml" />
