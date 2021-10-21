@@ -282,7 +282,7 @@
               v-for="item in uavTypeList"
               :key="item.id"
               :label="item.uavType"
-                :value="item.id"
+              :value="item.id"
 
             >
             </el-option>
@@ -442,7 +442,7 @@ export default {
 
           item.driverAircraftSoftHelp=[];
         }
-       addList?this.pilotsList+=response.rows: this.pilotsList = response.rows;
+        addList?this.pilotsList+=response.rows: this.pilotsList = response.rows;
 
         this.total = response.total;
         this.loading = false;
@@ -473,7 +473,7 @@ export default {
           }
 
 
-         item.driverAircraftSoftHelp= item.driverAircraftSoftHelp.toString();
+          item.driverAircraftSoftHelp= item.driverAircraftSoftHelp.toString();
         }
         console.log(this.pilotsList)
       });
@@ -564,8 +564,8 @@ export default {
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
-if (this.form["driverAircraftSoft"].length==0) return;
-          this.form["driverAircraftSoft"].sort().join().toString();
+          if (this.form["driverAircraftSoft"].length==0) return;
+          this.form["driverAircraftSoft"]= this.form["driverAircraftSoft"].sort().join().toString();
           if (this.form.id != null) {
             updatePilots(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
