@@ -1,0 +1,16 @@
+{
+  "id": "2882445",
+  "name": "无人机icon",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-uav",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6677862",
+      "name": "无人机",
+      "font_class": "wurenji",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    }
+  ]
+}

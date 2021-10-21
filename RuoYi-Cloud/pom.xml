@@ -250,6 +250,7 @@
         <module>ruoyi-modules/ruoyi-airline</module>
         <module>ruoyi-modules/ruoyi-uavkeeper</module>
         <module>ruoyi-modules/ruoyi-missionMonitor</module>
+        <module>ruoyi-modules/ruoyi-uavposition</module>
     </modules>
     <packaging>pom</packaging>
 

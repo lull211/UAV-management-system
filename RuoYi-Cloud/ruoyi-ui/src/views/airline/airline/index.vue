@@ -117,15 +117,7 @@ export default {
       airlineDescription:'',
       // 航线管理表格数据
       airlineList: [],
-      // 表单参数
-      // form: {
-      //   id: null,
-      //   airlineName: null,
-      //   airlineDistance: null,
-      //   airlineExplain: null,
-      //   airlinePoints: [],
-      //   createTime: null
-      // },
+
       dataForAddOrEditAirLinePath: {
         id: null,
         airlineName: null,
@@ -306,7 +298,7 @@ export default {
     },
     updateAirlineInMap(airlinePoints,airlineDistance) {
       this.polylinePath = JSON.parse(airlinePoints);
-      this.map_center = this.polylinePath[0];
+
       var distance =  airlineDistance;
       if (distance < 5000){
         this.zoom = 14;

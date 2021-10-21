@@ -1,4 +1,4 @@
-10:35:38.476 [http-nio-9201-exec-1] ERROR c.r.c.s.h.GlobalExceptionHandler - [handleRuntimeException,70] - 请求地址'/operlog',发生未知异常.
+09:45:57.647 [http-nio-9201-exec-10] ERROR c.r.c.s.h.GlobalExceptionHandler - [handleRuntimeException,70] - 请求地址'/operlog',发生未知异常.
 org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Illegal character ((CTRL-CHAR, code 31)): only regular white space (\r, \n, \t) is allowed between tokens; nested exception is com.fasterxml.jackson.core.JsonParseException: Illegal character ((CTRL-CHAR, code 31)): only regular white space (\r, \n, \t) is allowed between tokens
  at [Source: (PushbackInputStream); line: 1, column: 2]
 	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:389)
@@ -56,7 +56,7 @@ org.springframework.http.converter.HttpMessageNotReadableException: JSON parse e
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
+	at java.base/java.lang.Thread.run(Thread.java:829)
 Caused by: com.fasterxml.jackson.core.JsonParseException: Illegal character ((CTRL-CHAR, code 31)): only regular white space (\r, \n, \t) is allowed between tokens
  at [Source: (PushbackInputStream); line: 1, column: 2]
 	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:2337)

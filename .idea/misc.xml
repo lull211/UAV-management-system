@@ -8,12 +8,11 @@
         <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-missionlist/pom.xml" />
         <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-missionlevel/pom.xml" />
         <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-tasktype/pom.xml" />
+        <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavposition/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-airline/pom.xml" />
-        <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-modules/ruoyi-uavkeeper/pom.xml" />
         <option value="$PROJECT_DIR$/RuoYi-Cloud/ruoyi-sysprofile/pom.xml" />
       </set>
     </option>

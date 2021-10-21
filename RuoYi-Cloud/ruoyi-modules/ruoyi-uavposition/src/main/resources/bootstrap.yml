@@ -1,12 +1,12 @@
 # Tomcat
 server:
-  port: 9223
+  port: 9224
 
 # Spring
 spring: 
   application:
     # 应用名称
-    name: ruoyi-missionMonitor
+    name: ruoyi-uavposition
   profiles:
     # 环境配置
     active: dev

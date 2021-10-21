@@ -67,6 +67,7 @@ public class AirlineTableController extends BaseController
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
     {
+        System.out.println(id);
         return AjaxResult.success(airlineTableService.selectAirlineTableById(id));
     }
 

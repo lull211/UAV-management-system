@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.uavposition.mapper.UavPositionMapper">
+    
+    <resultMap type="UavPosition" id="UavPositionResult">
+        <result property="id"    column="id"    />
+        <result property="uavFlightNumber"    column="uav_flight_number"    />
+        <result property="position"    column="position"    />
+    </resultMap>
+
+    <sql id="selectUavPositionVo">
+        select id, uav_flight_number, position from uav_position
+    </sql>
+
+    <select id="selectUavPositionList" parameterType="UavPosition" resultMap="UavPositionResult">
+        <include refid="selectUavPositionVo"/>
+        <where>
+            <if test="uavFlightNumber != null  and uavFlightNumber != ''"> and uav_flight_number = #{uavFlightNumber}</if>
+        </where>
+        <where>  
+            <if test="position != null  and position != ''"> and position = #{position}</if>
+        </where>
+    </select>
+    
+    <select id="selectUavPositionById" parameterType="Long" resultMap="UavPositionResult">
+        <include refid="selectUavPositionVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertUavPosition" parameterType="UavPosition" useGeneratedKeys="true" keyProperty="id">
+        insert into uav_position
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uavFlightNumber != null">uav_flight_number,</if>
+            <if test="position != null">position,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uavFlightNumber != null">#{uavFlightNumber},</if>
+            <if test="position != null">#{position},</if>
+         </trim>
+    </insert>
+
+    <update id="updateUavPosition" parameterType="UavPosition">
+        update uav_position
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="uavFlightNumber != null">uav_flight_number = #{uavFlightNumber},</if>
+            <if test="position != null">position = #{position},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUavPositionById" parameterType="Long">
+        delete from uav_position where id = #{id}
+    </delete>
+
+    <delete id="deleteUavPositionByIds" parameterType="String">
+        delete from uav_position where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
