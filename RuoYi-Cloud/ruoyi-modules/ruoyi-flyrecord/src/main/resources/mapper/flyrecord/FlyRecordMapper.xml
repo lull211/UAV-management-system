@@ -38,6 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="flyDoc != null  and flyDoc != ''"> and fly_doc = #{flyDoc}</if>
             <if test="taskLine != null  and taskLine != ''"> and task_line = #{taskLine}</if>
             <if test="flyVideo != null  and flyVideo != ''"> and fly_video = #{flyVideo}</if>
+            <if test="taskId != null  and taskId != ''"> and task_id = #{taskId}</if>
         </where>
     </select>
     

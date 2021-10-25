@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskDrone != null  and taskDrone != ''"> and task_drone = #{taskDrone}</if>
             <if test="endTime != null "> and end_time = #{endTime}</if>
             <if test="taskDriver != null  and taskDriver != ''"> and task_driver like concat('%', #{taskDriver}, '%')</if>
-            <if test="driverPhone != null  and driverPhone != ''"> and driver_phone like concat('%', #{driverPhone}, '%')</if>
+            <if test="driverPhone != null  and driverPhone != ''"> and driver_phone REGEXP #{driverPhone}</if>
             <if test="taskAirline != null  and taskAirline != ''"> and task_airline = #{taskAirline}</if>
             <if test="taskImages != null  and taskImages != ''"> and task_images = #{taskImages}</if>
             <if test="taskAddress != null  and taskAddress != ''"> and task_address = #{taskAddress}</if>

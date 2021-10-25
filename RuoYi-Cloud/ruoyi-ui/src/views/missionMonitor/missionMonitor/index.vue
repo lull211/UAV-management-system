@@ -28,9 +28,17 @@
                           size="mini"
                           type="primary"
                           icon="el-icon-caret-right"
-                          @click="jump_video(item)"
+                          @click="jump_video(item.uavFlightNumber)"
                           v-hasPermi="['airline:airline:remove']"
                         />
+                        <el-dialog :visible.sync="videoFlag" width="500px" height="500px">
+                          <vue-ali-player
+                            :useH5Prism=true
+                            ref="player"
+                            control-bar-visibility="hover"
+                            :source="url"
+                          ></vue-ali-player>
+                        </el-dialog>
                       </div>
 
                     </el-col>
@@ -81,9 +89,11 @@
 import { listMissionMonitor, getMissionMonitor, delMissionMonitor, addMissionMonitor, updateMissionMonitor } from "@/api/missionMonitor/missionMonitor";
 import BaiduMap from 'vue-baidu-map'
 import Vue from "vue";
+import VueAliPlayer from "../../../components/VueAliPlayer/VueAliPlayer";
 import {listMissionlist} from "@/api/missionlist/missionlist";
 import {getAirline} from "@/api/airline/airline";
 import {listUavposition} from "@/api/uavposition/uavposition";
+import {listFlyrecord} from "../../../api/flyrecord/flyrecord";
 Vue.use(BaiduMap, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
   ak: 'webgl&ak=XAZzMQDbVhWrbevkjN0RmMR9XjCZnNHU'
@@ -91,8 +101,14 @@ Vue.use(BaiduMap, {
 export default {
   name: "MissionMonitor",
   dicts: ['sys_uav_department', 'sys_pilots_craft_sort', 'sys_uav_readylevel', 'sys_uav_state'],
+  components:{
+    VueAliPlayer
+  },
   data() {
     return {
+      videoFlag: false,
+      url: "",
+
       fits:'fill',
       // 遮罩层
       loading: true,
@@ -389,14 +405,33 @@ export default {
       }
     },
     locate_uav(){
-      console.log("uav in here");
       this.map_center.lng = this.uav_position.lng;
       this.map_center.lat = this.uav_position.lat;
     },
 
-    jump_video(){
+    jump_video(item){
       //点击视频按钮触发此函数
-      console.log("点击视频按钮触发此函数");
+
+      //离线回放
+      let obj = {
+        taskDrone: item,
+        taskState: 2
+      }
+      listMissionlist(obj).then(resp => {
+
+        let obj2 = {
+          taskId: resp.rows[0].id
+        }
+
+        listFlyrecord(obj2).then(resp => {
+
+          var reg = /^['|"](.*)['|"]$/;
+          var url =   resp.rows[0].flyVideo.replace(reg,"$1");
+          this.url = url;
+          this.videoFlag = true;
+        })
+      })
+
     },
 
   }

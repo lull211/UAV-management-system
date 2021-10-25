@@ -529,9 +529,9 @@ export default {
           }
 
           else{
-            console.log(this.form["driverAircraftSoftHelp"])
             this.form["driverAircraftSoft"] = this.form["driverAircraftSoftHelp"].sort().join().toString();
           }
+
           //this.form.driverAircraftSoft = this.form.driverAircraftSoft.join(",");
           if (this.form.id != null) {
             updatePilots(this.form).then(response => {

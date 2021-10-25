@@ -155,7 +155,7 @@
     <el-table v-loading="loading" :data="flyrecordList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="飞行记录" align="center" prop="id" />
-      <el-table-column label="任务ID" align="center" prop="taskId" />
+<!--      <el-table-column label="任务ID" align="center" prop="taskId" />-->
       <el-table-column label="起飞经度" align="center" prop="homeLongtitude" />
       <el-table-column label="起飞纬度" align="center" prop="homeLatittude" />
       <el-table-column label="飞行距离" align="center" prop="sumDistance" />
@@ -186,7 +186,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
