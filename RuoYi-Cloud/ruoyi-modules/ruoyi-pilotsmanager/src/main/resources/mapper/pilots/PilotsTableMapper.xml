@@ -118,11 +118,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 
     <update id="deletePilotsTableById" parameterType="Long">
-        update pilots_table set delete_flag = 0 where id = #{id}
+        update pilots_table set delete_flag = 1 where id = #{id}
     </update>
 
     <delete id="deletePilotsTableByIds" parameterType="String">
-        update pilots_table set delete_flag = 0 where id in
+        update pilots_table set delete_flag = 1 where id =
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

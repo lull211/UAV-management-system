@@ -26,9 +26,21 @@ public class TaskListServiceImpl implements ITaskListService
      * @return 任务列表
      */
     @Override
-    public TaskList selectTaskListById(Long id)
+    public TaskList selectTaskListById(long id)
     {
         return taskListMapper.selectTaskListById(id);
+    }
+
+    @Override
+    public Long selectTaskListByPilotsId(long taskDriver)
+    {
+        return taskListMapper.selectTaskListByPilotsId(taskDriver);
+    }
+
+    @Override
+    public Long selectTaskListByUavNumber(String taskDrone)
+    {
+        return taskListMapper.selectTaskListByUavNumber(taskDrone);
     }
 
     /**

@@ -17,7 +17,13 @@ public interface TaskListMapper
      * @param id 任务列表主键
      * @return 任务列表
      */
-    public TaskList selectTaskListById(Long id);
+    public TaskList selectTaskListById(long id);
+
+    //使用驾驶员id查询任务列表中的驾驶员
+    public Long selectTaskListByPilotsId(long taskDriver);
+
+    //使用驾驶员id查询任务列表中的驾驶员
+    public Long selectTaskListByUavNumber(String taskDrone);
 
     /**
      * 查询任务列表列表

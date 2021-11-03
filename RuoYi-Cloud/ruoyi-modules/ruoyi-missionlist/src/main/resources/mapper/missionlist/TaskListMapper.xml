@@ -44,12 +44,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
              and delete_code = 0
         </where>
     </select>
-    
+
+    <select id="selectTaskListByPilotsId" parameterType="Long" resultType="java.lang.Long">
+        select count(*) from task_list
+        where task_driver = #{taskDriver} and delete_code = 0
+    </select>
+
     <select id="selectTaskListById" parameterType="Long" resultMap="TaskListResult">
         <include refid="selectTaskListVo"/>
         where id = #{id} and delete_code = 0
     </select>
-        
+
+    <select id="selectTaskListByUavNumber" parameterType="String" resultType="java.lang.Long">
+        select count(*) from task_list
+        where task_drone = #{taskDrone} and delete_code = 0
+    </select>
+
     <insert id="insertTaskList" parameterType="TaskList" useGeneratedKeys="true" keyProperty="id">
         insert into task_list
         <trim prefix="(" suffix=")" suffixOverrides=",">

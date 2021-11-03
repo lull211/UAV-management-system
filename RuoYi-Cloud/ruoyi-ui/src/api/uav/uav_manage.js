@@ -65,5 +65,12 @@ export function delUav_manage(id) {
     url: '/uav/uav_manage/' + id,
     method: 'delete'
   })
-
 }
+// 查询任务列表中的飞行器
+  export function getMissionlistByUavNumber(taskDrone) {
+    return request({
+      url: '/missionlist/missionlist/uavs/' + taskDrone,
+      method: 'get'
+    })
+  }
+

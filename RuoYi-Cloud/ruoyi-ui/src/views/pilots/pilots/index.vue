@@ -327,8 +327,9 @@ import FileUpload from "@/components/FileUpload";
 import UploadImage from "@/components/ImageUpload";
 import {getTasktype, listTasktype} from "../../../api/tasktype/tasktype";
 import {getAirline} from "../../../api/airline/airline";
-import {getPilotsByName, getPilotsByNameLikely} from "../../../api/pilots/pilots";
+import {getMissionlistByDriverId, getPilotsByName, getPilotsByNameLikely} from "../../../api/pilots/pilots";
 import {getUav_manageByName, getUav_manageByNameAcc} from "../../../api/uav/uav_manage";
+import {getMissionlist} from "../../../api/missionlist/missionlist";
 
 export default {
   name: "Pilots",
@@ -456,8 +457,6 @@ export default {
     async getlistUavdepartment(){
       var response = await listUavdepartment();
       this.departmentlist = response.rows;
-      console.log("sh")
-      console.log(response)
       this.loading = false;
     },
 
@@ -576,7 +575,6 @@ export default {
               this.getList();
             }
           } else {
-            console.log(this.form)
             let res = await getPilotsByNameLikely(this.form.driverName.toString())
             let number = res.data + 1
             let name = await this.validNameGenerate(this.form.driverName, number, 0)
@@ -617,13 +615,26 @@ export default {
 
     /** 删除按钮
      * 操作 */
-    handleDelete(row) {
+    async handleDelete(row) {
+      //获取驾驶员id
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除驾驶员管理编号为"' + ids + '"的数据项？').then(function() {
-        return delPilots(ids);
+
+      let flag = false;
+      
+      this.$modal.confirm('是否确认删除数据？').then(async function() {
+        //任务列表中是否有该驾驶员
+        let confirm1 = await getMissionlistByDriverId(ids);
+        if(!confirm1.data){
+          flag = true;
+          return delPilots(ids);
+        }
+
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("删除成功");
+        if(flag) this.$modal.msgSuccess("删除成功");
+        else{
+          this.$modal.msgError("删除失败，请检查其他部分是否占用该记录！");
+        }
       }).catch(() => {});
     },
     /** 导出按钮操作 */

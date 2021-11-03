@@ -60,3 +60,12 @@ export function delPilots(id) {
     method: 'delete'
   })
 }
+
+// 查询任务列表中的驾驶员
+export function getMissionlistByDriverId(driverId) {
+  return request({
+    url: '/missionlist/missionlist/pilots/' + driverId,
+    method: 'get'
+  })
+}
+

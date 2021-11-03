@@ -445,7 +445,8 @@ import FileUpload from "@/components/FileUpload";
 import {getMissionlevel} from "../../../api/missionlevel/missionlevel";
 import {getSystemprofile} from "../../../api/systemprofile/systemprofile";
 import {getUserProfile} from "../../../api/system/user";
-import {getUav_manageByName, getUav_manageByNameAcc} from "../../../api/uav/uav_manage";
+import {getMissionlistByUavNumber, getUav_manageByName, getUav_manageByNameAcc} from "../../../api/uav/uav_manage";
+import {getMissionlistByDriverId} from "../../../api/pilots/pilots";
 
 
 export default {
@@ -749,7 +750,6 @@ export default {
 
     async validNameGenerate(name,number,protect){
       let result = name + "_" + number.toString()
-      console.log(number)
       if(protect == 50){
         return null
       }
@@ -767,12 +767,24 @@ export default {
 
     /** 删除按钮操作 */
     handleDelete(row) {
+      const idk = row.uavFlightNumber;
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除无人机信息管理编号为"' + ids + '"的数据项？').then(function() {
-        return delUav_manage(ids);
+      console.log(this.form)
+      let flag = false;
+
+      this.$modal.confirm('是否确认删除数据？').then(async function() {
+        //任务列表中是否有该驾驶员
+        let confirm1 = await getMissionlistByUavNumber(idk);
+        if(!confirm1.data){
+          flag = true;
+          return delUav_manage(ids);
+        }
       }).then(() => {
         this.getList();
-        this.$modal.msgSuccess("删除成功");
+        if(flag) this.$modal.msgSuccess("删除成功");
+        else{
+          this.$modal.msgError("删除失败，请检查其他部分是否占用该记录！");
+        }
       }).catch(() => {});
     },
     /** 导出按钮操作 */

@@ -17,8 +17,11 @@ public interface ITaskListService
      * @param id 任务列表主键
      * @return 任务列表
      */
-    public TaskList selectTaskListById(Long id);
+    public TaskList selectTaskListById(long id);
 
+    public Long selectTaskListByPilotsId(long taskDriver);
+
+    public Long selectTaskListByUavNumber(String taskDrone);
     /**
      * 查询任务列表列表
      * 

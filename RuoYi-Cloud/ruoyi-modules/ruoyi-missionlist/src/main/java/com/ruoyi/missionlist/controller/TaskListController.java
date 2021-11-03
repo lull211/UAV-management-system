@@ -102,4 +102,25 @@ public class TaskListController extends BaseController
     {
         return toAjax(taskListService.deleteTaskListByIds(ids));
     }
+
+
+    /**
+     * 用驾驶员id查询任务列表中是否有该驾驶员
+     */
+    @PreAuthorize(hasPermi = "mymissionlist:mymissionlist:list")
+    @GetMapping(value = "/pilots/{driverId}")
+    public AjaxResult getPilotsInMissionList(@PathVariable("driverId") long driverId)
+    {
+        return AjaxResult.success(taskListService.selectTaskListByPilotsId(driverId));
+    }
+
+    /**
+     * 用无人机id查询任务列表中是否有该驾驶员
+     */
+    @PreAuthorize(hasPermi = "mymissionlist:mymissionlist:list")
+    @GetMapping(value = "/uavs/{taskDrone}")
+    public AjaxResult getPilotsInMissionList(@PathVariable("taskDrone") String taskDrone)
+    {
+        return AjaxResult.success(taskListService.selectTaskListByUavNumber(taskDrone));
+    }
 }
