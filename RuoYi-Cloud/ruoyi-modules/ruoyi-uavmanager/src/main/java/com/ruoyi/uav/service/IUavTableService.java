@@ -19,6 +19,9 @@ public interface IUavTableService
      */
     public UavTable selectUavTableById(Long id);
 
+    public long selectUavTableByuavName(String uavName);
+
+    public UavTable selectUavTableByuavNameAcc(String uavName);
 
     public UavTable selectUavTableByuavFlightNumber(String uavFlightNumber);
     /**

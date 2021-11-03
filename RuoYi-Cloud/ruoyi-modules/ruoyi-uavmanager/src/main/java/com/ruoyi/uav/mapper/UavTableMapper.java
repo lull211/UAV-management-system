@@ -21,6 +21,20 @@ public interface UavTableMapper
 
 
     /**
+     * 通过无人机名字模糊获取
+     * @param Name
+     * @return
+     */
+    public Long selectUavTableByuavName(String Name);
+
+    /**
+     * 通过无人机名字精确获取
+     * @param Name
+     * @return
+     */
+    public UavTable selectUavTableByuavNameAcc(String Name);
+
+    /**
      * 通过飞控编号查询无人机信息
      */
     public UavTable selectUavTableByuavFlightNumber(String uavFlightNumber);

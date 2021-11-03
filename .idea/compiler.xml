@@ -6,33 +6,40 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ruoyi-common-datascope" />
+        <module name="ruoyi-uavdepartment" />
         <module name="ruoyi-modules-job" />
         <module name="ruoyi-modules-system" />
         <module name="ruoyi-common-redis" />
         <module name="ruoyi-api-system" />
+        <module name="ruoyi-common-security" />
+        <module name="ruoyi-common-datasource" />
+        <module name="ruoyi-myflyrecord" />
+        <module name="ruoyi-gateway" />
+        <module name="ruoyi-modules-gen" />
+        <module name="ruoyi-modules-system (1)" />
+        <module name="ruoyi-common-log" />
+        <module name="ruoyi-modules-file" />
+        <module name="ruoyi-uavmanager" />
+        <module name="ruoyi-common-datascope" />
         <module name="ruoyi-common-swagger" />
         <module name="ruoyi-common-core" />
-        <module name="ruoyi-common-security" />
         <module name="ruoyi-tasklist" />
         <module name="ruoyi-setting" />
         <module name="ruoyi-pilotsmanager" />
-        <module name="ruoyi-common-datasource" />
         <module name="ruoyi-missionlevel" />
-        <module name="ruoyi-myflyrecord" />
+        <module name="ruoyi-uavkeeper" />
         <module name="ruoyi-uavtype" />
         <module name="ruoyi-flyrecord" />
-        <module name="ruoyi-gateway" />
-        <module name="ruoyi-modules-gen" />
         <module name="ruoyi-visual-monitor" />
+        <module name="ruoyi-mytasklist" />
         <module name="ruoyi-sysprofile" />
         <module name="ruoyi-auth" />
-        <module name="ruoyi-common-log" />
-        <module name="ruoyi-modules-file" />
+        <module name="ruoyi-airline" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ruoyi" target="1.8" />
+      <module name="ruoyi-airline" target="1.8" />
       <module name="ruoyi-api" target="1.8" />
       <module name="ruoyi-api-system" target="1.8" />
       <module name="ruoyi-auth" target="1.8" />
@@ -53,11 +60,16 @@
       <module name="ruoyi-modules-gen" target="1.8" />
       <module name="ruoyi-modules-job" target="1.8" />
       <module name="ruoyi-modules-system" target="1.8" />
+      <module name="ruoyi-modules-system (1)" target="1.8" />
       <module name="ruoyi-myflyrecord" target="1.8" />
+      <module name="ruoyi-mytasklist" target="1.8" />
       <module name="ruoyi-pilotsmanager" target="1.8" />
       <module name="ruoyi-setting" target="1.8" />
       <module name="ruoyi-sysprofile" target="1.8" />
       <module name="ruoyi-tasklist" target="1.8" />
+      <module name="ruoyi-uavdepartment" target="1.8" />
+      <module name="ruoyi-uavkeeper" target="1.8" />
+      <module name="ruoyi-uavmanager" target="1.8" />
       <module name="ruoyi-uavtype" target="1.8" />
       <module name="ruoyi-visual" target="1.8" />
       <module name="ruoyi-visual-monitor" target="1.8" />

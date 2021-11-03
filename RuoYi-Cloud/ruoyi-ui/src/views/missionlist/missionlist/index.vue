@@ -15,16 +15,8 @@
           <el-option v-for="item in TypeList" :key="item.id"  :label="item.taskType" :value="item.taskType">
           </el-option>
         </el-select>
-
       </el-form-item>
-<!--      <el-form-item label="任务时间" prop="taskTime">-->
-<!--        <el-date-picker clearable size="small"-->
-<!--          v-model="queryParams.taskTime"-->
-<!--          type="date"-->
-<!--          value-format="yyyy-MM-dd"-->
-<!--          placeholder="选择任务时间">-->
-<!--        </el-date-picker>-->
-<!--      </el-form-item>-->
+
       <el-form-item label="无人机编号" prop="taskDrone">
         <el-input
           v-model="queryParams.taskDrone"
@@ -40,12 +32,7 @@
           </el-option>
         </el-select>
       </el-form-item>
-<!--      <el-form-item label="驾驶员手机号码" prop="driverPhone">-->
-<!--        <el-select v-model="queryParams.driverPhone" placeholder="请选择驾驶员手机号码" clearable size="small">-->
-<!--          <el-option v-for="item in PilotsList" :key="item.id"  :label="item.driverPhone" :value="item.driverPhone">-->
-<!--          </el-option>-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
+
       <el-form-item label="驾驶员手机号码" prop="driverPhone">
         <el-input
           v-model="queryParams.driverPhone"
@@ -56,13 +43,10 @@
         />
       </el-form-item>
       <el-form-item label="航线" prop="taskAirline">
-        <el-input
-          v-model="queryParams.taskAirline"
-          placeholder="请输入航线"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.taskAirline" placeholder="请选择航线" clearable size="small">
+          <el-option v-for="item in AirlineList" :key="item.id"  :label="item.airlineName" :value="item.id">
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item label="任务地点" prop="taskAddress">
         <el-input
@@ -74,13 +58,10 @@
         />
       </el-form-item>
       <el-form-item label="任务状态" prop="taskState">
-        <el-input
-          v-model="queryParams.taskState"
-          placeholder="请输入任务状态"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.taskState" placeholder="请选择驾驶员" clearable size="small">
+          <el-option v-for="item in taskStateDic" :key="item.id"  :label="item.State" :value="item.id">
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -140,15 +121,27 @@
       <el-table-column label="任务类型" align="center" prop="taskType" />
       <el-table-column label="任务时间" align="center" prop="taskTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.taskTime, '{y}-{m}-{d}') }}</span>
+          <span>{{ parseTime(scope.row.taskTime, '{y}-{m}-{d} {h}:{i}:{s}')}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="结束时间" align="center" prop="endTime" width="180">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.endTime, '{y}-{m}-{d} {h}:{i}:{s}')}}</span>
         </template>
       </el-table-column>
       <el-table-column label="无人机编号" align="center" prop="taskDrone" />
       <el-table-column label="驾驶员" align="center" prop="DiverName" />
       <el-table-column label="驾驶员手机号码" align="center" prop="DriverPhone" />
 <!--      <el-table-column label="主键id" align="center" prop="id" />-->
-      <el-table-column label="航线" align="center" prop="taskAirline" />
-      <el-table-column label="任务封面图片" align="center" prop="taskImages" />
+      <el-table-column label="航线" align="center" prop="AirLineName" />
+
+      <el-table-column label="任务封面图片" align="center" prop="taskImages">
+        <template slot-scope="scope">
+          <el-image :src="scope.row.taskImages">
+          </el-image>
+        </template>
+      </el-table-column>
+
       <el-table-column label="任务地点" align="center" prop="taskAddress" />
 <!--      <el-table-column label="删除码" align="center" prop="deleteCode" />-->
       <el-table-column label="描述" align="center" prop="extraExplain" />
@@ -169,6 +162,28 @@
 
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
+
+          <p v-if="scope.row.taskState == 2">
+
+            <!-- 视频播放-->
+            <el-dialog :title="title" :visible.sync="videoFlag" width="500px" height="500px">
+              <vue-ali-player
+                :useH5Prism=true
+                ref="player"
+                control-bar-visibility="hover"
+                :source="url"
+              ></vue-ali-player>
+            </el-dialog>
+
+            <el-button
+              size="mini"
+              type="text"
+              @click="openVideo(scope.row)"
+              v-hasPermi="['mymissionlist:mymissionlist:query']"
+            >查看回放</el-button>
+
+          </p>
+
           <el-button
             size="mini"
             type="text"
@@ -228,10 +243,13 @@
         </el-form-item>
 
         <el-form-item label="航线" prop="taskAirline">
-          <el-input v-model="form.taskAirline" placeholder="请输入航线" />
+          <el-select v-model="form.taskAirline" placeholder="请选择航线" clearable size="small">
+            <el-option v-for="item in AirlineList" :key="item.id"  :label="item.airlineName" :value="item.id">
+            </el-option>
+          </el-select>
         </el-form-item>
         <el-form-item label="任务封面图片" prop="taskImages">
-          <el-input v-model="form.taskImages" placeholder="请输入任务封面图片" />
+          <UploadImage v-model="form.taskImages" :limit="1"></UploadImage>
         </el-form-item>
         <el-form-item label="任务地点" prop="taskAddress">
           <el-input v-model="form.taskAddress" placeholder="请输入任务地点" />
@@ -252,12 +270,38 @@
 import { listMissionlist, getMissionlist, delMissionlist, addMissionlist, updateMissionlist } from "@/api/missionlist/missionlist";
 import {listTasktype} from "@/api/tasktype/tasktype";
 import {listPilots} from "@/api/pilots/pilots";
+import UploadImage from "@/components/ImageUpload";
 import {getPilots} from "@/api/pilots/pilots";
+import {getAirline, listAirline} from "../../../api/airline/airline";
+import {getMyflyrecord} from "../../../api/myflyrecord/myflyrecord";
+import {getFlyrecord} from "../../../api/flyrecord/flyrecord";
+import VueAliPlayer from "../../../components/VueAliPlayer/VueAliPlayer";
 
 export default {
   name: "Missionlist",
+  //注册组件
+  components:{
+    VueAliPlayer,
+    UploadImage
+  },
   data() {
     return {
+
+      videoFlag: false,
+      url: 'https://www.w3school.com.cn/example/html5/mov_bbb.mp4',
+
+      //任务状态下拉框
+      taskStateDic:[{
+        "id": 0,
+        "State":"未开始"
+      },{
+        "id": 1,
+        "State":"进行中"
+      },{
+        "id": 2,
+        "State":"已结束"
+      }],
+
       // 遮罩层
       loading: true,
       // 选中数组
@@ -274,7 +318,10 @@ export default {
       missionlistList: [],
       //任务类型列表
       TypeList:[],
+      //驾驶员列表
       PilotsList:[],
+      //航线列表
+      AirlineList:[],
 
       // 弹出层标题
       title: "",
@@ -323,17 +370,37 @@ export default {
   },
   created() {
     this.getList();
+    this.loading = false;
   },
   methods: {
+    openVideo(row){
+      this.title = "查看回放";
+      getFlyrecord(row.id).then(response => {
+        this.url=response.data.flyVideo;
+        this.videoFlag = true;
+      })
+
+    },
+
     /** 查询任务列表列表 */
     getList() {
-      this.loading = true;
       listMissionlist(this.queryParams).then(response => {
-        // this.PilotsList = response.rows;
         this.missionlistList = response.rows;
         this.total = response.total;
-        this.loading = false;
-        //查询某个驾驶员信息
+        /** 获取驾驶员信息 */
+        listPilots(this.queryParams).then(response => {
+          this.PilotsList = response.rows;
+        });
+        /** 获取任务类型信息 */
+        listTasktype().then(response => {
+          this.TypeList = response.rows;
+        });
+
+        /** 获取航线 */
+        listAirline().then(response=>{
+          this.AirlineList = response.rows
+        })
+
         for (let i = 0; i < this.missionlistList.length; i++) {
           if (this.missionlistList[i].taskDriver){
             getPilots(this.missionlistList[i].taskDriver).then(resp=>{
@@ -344,17 +411,16 @@ export default {
             this.missionlistList[i].DriverName="无";
             this.missionlistList[i].DriverPhone="无";
           }
+
+          if(this.missionlistList[i].taskAirline){
+            getAirline(this.missionlistList[i].taskAirline).then(resp => {
+              this.missionlistList[i].AirLineName = resp.data.airlineName
+            })
+          }
+          else{
+            this.missionlistList[i].AirLineName = "无"
+          }
         }
-      });
-      /** 获取任务类型信息 */
-      listTasktype(this.queryParams).then(response => {
-        this.TypeList = response.rows;
-        this.loading = false;
-      });
-      /** 获取驾驶员信息 */
-      listPilots(this.queryParams).then(response => {
-        this.PilotsList = response.rows;
-        this.loading = false;
       });
 
     },
@@ -385,6 +451,7 @@ export default {
     /** 搜索按钮操作 */
     handleQuery() {
       this.queryParams.pageNum = 1;
+      console.log(this.queryParams)
       this.getList();
     },
     /** 重置按钮操作 */

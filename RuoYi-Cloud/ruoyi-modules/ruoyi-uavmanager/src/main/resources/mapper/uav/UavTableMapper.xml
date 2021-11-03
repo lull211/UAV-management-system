@@ -48,13 +48,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="uavPut != null "> and uav_put = #{uavPut}</if>
             <if test="uavUsers != null  and uavUsers != ''"> and uav_users = #{uavUsers}</if>
             <if test="uavAttachment != null  and uavAttachment != ''"> and uav_attachment = #{uavAttachment}</if>
-            <if test="deleteFlag != null "> and delete_flag = #{deleteFlag}</if>
+<!--            <if test="deleteFlag != null "> and delete_flag = #{deleteFlag}</if>-->
+            and delete_flag = 0
         </where>
     </select>
     
     <select id="selectUavTableById" parameterType="Long" resultMap="UavTableResult">
         <include refid="selectUavTableVo"/>
-        where id = #{id}
+        where id = #{id} and delete_flag = 0
+    </select>
+
+<!--    模糊查询-->
+    <select id="selectUavTableByuavName" parameterType="String" resultType="java.lang.Long">
+        select count(*) from uav_table
+        where uav_name REGEXP concat(#{uavName},"_")
+    </select>
+
+<!--    精确查询-->
+    <select id="selectUavTableByuavNameAcc" parameterType="String" resultMap="UavTableResult">
+        select id from uav_table
+        where uav_name = #{uavName}
     </select>
 
     <select id="selectUavTableByuavFlightNumber" parameterType="String" resultMap="UavTableResult">
@@ -128,14 +141,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where id = #{id}
     </update>
 
-    <delete id="deleteUavTableById" parameterType="Long">
-        delete from uav_table where id = #{id}
-    </delete>
+<!--    <delete id="deleteUavTableById" parameterType="Long">-->
+<!--        delete from uav_table where id = #{id}-->
+<!--    </delete>-->
 
-    <delete id="deleteUavTableByIds" parameterType="String">
-        delete from uav_table where id in 
+    <update id="deleteUavTableById" parameterType="Long">
+        update uav_table set delete_flag = 1 where id = #{id}
+    </update>
+
+    <update id="deleteUavTableByIds" parameterType="String">
+        update uav_table set delete_flag = 1 where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
-    </delete>
+    </update>
 </mapper>

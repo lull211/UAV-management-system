@@ -170,10 +170,7 @@
       <!--      <el-table-column label="自增主键" align="center" prop="id" />-->
       <el-table-column label="姓名" align="center" prop="driverName" />
       <el-table-column label="单位" align="center" prop="driverDepartment">
-        <!--        <el-select v-model="queryParams.driverDepartment" placeholder="请选择驾驶员单位" clearable size="small">-->
-        <!--          <el-option v-for="item in departmentlist" :key="item.id"  :label="item.uavDepartment" :value="item.uavDepartment">-->
-        <!--          </el-option>-->
-        <!--        </el-select>-->
+
       </el-table-column>
       <el-table-column label="性别" align="center" prop="driverGender">
         <template slot-scope="scope">
@@ -187,16 +184,21 @@
 
       </el-table-column>
 
-      <el-table-column label="状态" align="center" prop="driverState">
+      <el-table-column label="状态" align="center">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_pilots_state" :value="scope.row.driverState"/>
+          <p v-if="scope.row.driverState == 1">
+            任务中
+          </p>
+          <p v-if="scope.row.driverState == 0">
+            空闲中
+          </p>
         </template>
       </el-table-column>
 
       <el-table-column label="训练时间" align="center" prop="trainingTime" />
       <el-table-column label="飞行时间" align="center" prop="flyingTime" />
       <el-table-column label="总时间" align="center" prop="sumTime" />
-      <el-table-column label="删除码" align="center" prop="deleteFlag" />
+<!--      <el-table-column label="删除码" align="center" prop="deleteFlag" />-->
       <el-table-column label="照片" align="center" prop="driverPhoto">
         <template slot-scope="scope">
           <el-image
@@ -282,23 +284,22 @@
               v-for="item in uavTypeList"
               :key="item.id"
               :label="item.uavType"
-              :value="item.id"
-
+                :value="item.id"
             >
             </el-option>
           </el-select>
         </el-form-item>
 
-        <el-form-item label="状态" prop="driverState">
-          <el-select v-model="form.driverState" placeholder="请选择驾驶员状态">
-            <el-option
-              v-for="dict in dict.type.sys_pilots_state"
-              :key="dict.value"
-              :label="dict.label"
-              :value="parseInt(dict.value)"
-            ></el-option>
-          </el-select>
-        </el-form-item>
+<!--        <el-form-item label="状态" prop="driverState">-->
+<!--          <el-select v-model="form.driverState" placeholder="请选择驾驶员状态">-->
+<!--            <el-option-->
+<!--              v-for="dict in dict.type.sys_pilots_state"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="parseInt(dict.value)"-->
+<!--            ></el-option>-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
         <el-form-item label="照片" prop="driverPhoto">
           <UploadImage v-model="form.driverPhoto" :limit="1"></UploadImage>
 
@@ -306,20 +307,7 @@
         <el-form-item label="附件" prop="driverExtral">
           <FileUpload  v-model="form.driverExtral" :limit="1"></FileUpload>
         </el-form-item>
-        <!--        <el-form-item label="驾驶员训练时间" prop="trainingTime">-->
-        <!--          <el-input v-model="form.trainingTime" placeholder="请输入驾驶员训练时间" />-->
-        <!--        </el-form-item>-->
-        <!--        <el-form-item label="驾驶员飞行时间" prop="flyingTime">-->
-        <!--          <el-input v-model="form.flyingTime" placeholder="请输入驾驶员飞行时间" />-->
-        <!--        </el-form-item>-->
-        <!--        <el-form-item label="驾驶员总时间" prop="sumTime">-->
-        <!--          <el-input v-model="form.sumTime" placeholder="请输入驾驶员总时间" />-->
-        <!--        </el-form-item>-->
-        <!--        <el-form-item label="删除码" prop="deleteFlag">-->
-        <!--          <el-select v-model="form.deleteFlag" placeholder="请选择删除码">-->
-        <!--            <el-option label="请选择字典生成" value="" />-->
-        <!--          </el-select>-->
-        <!--        </el-form-item>-->
+
 
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -337,6 +325,10 @@ import {listUavdepartment} from "@/api/uavdepartment/uavdepartment";
 import { listUavtype } from "@/api/uavtype/uavtype";
 import FileUpload from "@/components/FileUpload";
 import UploadImage from "@/components/ImageUpload";
+import {getTasktype, listTasktype} from "../../../api/tasktype/tasktype";
+import {getAirline} from "../../../api/airline/airline";
+import {getPilotsByName, getPilotsByNameLikely} from "../../../api/pilots/pilots";
+import {getUav_manageByName, getUav_manageByNameAcc} from "../../../api/uav/uav_manage";
 
 export default {
   name: "Pilots",
@@ -344,6 +336,8 @@ export default {
   components: {UploadImage,FileUpload},
   data() {
     return {
+      driverState: [],
+
       uavTypeById: {},
       uavTypeList: [],
       // 遮罩层
@@ -417,15 +411,17 @@ export default {
 
   created() {
     this.getList();
+
   },
+
   methods: {
 
     /** 上传照片 */
     handleRemove(file, fileList) {
-      console.log(file, fileList);
+
     },
     handlePreview(file) {
-      console.log(file);
+
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
@@ -434,51 +430,64 @@ export default {
       return this.$confirm(`确定移除 ${ file.name }？`);
     },
     /** 查询驾驶员管理列表 */
-    getList(addList=false) {
+    async getList() {
       this.loading = true;
-      listPilots(this.queryParams).then(response => {
-
-        for (const item of response.rows) {
-
-          item.driverAircraftSoftHelp=[];
-        }
-        addList?this.pilotsList+=response.rows: this.pilotsList = response.rows;
-
-        this.total = response.total;
-        this.loading = false;
-
-      });
-      /** 获取驾驶员单位 */
-      listUavdepartment(this.queryParams).then(response => {
-        this.departmentlist = response.rows;
-        this.loading = false;
-      });
-
-      /** 获取无人机准驾型号 */
-      listUavtype().then(response => {
-        this.uavTypeList = response.rows;
-        console.log(this.pilotsList)
-        if (!this.pilotsList) return;
-        for (const item of  this.pilotsList){
-          if (item.driverAircraftSoft){
-            item.driverAircraftSoft= item.driverAircraftSoft.split(",");
-
-            for (let i=0;i<this.uavTypeList.length;i++){
-              item.driverAircraftSoft.forEach(v=>{
-                if(v==this.uavTypeList[i].id.toString()) {
-                  item.driverAircraftSoftHelp.push(this.uavTypeList[i].uavType)
-                }
-              })
-            };
-          }
-
-
-          item.driverAircraftSoftHelp= item.driverAircraftSoftHelp.toString();
-        }
-        console.log(this.pilotsList)
-      });
-
+      await this.getlistPilots()//获取驾驶员列表
+      await this.getUavList()// 获取无人机准驾型号
+      await this.getlistUavdepartment()//获取单位
+      this.showName()//处理准驾机型名字的显示问题
+      this.loading = false;
     },
+
+    /** 获取驾驶员列表*/
+    async getlistPilots(){
+      var response=  await listPilots(this.queryParams);
+
+      if  (this.queryParams.driverAircraftSoft.length==1 && this.queryParams.driverAircraftSoft.length!=0) this.queryParams.driverAircraftSoft=[...this.queryParams.driverAircraftSoft];
+      else if(this.queryParams.driverAircraftSoft.length !=1 && this.queryParams.driverAircraftSoft.length!=0)
+        this.queryParams.driverAircraftSoft = this.queryParams.driverAircraftSoft.split(",");
+      for (const item of response.rows) {
+        item.driverAircraftSoftHelp=[];
+      }
+      this.pilotsList = response.rows;
+      this.total = response.total;
+    },
+    /** 获取驾驶员单位 */
+    async getlistUavdepartment(){
+      var response = await listUavdepartment();
+      this.departmentlist = response.rows;
+      console.log("sh")
+      console.log(response)
+      this.loading = false;
+    },
+
+    /** 获取无人机准驾型号 */
+    async getUavList(){
+      var response =await listUavtype();
+        for (const item  of response.rows) {
+          item.id= item.id.toString();
+        }
+        this.uavTypeList = response.rows;
+    },
+    /**处理无人机类型的显示问题*/
+     showName(){
+        for (const item of  this.pilotsList){
+        if (typeof(item.driverAircraftSoft)=="string"&&item.driverAircraftSoft.length!=0) {
+        item.driverAircraftSoft= item.driverAircraftSoft.split(",");
+    } else {
+         item.driverAircraftSoft=[...item.driverAircraftSoft];
+    }
+    for (let i=0;i<this.uavTypeList.length;i++){
+      item.driverAircraftSoft.forEach(v=>{
+        if(v==this.uavTypeList[i].id) {
+          item.driverAircraftSoftHelp.push(this.uavTypeList[i].uavType)
+        }
+      })
+    };
+    item.driverAircraftSoftHelp= item.driverAircraftSoftHelp.toString();
+    this.$forceUpdate();
+  }
+},
     // 取消按钮
     cancel() {
       this.open = false;
@@ -508,24 +517,19 @@ export default {
     },
     /** 搜索按钮操作 */
     handleQuery() {
-
       this.queryParams.pageNum = 1;
-
       //处理准驾机型中文转数字字符串
       //存放提交查询前的准驾机型数据
-      console.log(this.queryParams)
-      this.queryParams.driverAircraftSoft = this.queryParams.driverAircraftSoft.sort().join().toString();
+      if(this.queryParams.driverAircraftSoft.length!=0) this.queryParams.driverAircraftSoft = this.queryParams.driverAircraftSoft.sort().join().toString();
+
       this.getList();
-      // this.queryParams.driverAircraftSoft =["1","2","3"].sort().join().toString();
-      this.getList(true);
-      //获取列表后返回原来的格式以便下次查询
+
     },
     /** 重置按钮操作 */
     resetQuery() {
       this.resetForm("queryForm");
       this.handleQuery();
-      // console.log(this.form)
-      // console.log(this.queryParams)
+
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
@@ -543,18 +547,9 @@ export default {
     handleUpdate(row) {
       this.reset();
       const id = row.id || this.ids;
-      console.log(this.form)
       getPilots(id).then(response => {
         this.form = response.data;
-        // this.form.driverAircraftSoft = response.driverAircraftSoft;
-
-        // //选择问题暂时没解决
-        // for(let k =0;k < this.uavTypeById.length; k++){
-        //   this.uavTypeById[k] = this.form.driverAircraftSoftHelp[k]
-        // }
-        // 解决了回显问题
-        this.form.driverAircraftSoft? this.form.driverAircraftSoft= this.form.driverAircraftSoft.split(",").map(Number):'';
-        console.log(this.uavTypeById)
+        this.form.driverAircraftSoft? this.form.driverAircraftSoft= this.form.driverAircraftSoft.split(","):'';
         this.open = true;
         this.title = "修改驾驶员管理";
       });
@@ -562,27 +557,66 @@ export default {
     /** 提交按钮 */
     /** 这里更改了之前生成的代码 和查找模块的功能代码类似**/
     submitForm() {
-      this.$refs["form"].validate(valid => {
+      this.$refs["form"].validate(async valid => {
         if (valid) {
-          if (this.form["driverAircraftSoft"].length==0) return;
-          this.form["driverAircraftSoft"]= this.form["driverAircraftSoft"].sort().join().toString();
+
           if (this.form.id != null) {
-            updatePilots(this.form).then(response => {
+
+            if (this.form["driverAircraftSoft"].length==0) return;
+
+            this.form["driverAircraftSoft"]= this.form["driverAircraftSoft"].sort().join().toString();
+
+            let response = await getPilotsByName(this.form.driverName)
+            let isDiffId = response.data && response.data.id != this.form.id
+            if(isDiffId){this.$modal.msgError("命名错误")}
+            else{
+              await updatePilots(this.form)
               this.$modal.msgSuccess("修改成功");
               this.open = false;
               this.getList();
-            });
+            }
           } else {
-            addPilots(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            });
+            console.log(this.form)
+            let res = await getPilotsByNameLikely(this.form.driverName.toString())
+            let number = res.data + 1
+            let name = await this.validNameGenerate(this.form.driverName, number, 0)
+
+            if (name != null) {
+              this.$set(this.form, "driverName", name)
+              this.form.driverState = 0;
+              this.form.driverAircraftSoft = this.form.driverAircraftSoft.join(",")
+              addPilots(this.form).then(response => {
+                this.$modal.msgSuccess("新增成功");
+                this.open = false;
+                this.getList();
+              });
+            }
+          else{
+              this.$modal.msgError("命名失败！")
+            }
           }
         }
       });
     },
-    /** 删除按钮操作 */
+
+    async validNameGenerate(name,number,protect){
+      let result = name + "_" + number.toString()
+      if(protect == 50){
+        return null
+      }
+      //这里要加return
+      return getPilotsByName(name + "_" + number.toString()).then(resp => {
+        if(resp.data){
+          return this.validNameGenerate(name,number+1,protect+1)
+        }
+        else{
+          return result
+        }
+      })
+    },
+
+    /** 删除按钮
+     * 操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
       this.$modal.confirm('是否确认删除驾驶员管理编号为"' + ids + '"的数据项？').then(function() {

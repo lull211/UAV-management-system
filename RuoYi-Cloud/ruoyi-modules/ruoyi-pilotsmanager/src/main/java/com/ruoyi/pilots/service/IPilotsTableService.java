@@ -19,6 +19,8 @@ public interface IPilotsTableService
      */
     public PilotsTable selectPilotsTableById(Long id);
 
+    public long selectPilotsByNameLikely(String Name);
+
     /**
      * 用名字查询驾驶员
      */

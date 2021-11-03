@@ -81,6 +81,26 @@ public class UavTableController extends BaseController
     }
 
     /**
+     * 通过名字模糊获取无人机信息管理详细信息
+     */
+    @PreAuthorize(hasPermi = "uav:uav_manage:query")
+    @GetMapping(value = "/uavName/{uavName}")
+    public AjaxResult getInfoByuavName(@PathVariable("uavName") String uavName)
+    {
+        return AjaxResult.success(uavTableService.selectUavTableByuavName(uavName));
+    }
+
+    /**
+     * 通过名字精确获取无人机信息管理详细信息
+     */
+    @PreAuthorize(hasPermi = "uav:uav_manage:query")
+    @GetMapping(value = "/uavNameAcc/{uavName}")
+    public AjaxResult getInfoByuavNameAccurate(@PathVariable("uavName") String uavName)
+    {
+        return AjaxResult.success(uavTableService.selectUavTableByuavNameAcc(uavName));
+    }
+
+    /**
      * 新增无人机信息管理
      */
     @PreAuthorize(hasPermi = "uav:uav_manage:add")

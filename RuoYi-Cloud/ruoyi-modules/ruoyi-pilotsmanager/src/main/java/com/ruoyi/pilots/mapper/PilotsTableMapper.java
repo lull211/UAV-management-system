@@ -18,7 +18,9 @@ public interface PilotsTableMapper
      * 驾驶员管理主键
      * @return 驾驶员管理
      */
-    public PilotsTable selectPilotsTableByName(String Name);
+    public PilotsTable selectPilotsTableByName(String driverName);
+
+    public long selectPilotsTableByNameLikely(String driverName);
 
     /**
      * 查询驾驶员管理

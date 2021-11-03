@@ -67,11 +67,21 @@ public class PilotsTableController extends BaseController
     /**
      * 用名字查询驾驶员管理详细信息
      */
-    @PreAuthorize(hasPermi = "pilots:pilots:query")
-    @GetMapping(value = "/name")
-    public AjaxResult getInfoByName(String name)
+    @PreAuthorize(hasPermi = "mymissionlist:mymissionlist:list")
+    @GetMapping(value = "/name/{driverName}")
+    public AjaxResult getInfoByName(@PathVariable("driverName") String driverName)
     {
-        return AjaxResult.success(pilotsTableService.selectPilotsByName(name));
+        return AjaxResult.success(pilotsTableService.selectPilotsByName(driverName));
+    }
+
+    /**
+     * 用名字模糊查询驾驶员管理详细信息
+     */
+    @PreAuthorize(hasPermi = "mymissionlist:mymissionlist:list")
+    @GetMapping(value = "/namelike/{driverName}")
+    public AjaxResult getInfoByNameLikely(@PathVariable("driverName") String driverName)
+    {
+        return AjaxResult.success(pilotsTableService.selectPilotsByNameLikely(driverName));
     }
 
     /**

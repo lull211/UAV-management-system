@@ -17,6 +17,22 @@ export function getUav_manage(id) {
   })
 }
 
+// 通过命名模糊查询无人机
+export function getUav_manageByName(name) {
+  return request({
+    url: '/uav/uav_manage/uavName/' + name,
+    method: 'get'
+  })
+}
+
+// 通过命名精确查询无人机
+export function getUav_manageByNameAcc(name) {
+  return request({
+    url: '/uav/uav_manage/uavNameAcc/' + name,
+    method: 'get'
+  })
+}
+
 // 查询无人机信息管理详细
 export function getUav_manage_by_flightNumber(uavFlightNumber) {
   return request({

@@ -31,22 +31,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskName != null  and taskName != ''"> and task_name like concat('%', #{taskName}, '%')</if>
             <if test="taskType != null  and taskType != ''"> and task_type = #{taskType}</if>
             <if test="taskTime != null "> and task_time = #{taskTime}</if>
-            <if test="taskDrone != null  and taskDrone != ''"> and task_drone = #{taskDrone}</if>
+            <if test="taskDrone != null  and taskDrone != ''"> and task_drone REGEXP #{taskDrone}</if>
             <if test="endTime != null "> and end_time = #{endTime}</if>
             <if test="taskDriver != null  and taskDriver != ''"> and task_driver like concat('%', #{taskDriver}, '%')</if>
             <if test="driverPhone != null  and driverPhone != ''"> and driver_phone REGEXP #{driverPhone}</if>
             <if test="taskAirline != null  and taskAirline != ''"> and task_airline = #{taskAirline}</if>
             <if test="taskImages != null  and taskImages != ''"> and task_images = #{taskImages}</if>
             <if test="taskAddress != null  and taskAddress != ''"> and task_address = #{taskAddress}</if>
-            <if test="deleteCode != null "> and delete_code = #{deleteCode}</if>
+<!--            <if test="deleteCode != null "> and delete_code = #{deleteCode}</if>-->
             <if test="extraExplain != null  and extraExplain != ''"> and extra_explain = #{extraExplain}</if>
             <if test="taskState != null "> and task_state = #{taskState}</if>
+             and delete_code = 0
         </where>
     </select>
     
     <select id="selectTaskListById" parameterType="Long" resultMap="TaskListResult">
         <include refid="selectTaskListVo"/>
-        where id = #{id}
+        where id = #{id} and delete_code = 0
     </select>
         
     <insert id="insertTaskList" parameterType="TaskList" useGeneratedKeys="true" keyProperty="id">
@@ -62,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskAirline != null">task_airline,</if>
             <if test="taskImages != null">task_images,</if>
             <if test="taskAddress != null">task_address,</if>
-            <if test="deleteCode != null">delete_code,</if>
+            <if test="deleteCode != null">0,</if>
             <if test="extraExplain != null">extra_explain,</if>
             <if test="taskState != null">task_state,</if>
          </trim>
@@ -77,7 +78,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="taskAirline != null">#{taskAirline},</if>
             <if test="taskImages != null">#{taskImages},</if>
             <if test="taskAddress != null">#{taskAddress},</if>
-            <if test="deleteCode != null">#{deleteCode},</if>
+            <if test="deleteCode != null">0,</if>
             <if test="extraExplain != null">#{extraExplain},</if>
             <if test="taskState != null">#{taskState},</if>
          </trim>
@@ -100,17 +101,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="extraExplain != null">extra_explain = #{extraExplain},</if>
             <if test="taskState != null">task_state = #{taskState},</if>
         </trim>
-        where id = #{id}
+        where id = #{id} and delete_code = 0
     </update>
 
-    <delete id="deleteTaskListById" parameterType="Long">
-        delete from task_list where id = #{id}
-    </delete>
+    <update id="deleteTaskListById" parameterType="Long">
+        update task_list set delete_code = 1 where id = #{id}
+    </update>
 
-    <delete id="deleteTaskListByIds" parameterType="String">
-        delete from task_list where id in 
+    <update id="deleteTaskListByIds" parameterType="String">
+        update task_list set delete_code = 1 where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
-    </delete>
+    </update>
 </mapper>

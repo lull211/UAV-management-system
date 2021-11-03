@@ -33,26 +33,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="driverDepartment != null  and driverDepartment != ''"> and driver_department = #{driverDepartment}</if>
             <if test="driverIdcard != null  and driverIdcard != ''"> and driver_idcard = #{driverIdcard}</if>
             <if test="driverPhone != null  and driverPhone != ''"> and driver_phone = #{driverPhone}</if>
-            <if test="driverAircraftSoft != null  and driverAircraftSoft != ''"> and driver_aircraft_soft = #{driverAircraftSoft}</if>
+            <if test="driverAircraftSoft != null  and driverAircraftSoft != ''"> and driver_aircraft_soft REGEXP #{driverAircraftSoft}</if>
             <if test="driverState != null "> and driver_state = #{driverState}</if>
             <if test="driverPhoto != null  and driverPhoto != ''"> and driver_photo = #{driverPhoto}</if>
             <if test="driverExtral != null  and driverExtral != ''"> and driver_extral = #{driverExtral}</if>
             <if test="trainingTime != null "> and training_time = #{trainingTime}</if>
             <if test="flyingTime != null "> and flying_time = #{flyingTime}</if>
             <if test="sumTime != null "> and sum_time = #{sumTime}</if>
-            <if test="deleteFlag != null "> and delete_flag = #{deleteFlag}</if>
             <if test="driverGender != null "> and driver_gender = #{driverGender}</if>
+            and delete_flag = 0
         </where>
     </select>
     
     <select id="selectPilotsTableById" parameterType="Long" resultMap="PilotsTableResult">
         <include refid="selectPilotsTableVo"/>
-        where id = #{id}
+        where id = #{id} and delete_flag = 0
     </select>
 
     <select id="selectPilotsTableByName" parameterType="String" resultMap="PilotsTableResult">
-        <include refid="selectPilotsTableVo"/>
-        where driver_name = #{name}
+        select id from pilots_table
+        where driver_name = #{driverName}
+    </select>
+
+    <select id="selectPilotsTableByNameLikely" parameterType="String" resultType="java.lang.Long">
+        select count(*) from pilots_table
+        where driver_name REGEXP concat(#{driverName},"_")
     </select>
         
     <insert id="insertPilotsTable" parameterType="PilotsTable" useGeneratedKeys="true" keyProperty="id">
@@ -109,15 +114,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="deleteFlag != null">delete_flag = #{deleteFlag},</if>
             <if test="driverGender != null">driver_gender = #{driverGender},</if>
         </trim>
-        where id = #{id}
+        where id = #{id} and delete_flag = 0
     </update>
 
-    <delete id="deletePilotsTableById" parameterType="Long">
-        delete from pilots_table where id = #{id}
-    </delete>
+    <update id="deletePilotsTableById" parameterType="Long">
+        update pilots_table set delete_flag = 0 where id = #{id}
+    </update>
 
     <delete id="deletePilotsTableByIds" parameterType="String">
-        delete from pilots_table where id in 
+        update pilots_table set delete_flag = 0 where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

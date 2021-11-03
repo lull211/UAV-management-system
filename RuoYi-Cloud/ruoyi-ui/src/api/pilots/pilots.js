@@ -17,12 +17,20 @@ export function getPilots(id) {
   })
 }
 
-// 通过姓名查询驾驶员管理详细
-export function getPilotsByName(name) {
+// 通过姓名精准查询驾驶员管理详细
+export function getPilotsByName(driverName) {
   return request({
-    url: '/pilots/pilots/name',
+    url: '/pilots/pilots/name/' + driverName,
     method: 'get',
-    params: name
+  })
+}
+
+//通过姓名模糊查询
+// 通过姓名查询驾驶员管理详细
+export function getPilotsByNameLikely(driverName) {
+  return request({
+    url: '/pilots/pilots/namelike/' + driverName,
+    method: 'get',
   })
 }
 

@@ -55,6 +55,18 @@ public class UavTableServiceImpl implements IUavTableService
         return uavTableMapper.insertUavTable(uavTable);
     }
 
+    @Override
+    public long selectUavTableByuavName(String uavName)
+    {
+        return uavTableMapper.selectUavTableByuavName(uavName);
+    }
+
+    @Override
+    public UavTable selectUavTableByuavNameAcc(String uavName)
+    {
+        return uavTableMapper.selectUavTableByuavNameAcc(uavName);
+    }
+
     /**
      * 修改无人机信息管理
      * 

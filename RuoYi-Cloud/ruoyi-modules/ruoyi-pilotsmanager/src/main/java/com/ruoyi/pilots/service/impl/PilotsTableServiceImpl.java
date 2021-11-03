@@ -33,7 +33,7 @@ public class PilotsTableServiceImpl implements IPilotsTableService
     }
 
     /**
-     * 用名字查询驾驶员管理
+     * 用名字精准查询驾驶员管理
      *
      * @param Name 驾驶员姓名
      * @return 驾驶员管理
@@ -44,6 +44,17 @@ public class PilotsTableServiceImpl implements IPilotsTableService
         return pilotsTableMapper.selectPilotsTableByName(Name);
     }
 
+    /**
+     * 用名字模糊查询驾驶员管理
+     *
+     * @param Name 驾驶员姓名
+     * @return 驾驶员管理
+     */
+    @Override
+    public long selectPilotsByNameLikely(String Name)
+    {
+        return pilotsTableMapper.selectPilotsTableByNameLikely(Name);
+    }
 
     /**
      * 查询驾驶员管理列表

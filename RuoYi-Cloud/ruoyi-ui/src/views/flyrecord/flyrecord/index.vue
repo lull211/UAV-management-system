@@ -1,105 +1,103 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="起飞经度" prop="homeLongtitude">
-        <el-input
-          v-model="queryParams.homeLongtitude"
-          placeholder="请输入起飞经度"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="起飞纬度" prop="homeLatittude">
-        <el-input
-          v-model="queryParams.homeLatittude"
-          placeholder="请输入起飞纬度"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="飞行距离" prop="sumDistance">
-        <el-input
-          v-model="queryParams.sumDistance"
-          placeholder="请输入飞行距离"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="终点经度" prop="endLongtitude">
-        <el-input
-          v-model="queryParams.endLongtitude"
-          placeholder="请输入终点经度"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="飞行高度" prop="altitude">
-        <el-input
-          v-model="queryParams.altitude"
-          placeholder="请输入飞行高度"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="水平飞行速度" prop="velocity">
-        <el-input
-          v-model="queryParams.velocity"
-          placeholder="请输入水平飞行速度"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="垂直飞行速度" prop="verticalSpeed">
-        <el-input
-          v-model="queryParams.verticalSpeed"
-          placeholder="请输入垂直飞行速度"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="任务回放" prop="taskReplay">
-        <el-input
-          v-model="queryParams.taskReplay"
-          placeholder="请输入任务回放"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="记录附件" prop="flyDoc">
-        <el-input
-          v-model="queryParams.flyDoc"
-          placeholder="请输入记录附件"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+<!--      <el-form-item label="起飞经度" prop="homeLongtitude">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.homeLongtitude"-->
+<!--          placeholder="请输入起飞经度"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="起飞纬度" prop="homeLatittude">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.homeLatittude"-->
+<!--          placeholder="请输入起飞纬度"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="飞行距离" prop="sumDistance">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.sumDistance"-->
+<!--          placeholder="请输入飞行距离"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="终点经度" prop="endLongtitude">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.endLongtitude"-->
+<!--          placeholder="请输入终点经度"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="飞行高度" prop="altitude">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.altitude"-->
+<!--          placeholder="请输入飞行高度"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="水平飞行速度" prop="velocity">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.velocity"-->
+<!--          placeholder="请输入水平飞行速度"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="垂直飞行速度" prop="verticalSpeed">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.verticalSpeed"-->
+<!--          placeholder="请输入垂直飞行速度"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="任务回放" prop="taskReplay">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.taskReplay"-->
+<!--          placeholder="请输入任务回放"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="记录附件" prop="flyDoc">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.flyDoc"-->
+<!--          placeholder="请输入记录附件"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
       <el-form-item label="飞行路线" prop="taskLine">
-        <el-input
-          v-model="queryParams.taskLine"
-          placeholder="请输入飞行路线"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.taskLine" placeholder="请选择航线" clearable size="small">
+          <el-option v-for="item in AirlineList" :key="item.id"  :label="item.airlineName" :value="item.id">
+          </el-option>
+        </el-select>
       </el-form-item>
-      <el-form-item label="飞行录像" prop="flyVideo">
-        <el-input
-          v-model="queryParams.flyVideo"
-          placeholder="请输入飞行录像"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+<!--      <el-form-item label="飞行录像" prop="flyVideo">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.flyVideo"-->
+<!--          placeholder="请输入飞行录像"-->
+<!--          clearable-->
+<!--          size="small"-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -117,28 +115,28 @@
           v-hasPermi="['flyrecord:flyrecord:add']"
         >新增</el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['flyrecord:flyrecord:edit']"
-        >修改</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['flyrecord:flyrecord:remove']"
-        >删除</el-button>
-      </el-col>
+<!--      <el-col :span="1.5">-->
+<!--        <el-button-->
+<!--          type="success"-->
+<!--          plain-->
+<!--          icon="el-icon-edit"-->
+<!--          size="mini"-->
+<!--          :disabled="single"-->
+<!--          @click="handleUpdate"-->
+<!--          v-hasPermi="['flyrecord:flyrecord:edit']"-->
+<!--        >修改</el-button>-->
+<!--      </el-col>-->
+<!--      <el-col :span="1.5">-->
+<!--        <el-button-->
+<!--          type="danger"-->
+<!--          plain-->
+<!--          icon="el-icon-delete"-->
+<!--          size="mini"-->
+<!--          :disabled="multiple"-->
+<!--          @click="handleDelete"-->
+<!--          v-hasPermi="['flyrecord:flyrecord:remove']"-->
+<!--        >删除</el-button>-->
+<!--      </el-col>-->
       <el-col :span="1.5">
         <el-button
           type="warning"
@@ -154,7 +152,7 @@
 
     <el-table v-loading="loading" :data="flyrecordList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="飞行记录" align="center" prop="id" />
+<!--      <el-table-column label="飞行记录" align="center" prop="id" />-->
 <!--      <el-table-column label="任务ID" align="center" prop="taskId" />-->
       <el-table-column label="起飞经度" align="center" prop="homeLongtitude" />
       <el-table-column label="起飞纬度" align="center" prop="homeLatittude" />
@@ -164,9 +162,40 @@
       <el-table-column label="水平飞行速度" align="center" prop="velocity" />
       <el-table-column label="垂直飞行速度" align="center" prop="verticalSpeed" />
       <el-table-column label="任务回放" align="center" prop="taskReplay" />
-      <el-table-column label="记录附件" align="center" prop="flyDoc" />
-      <el-table-column label="飞行路线" align="center" prop="taskLine" />
-      <el-table-column label="飞行录像" align="center" prop="flyVideo" />
+
+      <el-table-column label="记录附件" align="center" prop="flyDoc">
+        <template slot-scope="scope">
+          <el-button
+            size="mini"
+            type="text"
+            icon="el-icon-download"
+            @click="downloadFile(scope.row)"
+          >下载</el-button>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="飞行路线" align="center" prop="AirlineName" />
+
+      <el-table-column label="飞行录像" align="center" prop="flyVideo">
+        <template slot-scope="scope">
+          <el-dialog :title="title" :visible.sync="videoFlag" width="500px" height="500px">
+              <vue-ali-player
+                :useH5Prism=true
+                ref="player"
+                control-bar-visibility="hover"
+                :source="url"
+              ></vue-ali-player>
+            </el-dialog>
+
+            <el-button
+              size="mini"
+              type="text"
+              @click="openVideo(scope.row)"
+              v-hasPermi="['mymissionlist:mymissionlist:query']"
+            >查看回放</el-button>
+        </template>
+      </el-table-column>
+
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -242,11 +271,29 @@
 
 <script>
 import { listFlyrecord, getFlyrecord, delFlyrecord, addFlyrecord, updateFlyrecord } from "@/api/flyrecord/flyrecord";
+import VueAliPlayer from "../../../components/VueAliPlayer/VueAliPlayer";
+import {getAirline, listAirline} from "../../../api/airline/airline";
 
 export default {
   name: "Flyrecord",
+
+  //注册组件
+  components:{
+    VueAliPlayer
+  },
+
   data() {
     return {
+      //航线列表
+      AirlineList:[],
+
+      //附件地址
+      docUrl: null,
+
+      url: null,
+
+      videoFlag: false,
+
       // 遮罩层
       loading: true,
       // 选中数组
@@ -292,14 +339,47 @@ export default {
     this.getList();
   },
   methods: {
+
+    openVideo(row){
+      this.title = "查看回放";
+      getFlyrecord(row.taskId).then(response => {
+        this.url=response.data.flyVideo;
+        this.videoFlag = true;
+      })},
+
     /** 查询飞行记录列表 */
     getList() {
       this.loading = true;
+      /** 获取航线 */
+      listAirline().then(response=>{
+        this.AirlineList = response.rows
+      })
+
       listFlyrecord(this.queryParams).then(response => {
         this.flyrecordList = response.rows;
         this.total = response.total;
+
+        //航线id转换成中文
+        for (let i = 0; i < this.flyrecordList.length; i++) {
+          if(this.flyrecordList[i].taskLine){
+            getAirline(parseInt(this.flyrecordList[i].taskLine)).then(resp => {
+              this.$set(this.flyrecordList[i], "AirlineName", resp.data.airlineName)
+            })
+          }
+          else{
+            this.$set(this.flyrecordList[i], "AirlineName", "无")
+          }
+        }
         this.loading = false;
       });
+    },
+
+    downloadFile(row){
+      getFlyrecord(row.taskId).then(resp =>{
+        this.docUrl = resp.data.flyDoc
+        console.log(this.docUrl)
+        window.open(this.docUrl);
+      })
     },
     // 取消按钮
     cancel() {
@@ -350,8 +430,8 @@ export default {
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.reset();
-      const id = row.id || this.ids
-      getFlyrecord(id).then(response => {
+      getFlyrecord(row.taskId).then(response => {
+        console.log(response)
         this.form = response.data;
         this.open = true;
         this.title = "修改飞行记录";

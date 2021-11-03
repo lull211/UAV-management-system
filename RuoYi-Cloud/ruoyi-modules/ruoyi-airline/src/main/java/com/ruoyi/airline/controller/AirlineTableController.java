@@ -38,7 +38,7 @@ public class AirlineTableController extends BaseController
     /**
      * 查询航线管理列表
      */
-    @PreAuthorize(hasPermi = "airline:airline:list")
+    @PreAuthorize(hasPermi = "airline:airline:query")
     @GetMapping("/list")
     public TableDataInfo list(AirlineTable airlineTable)
     {

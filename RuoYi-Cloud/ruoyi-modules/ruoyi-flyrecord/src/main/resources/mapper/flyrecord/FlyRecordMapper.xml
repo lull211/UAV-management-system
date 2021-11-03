@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="selectFlyRecordById" parameterType="Long" resultMap="FlyRecordResult">
         <include refid="selectFlyRecordVo"/>
-        where id = #{id}
+        where task_Id = #{taskId}
     </select>
         
     <insert id="insertFlyRecord" parameterType="FlyRecord" useGeneratedKeys="true" keyProperty="id">

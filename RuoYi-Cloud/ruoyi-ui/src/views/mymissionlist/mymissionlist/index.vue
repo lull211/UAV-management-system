@@ -12,26 +12,11 @@
       </el-form-item>
       <el-form-item label="任务类型" prop="taskType">
         <el-select v-model="queryParams.taskType" placeholder="请选择任务类型" clearable size="small">
-          <el-option v-for="item in typelist" :key="item.id"  :label="item.taskType" :value="item.taskType">
+          <el-option v-for="item in TypeList" :key="item.id"  :label="item.taskType" :value="item.taskType">
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="任务时间" prop="taskTime">
-        <el-date-picker clearable size="small"
-                        v-model="queryParams.taskTime"
-                        type="date"
-                        value-format="yyyy-MM-dd"
-                        placeholder="选择任务时间">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="结束时间" prop="endTime">
-        <el-date-picker clearable size="small"
-                        v-model="queryParams.endTime"
-                        type="date"
-                        value-format="yyyy-MM-dd"
-                        placeholder="选择结束时间">
-        </el-date-picker>
-      </el-form-item>
+
       <el-form-item label="无人机编号" prop="taskDrone">
         <el-input
           v-model="queryParams.taskDrone"
@@ -41,39 +26,14 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="驾驶员" prop="taskDriver">
-        <el-select v-model="queryParams.taskDriver" placeholder="请选择驾驶员" clearable size="small">
-          <el-option v-for="item in drivelist" :key="item.id"  :label="item.driverName" :value="item.id">
+<!---->
+      <el-form-item label="航线" prop="taskAirline">
+        <el-select v-model="queryParams.taskAirline" placeholder="请选择航线" clearable size="small">
+          <el-option v-for="item in AirlineList" :key="item.id"  :label="item.airlineName" :value="item.id">
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="驾驶员手机号码" prop="driverPhone">
-        <el-input
-          v-model="queryParams.driverPhone"
-          placeholder="请输入驾驶员手机号码"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="航线" prop="taskAirline">
-        <el-input
-          v-model="queryParams.taskAirline"
-          placeholder="请输入航线"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="任务封面图片" prop="taskImages">
-        <el-input
-          v-model="queryParams.taskImages"
-          placeholder="请输入任务封面图片"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <el-form-item label="任务地点" prop="taskAddress">
         <el-input
           v-model="queryParams.taskAddress"
@@ -83,33 +43,14 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="删除码" prop="deleteCode">
-        <el-input
-          v-model="queryParams.deleteCode"
-          placeholder="请输入删除码"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="描述" prop="extraExplain">
-        <el-input
-          v-model="queryParams.extraExplain"
-          placeholder="请输入描述"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <el-form-item label="任务状态" prop="taskState">
-        <el-input
-          v-model="queryParams.taskState"
-          placeholder="请输入任务状态"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.taskState" placeholder="请选择任务状态" clearable size="small">
+          <el-option v-for="item in taskStateDic" :key="item.id"  :label="item.State" :value="item.id">
+          </el-option>
+        </el-select>
       </el-form-item>
+
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -166,29 +107,59 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="任务名称" align="center" prop="taskName" />
       <el-table-column label="任务类型" align="center" prop="taskType" />
+
       <el-table-column label="任务时间" align="center" prop="taskTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.taskTime, '{y}-{m}-{d} {h}:{i}:{s}')}}</span>
         </template>
       </el-table-column>
+
       <el-table-column label="结束时间" align="center" prop="endTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.endTime, '{y}-{m}-{d} {h}:{i}:{s}')}}</span>
         </template>
       </el-table-column>
+
       <el-table-column label="无人机编号" align="center" prop="taskDrone" />
-      <el-table-column label="驾驶员" align="center" prop="driverName" />
-      <el-table-column label="驾驶员手机号码" align="center" prop="driverPhone" />
-      <el-table-column label="主键id" align="center" prop="id" />
-      <el-table-column label="航线" align="center" prop="taskAirline" />
-      <el-table-column label="任务封面图片" align="center" prop="taskImages" />
+<!--      <el-table-column label="驾驶员" align="center" prop="driverName" />-->
+<!--      <el-table-column label="驾驶员手机号码" align="center" prop="driverPhone" />-->
+<!--      <el-table-column label="主键id" align="center" prop="id" />-->
+      <el-table-column label="航线" align="center" prop="AirlineName" />
+
+      <el-table-column label="任务封面图片" align="center" prop="taskImages">
+        <template slot-scope="scope">
+          <el-image :src="scope.row.taskImages">
+          </el-image>
+        </template>
+      </el-table-column>
+
       <el-table-column label="任务地点" align="center" prop="taskAddress" />
-      <el-table-column label="删除码" align="center" prop="deleteCode" />
       <el-table-column label="描述" align="center" prop="extraExplain" />
-      <el-table-column label="任务状态" align="center" prop="taskState" />
+
+      <el-table-column label="任务状态" align="center" prop="taskState">
+        <template slot-scope="scope">
+          <p v-if="scope.row.taskState == 0">
+            未开始
+          </p>
+          <p v-if="scope.row.taskState == 1">
+            进行中
+          </p>
+          <p v-if="scope.row.taskState == 2">
+            已结束
+          </p>
+        </template>
+      </el-table-column>
+
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
       <!--   开始任务 结束任务 查看回放     -->
         <template slot-scope="scope">
+<!--          <el-button-->
+<!--            size="mini"-->
+<!--            type="text"-->
+<!--            icon="el-icon-edit"-->
+<!--            @click="openDetail(scope.row)"-->
+<!--            v-hasPermi="['uav:uav_manage:query']"-->
+<!--          >详情</el-button>-->
 
           <p v-if="scope.row.taskState == 0">
             <el-button
@@ -259,6 +230,71 @@
       :limit.sync="queryParams.pageSize"
       @pagination="getList"
     />
+    <!--  详情页-->
+    <!--  需要展示内容  -->
+    <el-dialog :title="title" :visible.sync="detailFlag" width="60%" append-to-body>
+
+      <el-descriptions direction="vertical" class="margin-top" :column="5" border>
+
+        <el-descriptions-item label="命名">{{detailDic.uavName}}</el-descriptions-item>
+        <el-descriptions-item label="归口部门">{{detailDic.uavUnit}}</el-descriptions-item>
+        <el-descriptions-item label="类型">{{detailDic.uavType}}</el-descriptions-item>
+        <el-descriptions-item label="序列号">{{detailDic.uavSn}}</el-descriptions-item>
+
+        <el-descriptions-item label="飞控编号">
+          {{detailDic.uavFlightNumber}}
+        </el-descriptions-item>
+
+        <el-descriptions-item label="产品型号">
+          {{detailDic.uavNumber}}
+        </el-descriptions-item>
+
+        <el-descriptions-item label="序列号">
+          {{detailDic.uavSn}}
+        </el-descriptions-item>
+
+
+        <el-descriptions-item label="保管员">
+          {{detailDic.uavKeeperName}}     {{detailDic.uavKeeperPhone}}
+        </el-descriptions-item>
+
+        <el-descriptions-item label="备勤等级">
+          {{detailDic.uavBeiqinLevelName}}
+        </el-descriptions-item>
+
+        <el-descriptions-item label="保险到期时间">
+          {{detailDic.uavInsurance}}
+        </el-descriptions-item>
+
+        <el-descriptions-item label="质保到期时间">
+          {{detailDic.uavAssurance}}
+        </el-descriptions-item>
+
+        <el-descriptions-item label="保养到期时间">
+          {{detailDic.uavMaintenance}}
+        </el-descriptions-item>
+
+        <el-descriptions-item label="录入人">
+          {{detailDic.uavUsers}}
+        </el-descriptions-item>
+
+        <el-descriptions-item label="无人机相关图片">
+          <el-image :src="detailDic.uavImages">
+          </el-image>
+        </el-descriptions-item>
+
+        <el-descriptions-item label="无人机相关附件">
+          <el-button
+            size="mini"
+            type="text"
+            icon="el-icon-download"
+            @click="downloadFileForDetail(detailDic.uavAttachment)"
+          >下载</el-button>
+        </el-descriptions-item>
+
+      </el-descriptions>
+
+    </el-dialog>
 
     <!-- 添加或修改任务列表对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
@@ -330,23 +366,43 @@ import {updateMyflyrecord} from "../../../api/myflyrecord/myflyrecord";
 import {getMyflyrecord} from "../../../api/myflyrecord/myflyrecord";
 import {addMyflyrecord} from "../../../api/myflyrecord/myflyrecord";
 import { getUav_manage_by_flightNumber, updateUav_manage} from "../../../api/uav/uav_manage";
+import {listTasktype} from "../../../api/tasktype/tasktype";
+import {getAirline, listAirline} from "../../../api/airline/airline";
+import {getMissionlevel} from "../../../api/missionlevel/missionlevel";
 
 
 export default {
-  name: "Missionlist",
+  name: "MyMissionlist",
   components:{
      VueAliPlayer,
      FileUpload
   },
   data() {
     return {
+      detailDic: {},
 
+      //详情页flag
+      detailFlag: false,
+
+      //任务状态下拉框
+      taskStateDic:[{
+        "id": 0,
+        "State":"未开始"
+      },{
+        "id": 1,
+        "State":"进行中"
+      },{
+        "id": 2,
+        "State":"已结束"
+      }],
       // 视频回放弹窗
       videoFlag: false,
 
       //上传附件窗口
       uploadFileFlag: false,
 
+      //航线
+      AirlineList:[],
 
       uavForm: {},
 
@@ -408,7 +464,7 @@ export default {
         phone: null
       },
       //储存任务类型
-      typelist:[],
+      TypeList:[],
       // 表单参数
       form: {},
       // 表单校验
@@ -443,6 +499,16 @@ export default {
 
   methods: {
 
+    /**无人机详情页面**/
+    openDetail(row){
+      this.resetForm("detailDic");
+      const id = row.id || this.ids;
+      getMymissionlist(id).then(resp => {
+        //详情数据
+        this.detailFlag = resp.data;
+      })
+    },
+
     submitFlyFile(row){
       const id = row.id || this.ids
       const docFly = this.flyDoc;
@@ -471,11 +537,25 @@ export default {
       this.uploadFileFlag = true;
     },
 
+    downloadFileForDetail(row){
+      window.open(row);
+    },
+
     /** 查询任务列表列表 */
     getList() {
-      //查询对应名字的飞行员id
-      //找到用户的名字
+      this.loading = true;
 
+      /** 获取航线 */
+      listAirline().then(response=>{
+        this.AirlineList = response.rows
+      })
+
+      listTasktype().then(response => {
+        this.TypeList = response.rows;
+      });
+
+      //查询对应名字的飞行员idairlineName
+      //找到用户的名字
       getUserProfile().then(response => {
 
         let name = response.data.nickName;
@@ -485,44 +565,33 @@ export default {
         }
 
         getPilotsByName(obj).then(response => {
-
           if (response.data) {
-            this.loading = true;
             this.queryParams.taskDriver = response.data.id
-
-            /** 获取驾驶员信息 */
-            listPilots(this.UserqueryParams).then(response => {
-              this.drivelist = response.rows;
-            });
 
             listMymissionlist(this.queryParams).then(response => {
               this.missionlistList = response.rows;
+
               this.total = response.total;
-              //查询某个驾驶员信息
+
+              //航线id转换成中文
               for (let i = 0; i < this.missionlistList.length; i++) {
-                if (this.missionlistList[i].id){
-                  getPilots(this.missionlistList[i].taskDriver).then(resp=>{
-                      this.$set(this.missionlistList[i],'driverName',resp.data.driverName);
-                      this.$set(this.missionlistList[i],'driverPhone',resp.data.driverPhone);
-                    }
-                  )
-
-                }else{//ID 为0时
-                  this.uav_manageList[i].driverName="无";
-                  this.uav_manageList[i].driverPhone="无";
+                if(this.missionlistList[i].taskAirline){
+                  getAirline(parseInt(this.missionlistList[i].taskAirline)).then(resp => {
+                    this.$set(this.missionlistList[i], "AirlineName", resp.data.airlineName)
+                  })
                 }
-
+                else{
+                  this.$set(this.missionlistList[i], "AirlineName", "无")
+                }
               }
             });
           }
           else{
             this.missionlistList = null;
           }
-          this.loading = false;
-
         });
       })
-
+      this.loading = false
     },
     // 取消按钮
     cancel() {
@@ -688,7 +757,13 @@ export default {
               this.pilotForm = response.data;
 
               //更新任务状态
-              this.pilotForm.driverState = taskState;
+              if(taskState == 2){
+                this.pilotForm.driverState = 0;
+              }
+              else{
+                this.pilotForm.driverState = taskState;
+              }
+
               this.pilotForm.trainingTime = this.pilotForm.trainingTime + traingTime;
               this.pilotForm.flyingTime = this.pilotForm.flyingTime + flyingTime;
               this.pilotForm.sumTime = this.pilotForm.flyingTime + this.pilotForm.trainingTime;
@@ -698,13 +773,18 @@ export default {
             //查找对应的飞行器，形成表单更新飞行器状态
             getUav_manage_by_flightNumber(uav_flight_number).then(response =>{
               this.uavForm = response.data
-              this.uavForm.uavEnabled = taskState
+              //1为任务中 0为空闲状态
+              if(taskState == 1) this.uavForm.uavEnabled = taskState;
+              else{
+                this.uavForm.uavEnabled = 0
+              };
               updateUav_manage(this.uavForm)
             })
 
             //飞行任务入飞行记录 还需要在这里添加出发点记录入库 TODO
             this.recordForm.taskId = this.form.id;
             this.recordForm.driverId = id;
+            this.recordForm.taskLine = this.form.taskAirline
 
             getMyflyrecord(this.recordForm.taskId).then(response => {
               if (response.data) {
